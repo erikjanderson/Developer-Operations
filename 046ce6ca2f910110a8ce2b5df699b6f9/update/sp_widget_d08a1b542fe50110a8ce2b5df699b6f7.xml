@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function ($location, $timeout) {
+	/* widget controller */
+	var c = this;
+	c.executeOperation = executeOperation;
+	c.changeResultIndex = changeResultIndex;
+	c.copyToClipboard = copyToClipboard;
+	c.generateScript = generateScript;
+	c.validInputs = validInputs;
+
+	var params = $location.search();
+	c.targetSysIds = params.sysId;
+	if (c.targetSysIds) {
+		c.targetSysIds = c.targetSysIds.split(',');
+	}
+	c.targetTableName = params.tableName;
+	c.view = params.view;
+	/*if(c.targetFormElements){
+		c.targetFormElements = JSON.parse(c.targetFormElements);
+	}*/
+
+	c.executeAsync = false;
+	c.selectedOperation = ''
+
+
+	init();
+	function init() {
+		var input = {
+			"action": "init",
+			"sysIds": c.targetSysIds,
+			"tableName": c.targetTableName,
+			"view": c.view
+		}
+
+		c.server.get(input).then(function (response) {
+			if (response && response.data) {
+				c.operations = response.data.operations;
+
+			}
+		});
+
+
+		enableTooltips();
+	}
+
+
+
+	function executeOperation() {
+		if (c.selectedOperation) {
+			c.running = true;
+			var input = {
+				// executeOperation: function(selectedOperation, tableName, sysIds){
+				"action": "executeOperation",
+				"sysIds": c.targetSysIds,
+				"tableName": c.targetTableName,
+				//"view": c.view,
+				"async": c.executeAsync,
+				"selectedOperation": c.selectedOperation
+			}
+			c.server.get(input).then(function (response) {
+				if (response && response.data && response.data.selectedOperation) {
+					c.selectedOperation = response.data.selectedOperation
+					if (c.selectedOperation.output && c.selectedOperation.output.results) {
+						c.resultIndex = 1;
+						c.selectedResult = c.selectedOperation.output.results[0];
+					}
+				}
+				c.running = false;
+			});
+
+		}
+	}
+
+	function changeResultIndex(number) {
+		if (number - 1 >= c.selectedOperation.output.results.length) {
+			c.resultIndex = c.selectedOperation.output.results.length;
+			return;
+		}
+		if (number - 1 <= 0) {
+			c.resultIndex = 1;
+			return;
+		}
+		c.resultIndex = number;
+
+	}
+
+	function copyToClipboard(content) {
+		console.log(content);
+		if (typeof content === 'object') {
+			navigator.clipboard.writeText(JSON.stringify(content));
+		} else {
+			navigator.clipboard.writeText(content);
+		}
+
+	}
+
+	function generateScript() {
+		c.generating = true;
+		var input = {
+			// executeOperation: function(selectedOperation, tableName, sysIds){
+			"action": "generateScript",
+			"sysIds": c.targetSysIds,
+			"tableName": c.targetTableName,
+			"selectedOperation": c.selectedOperation
+		}
+		c.server.get(input).then(function (response) {
+			if (response && response.data) {
+				copyToClipboard(response.data.generatedScript);
+				c.generating = false;
+			}
+		});
+	}
+
+	function enableTooltips() {
+		$('[data-toggle="tooltip"]').tooltip();
+	}
+
+	function validInputs(){
+		if(!c.selectedOperation || !c.selectedOperation.inputs.length){return true};
+		for(var i = 0; i < c.selectedOperation.inputs.length; i++){
+			var input = c.selectedOperation.inputs[i];
+			if(input.mandatory && !input.userValue){
+				return false;
+			}
+		}
+		return true;
+
+	}
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.copy-button {
+  width: 37px;
+  padding: 6px 1px;
+  background-color: #293e40;
+}
+
+.option-select {
+  margin-bottom: 13px;
+}
+
+.option-content {
+  margin: 6px;
+  font-size: 17px !important;
+  overflow-wrap: anywhere;
+}
+
+.process-button {
+  width: 100%;
+  height: 37px !important;
+  background-color: #293e40;
+  color: white;
+}
+
+.content-footer {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+}
+
+.unselectable {
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+
+  /*
+    Introduced in IE 10.
+    See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+  */
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.indexArrows {
+  font-size: 25px;
+  top: 5px;
+  position: relative;
+}
+
+.fa-caret-right {
+  margin-left: 5px;
+}
+
+.fa-caret-left {
+  margin-right: 5px;
+}
+
+.result-controls {
+  display: flex;
+  justify-content: space-between;
+}
+
+.execution-controls {
+  display: flex;
+  align-items: center;
+}
+
+.option-header {
+  display: flex;
+  height: 35px;
+  margin-bottom: 10px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  margin-left: 10px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked+.slider {
+  background-color: #293e40;
+  ;
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px #293e40;
+  ;
+}
+
+input:checked+.slider:before {
+  -webkit-transform: translateX(15px);
+  -ms-transform: translateX(15px);
+  transform: translateX(15px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.operation-content {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+  max-height: 500px;
+  overflow: auto;
+}
+
+.control-end {
+  width: 65px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>dev_tools_operations</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Developer Tools</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function () {
+	/* populate the 'data' object */
+	/* e.g., data.table = $sp.getValue('table'); */
+	if (input) {
+		var controller = new global.DevOperationController();
+		if (input.action == "init" && input.sysIds && input.tableName) {
+			data.operations = controller.getOperations(input.tableName, input.sysIds);
+		}
+		if (input.action == "executeOperation" && input.selectedOperation && input.tableName && input.sysIds) {
+			// executeOperation: function(selectedOperation, tableName, sysIds){
+			data.selectedOperation = controller.executeOperation(input.selectedOperation, input.tableName, input.sysIds, input.async);
+		}
+		if (input.action == "generateScript") {
+			data.generatedScript = controller.generateScript(input.selectedOperation, input.tableName, input.sysIds);
+		}
+	}
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-02-04 19:50:24</sys_created_on>
+        <sys_id>d08a1b542fe50110a8ce2b5df699b6f7</sys_id>
+        <sys_mod_count>323</sys_mod_count>
+        <sys_name>Developer Tools</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>sp_widget_d08a1b542fe50110a8ce2b5df699b6f7</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-03-15 17:30:50</sys_updated_on>
+        <template><![CDATA[<div style="height: 579px;">
+	<!-- your widget template -->
+	<div class="option-header">
+
+		<!-- <sn-choice-list placeholder="-- Choose an operation --" sn-model="c.selectedOperation" sn-value-field="operation" sn-text-field="name" sn-items="c.operations">
+    </sn-choice-list> -->
+		<select class="form-control option-select" ng-disabled="c.running"
+			ng-options="operation as operation.name for operation in c.operations track by operation.sysId"
+			ng-model="c.selectedOperation" ng-change="c.executeAsync = false">
+			<option value="">-- Choose an operation --</option>
+		</select>
+		<button ng-disabled="!c.selectedOperation" data-toggle="tooltip" data-placement="bottom"
+			title="Copy Script to Clipboard" class="btn btn-primary copy-button"
+			style="margin-bottom: 20px; margin-left: 9px; height: 34px;" ng-click="c.generateScript()">
+			<i ng-if="!c.generating" class="fa fa-clone"></i>
+			<span ng-if="c.generating"><i class="fa fa-spinner fa-spin fa-fw"></i></span>
+		</button>
+	</div>
+
+	<p class="option-description" ng-bind-html="c.selectedOperation.description"></p>
+	<div class="operation-content"
+		ng-if="c.selectedOperation && !c.selectedOperation.output && c.selectedOperation.inputs.length">
+		<div class="form-group" ng-repeat="userInput in c.selectedOperation.inputs">
+			<label>{{userInput.inputLabel}} 
+				<span ng-if="userInput.mandatory && !userInput.userValue"style="color:#cf0707; font-size:10px"><i class="fa fa-asterisk"></i></span>
+				<span ng-if="userInput.mandatory && userInput.userValue" style="color:#00ae00;"><i class="fa fa-check"></i></span>
+				<!---- {{userInput.userValue}}--></label>
+			<sn-record-picker ng-if="userInput.type === 'reference'" placeholder="-- Select --"
+				field="userInput.userValue" table="userInput.reference" display-field="userInput.reference_display"
+				value-field="sys_id" search-fields="userInput.reference_display" default-query="userInput.qualifier"
+				page-size="100">
+			</sn-record-picker>
+
+			<select class="form-control" ng-options="o.v as o.n for o in [{n: 'True',v: true}, {n: 'False',v: false}]"
+				ng-model="userInput.userValue" ng-if="userInput.type == 'bool'">
+				<option value="">-- Select --</option>
+			</select>
+
+			<select class="form-control" ng-options="option.value as option.name for option in userInput.choiceList"
+				ng-model="userInput.userValue" ng-if="userInput.type == 'choice'">
+				<option value="">-- Select --</option>
+			</select>
+
+
+			<input ng-if="userInput.type != 'reference' && userInput.type != 'choice' && userInput.type != 'bool'"
+				ng-model="userInput.userValue" type="{{userInput.type}}" class="form-control"
+				maxlength="{{userInput.maxLength}}" placeholder="{{userInput.inputName}}">
+		</div>
+	</div>
+	<div class="" ng-if="c.selectedOperation.output">
+		<hr>
+		<!-- <label>Operation completed in: </label> -->
+		<!-- <a href="/syslog_list.do?sysparm_query=sys_created_onBETWEENjavascript:gs.dateGenerate('{{c.selectedOperation.output.duration.start.split(' ')[0]}}','{{c.selectedOperation.output.duration.start.split(' ')[1]}}')@javascript:gs.dateGenerate('{{c.selectedOperation.output.duration.end.split(' ')[0]}}','{{c.selectedOperation.output.duration.end.split(' ')[1]}}')" target="_blank">Link</a> -->
+		<span><label>Record: {{c.selectedOperation.output.results[c.resultIndex - 1].gr.displayValue}}</label></span>
+		<div>
+			<label>Status: </label>
+			<span><i style="color:#cf0707; font-size: 20px;" class="fa fa-exclamation-triangle"
+					ng-if="c.selectedOperation.output.results[c.resultIndex - 1].status === 'error'"></i></span>
+			<span><i style="color: #00ae00; font-size: 20px;" class="fa fa-check"
+					ng-if="c.selectedOperation.output.results[c.resultIndex - 1].status === 'success'"></i></span>
+		</div>
+
+		<pre style="height: 415px; width: 100%;">{{c.selectedOperation.output.results[c.resultIndex - 1].result}}</pre>
+
+	</div>
+	<div class="content-footer">
+		<div ng-if="c.selectedOperation.output.results.length > 0" class="result-controls">
+			<div class="control-end"></div>
+			<div class="unselectable">
+				<i class="fa fa-caret-left indexArrows" ng-click="c.changeResultIndex(c.resultIndex - 1)"></i>
+				<input type="number" ng-model="c.resultIndex" ng-blur="c.changeResultIndex(c.resultIndex)"
+					style="width: 65px;" />
+				<label> of {{c.selectedOperation.output.results.length}}</label>
+				<i class="fa fa-caret-right indexArrows" ng-click="c.changeResultIndex(c.resultIndex + 1)"></i>
+			</div>
+			<div class="control-end">
+				<a style="font-size: 18px;" data-toggle="tooltip" data-placement="top" title="View System Logs"
+				href="/syslog_list.do?sysparm_query=sys_created_onBETWEENjavascript:gs.dateGenerate('{{c.selectedOperation.output.duration.start.split(' ')[0]}}','{{c.selectedOperation.output.duration.start.split(' ')[1]}}')@javascript:gs.dateGenerate('{{c.selectedOperation.output.duration.end.split(' ')[0]}}','{{c.selectedOperation.output.duration.end.split(' ')[1]}}')" target="_blank">
+					<i class="fa fa-list-ul" aria-hidden="true"></i>
+				</a>
+
+				<button data-toggle="tooltip" data-placement="top" title="Copy Results to Clipboard"
+					class="btn btn-primary copy-button"><i class="fa fa-clone"
+						ng-click="c.copyToClipboard(c.selectedOperation.output.results[c.resultIndex - 1].result)"></i>
+				</button>
+			</div>
+
+		</div>
+		<div ng-if="!c.selectedOperation.output" class="execution-controls">
+			<button class="btn process-button" ng-disabled="!c.selectedOperation || !c.validInputs()" ng-click="c.executeOperation()">
+				<span ng-if="!c.running">Execute</span>
+				<span ng-if="c.running">Running <i class="fa fa-spinner fa-spin fa-fw"></i></span>
+			</button>
+			<label class="switch" data-toggle="tooltip" data-placement="top" title="Execute In Background">
+				<input type="checkbox" ng-model="c.executeAsync">
+				<span class="slider round"></span>
+			</label>
+		</div>
+	</div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

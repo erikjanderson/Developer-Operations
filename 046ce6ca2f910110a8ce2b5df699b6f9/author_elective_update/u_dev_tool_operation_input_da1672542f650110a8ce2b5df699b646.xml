@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="u_dev_tool_operation_input">
+    <u_dev_tool_operation_input action="DELETE">
+        <sys_class_name>u_dev_tool_operation_input</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-02-04 17:11:32</sys_created_on>
+        <sys_id>da1672542f650110a8ce2b5df699b646</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Developer Tools 2.0" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Tools 2.0">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>u_dev_tool_operation_input_da1672542f650110a8ce2b5df699b646</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-02-04 17:11:34</sys_updated_on>
+        <u_active>true</u_active>
+        <u_dev_tool_operation display_value="Test">9374bec22fd10110a8ce2b5df699b638</u_dev_tool_operation>
+        <u_input_label>Name</u_input_label>
+        <u_input_name>name</u_input_name>
+        <u_max_length/>
+        <u_type>user_string</u_type>
+    </u_dev_tool_operation_input>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</application>
+        <file_path/>
+        <instance_id>54f0e1b4db429bc0536ad5b0cf9619dd</instance_id>
+        <instance_name>dev58956</instance_name>
+        <name>u_dev_tool_operation_input_da1672542f650110a8ce2b5df699b646</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="u_dev_tool_operation_input"><u_dev_tool_operation_input action="INSERT_OR_UPDATE"><sys_class_name>u_dev_tool_operation_input</sys_class_name><sys_created_by>erik.anderson</sys_created_by><sys_created_on>2022-02-04 17:11:32</sys_created_on><sys_id>da1672542f650110a8ce2b5df699b646</sys_id><sys_mod_count>2</sys_mod_count><sys_name/><sys_package display_value="Developer Tools 2.0" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package><sys_policy/><sys_scope display_value="Developer Tools 2.0">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope><sys_update_name>u_dev_tool_operation_input_da1672542f650110a8ce2b5df699b646</sys_update_name><sys_updated_by>erik.anderson</sys_updated_by><sys_updated_on>2022-02-04 17:11:34</sys_updated_on><u_active>true</u_active><u_dev_tool_operation display_value="Test">9374bec22fd10110a8ce2b5df699b638</u_dev_tool_operation><u_input_label>Name</u_input_label><u_input_name>name</u_input_name><u_max_length/><u_type>user_string</u_type></u_dev_tool_operation_input></record_update>]]></payload>
+        <payload_hash>-1719593192</payload_hash>
+        <record_name/>
+        <reverted_from/>
+        <source>c1d181836d6620100acb70b3534330af</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-02-04 17:11:34</sys_created_on>
+        <sys_id>b126be142f650110a8ce2b5df699b67a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17ec5b843f20000001</sys_recorded_at>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-02-04 17:11:34</sys_updated_on>
+        <type>Dev Tool Operation Input</type>
+        <update_guid>7926be14e965011067805dd1bb659c79</update_guid>
+        <update_guid_history>7926be14e965011067805dd1bb659c79:-1719593192,2d26fed06c6501104ae6cf0f430a2858:-1334014334,09263e140c65011065eca4b23e660f5c:1457796171</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="">e147fa142f650110a8ce2b5df699b623</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-02-04 17:16:28</sys_created_on>
+        <sys_db_object display_value="" name="u_dev_tool_operation_input">u_dev_tool_operation_input</sys_db_object>
+        <sys_id>0f132ecf79e84b15969334b4dd305ca9</sys_id>
+        <sys_metadata>da1672542f650110a8ce2b5df699b646</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_scope_delete display_value="">3b255f5eab984b4ca2d4e8de4c0cdc10</sys_scope_delete>
+        <sys_update_name>u_dev_tool_operation_input_da1672542f650110a8ce2b5df699b646</sys_update_name>
+        <sys_update_version display_value="u_dev_tool_operation_input_da1672542f650110a8ce2b5df699b646">b126be142f650110a8ce2b5df699b67a</sys_update_version>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-02-04 17:16:28</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

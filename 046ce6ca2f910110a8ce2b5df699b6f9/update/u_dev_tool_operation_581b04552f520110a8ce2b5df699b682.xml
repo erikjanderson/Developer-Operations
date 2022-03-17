@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="u_dev_tool_operation">
+    <u_dev_tool_operation action="INSERT_OR_UPDATE">
+        <sys_class_name>u_dev_tool_operation</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-03-16 14:06:10</sys_created_on>
+        <sys_id>581b04552f520110a8ce2b5df699b682</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Change Application Scope</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>u_dev_tool_operation_581b04552f520110a8ce2b5df699b682</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-03-16 14:19:17</sys_updated_on>
+        <u_active>true</u_active>
+        <u_condition/>
+        <u_conditional>false</u_conditional>
+        <u_description>Changes the sys_scope value of an application file. Useful if a file was accidently created in the wrong application scope.</u_description>
+        <u_name>Change Application Scope</u_name>
+        <u_script><![CDATA[var currentRecord = current; //Current GlideRecord
+var targetScope = target_scope;
+
+if(targetScope && targetScope.getUniqueValue()){
+	currentRecord.sys_scope = targetScope.getUniqueValue();
+	currentRecord.update();
+	result = current.getDisplayValue() + ' was updated successfully.';
+}]]></u_script>
+        <u_table>sys_metadata</u_table>
+    </u_dev_tool_operation>
+</record_update>

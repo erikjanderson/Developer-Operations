@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="u_dev_tool_operation_input">
+    <u_dev_tool_operation_input action="DELETE">
+        <sys_class_name>u_dev_tool_operation_input</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-02-04 18:22:52</sys_created_on>
+        <sys_id>3b6687142fa50110a8ce2b5df699b623</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Reference</sys_name>
+        <sys_package display_value="Developer Tools 2.0" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Tools 2.0">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>u_dev_tool_operation_input_3b6687142fa50110a8ce2b5df699b623</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-02-08 02:58:09</sys_updated_on>
+        <u_active>true</u_active>
+        <u_dev_tool_operation display_value="Test">9374bec22fd10110a8ce2b5df699b638</u_dev_tool_operation>
+        <u_input_label>Reference</u_input_label>
+        <u_input_name>reference</u_input_name>
+        <u_max_length/>
+        <u_qualifier table="cmdb_ci_computer">nameLIKEjamf^EQ<item endquery="false" field="name" goto="false" newquery="false" operator="LIKE" or="false" value="jamf"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </u_qualifier>
+        <u_reference>cmdb_ci_computer</u_reference>
+        <u_reference_display_field>name</u_reference_display_field>
+        <u_type>reference</u_type>
+    </u_dev_tool_operation_input>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</application>
+        <file_path/>
+        <instance_id>54f0e1b4db429bc0536ad5b0cf9619dd</instance_id>
+        <instance_name>dev58956</instance_name>
+        <name>u_dev_tool_operation_input_3b6687142fa50110a8ce2b5df699b623</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="u_dev_tool_operation_input"><u_dev_tool_operation_input action="INSERT_OR_UPDATE"><sys_class_name>u_dev_tool_operation_input</sys_class_name><sys_created_by>erik.anderson</sys_created_by><sys_created_on>2022-02-04 18:22:52</sys_created_on><sys_id>3b6687142fa50110a8ce2b5df699b623</sys_id><sys_mod_count>4</sys_mod_count><sys_name>Reference</sys_name><sys_package display_value="Developer Tools 2.0" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package><sys_policy/><sys_scope display_value="Developer Tools 2.0">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope><sys_update_name>u_dev_tool_operation_input_3b6687142fa50110a8ce2b5df699b623</sys_update_name><sys_updated_by>erik.anderson</sys_updated_by><sys_updated_on>2022-02-08 02:58:09</sys_updated_on><u_active>true</u_active><u_dev_tool_operation display_value="Test">9374bec22fd10110a8ce2b5df699b638</u_dev_tool_operation><u_input_label>Reference</u_input_label><u_input_name>reference</u_input_name><u_max_length/><u_qualifier table="cmdb_ci_computer">nameLIKEjamf^EQ<item endquery="false" field="name" goto="false" newquery="false" operator="LIKE" or="false" value="jamf"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></u_qualifier><u_reference>cmdb_ci_computer</u_reference><u_reference_display_field>name</u_reference_display_field><u_type>reference</u_type></u_dev_tool_operation_input></record_update>]]></payload>
+        <payload_hash>-727026907</payload_hash>
+        <record_name>Reference</record_name>
+        <reverted_from/>
+        <source>c1d181836d6620100acb70b3534330af</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-02-08 02:58:09</sys_created_on>
+        <sys_id>e329dc2d2f2d0110a8ce2b5df699b6fe</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17ed7445f610000001</sys_recorded_at>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-02-08 02:58:09</sys_updated_on>
+        <type>Dev Tool Operation Input</type>
+        <update_guid>ab29dc2d7a2d0110a6510bf6d5cc1ffd</update_guid>
+        <update_guid_history>ab29dc2d7a2d0110a6510bf6d5cc1ffd:-727026907,12c59869882d0110f91178c0090a451f:-927385445,a776c71474a5011095dbbfa0f755fd11:-451743369,4b760714bda5011002a43399165c494e:-1341799869,86768fdcea650110b09d75774e07c16b:-574699408</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Reference">ae2c36f12fbd0110a8ce2b5df699b673</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-02-21 19:44:25</sys_created_on>
+        <sys_db_object display_value="" name="u_dev_tool_operation_input">u_dev_tool_operation_input</sys_db_object>
+        <sys_id>38d189e63c00439c9be6df658d1a4b99</sys_id>
+        <sys_metadata>3b6687142fa50110a8ce2b5df699b623</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Reference</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_scope_delete display_value="">3b255f5eab984b4ca2d4e8de4c0cdc10</sys_scope_delete>
+        <sys_update_name>u_dev_tool_operation_input_3b6687142fa50110a8ce2b5df699b623</sys_update_name>
+        <sys_update_version display_value="u_dev_tool_operation_input_3b6687142fa50110a8ce2b5df699b623">e329dc2d2f2d0110a8ce2b5df699b6fe</sys_update_version>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-02-21 19:44:25</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

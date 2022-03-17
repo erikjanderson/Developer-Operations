@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="u_dev_tool_operation">
+    <u_dev_tool_operation action="DELETE">
+        <sys_class_name>u_dev_tool_operation</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-02-08 00:01:28</sys_created_on>
+        <sys_id>45907b592fa90110a8ce2b5df699b619</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Script Include Test</sys_name>
+        <sys_package display_value="Developer Tools 2.0" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Tools 2.0">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>u_dev_tool_operation_45907b592fa90110a8ce2b5df699b619</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-02-08 02:21:01</sys_updated_on>
+        <u_active>true</u_active>
+        <u_condition table="sys_script_include">nameSTARTSWITHDev^EQ<item endquery="false" field="name" goto="false" newquery="false" operator="STARTSWITH" or="false" value="Dev"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </u_condition>
+        <u_conditional>true</u_conditional>
+        <u_description/>
+        <u_name>Script Include Test</u_name>
+        <u_script/>
+        <u_table>sys_script_include</u_table>
+    </u_dev_tool_operation>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</application>
+        <file_path/>
+        <instance_id>54f0e1b4db429bc0536ad5b0cf9619dd</instance_id>
+        <instance_name>dev58956</instance_name>
+        <name>u_dev_tool_operation_45907b592fa90110a8ce2b5df699b619</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="u_dev_tool_operation"><u_dev_tool_operation action="INSERT_OR_UPDATE"><sys_class_name>u_dev_tool_operation</sys_class_name><sys_created_by>erik.anderson</sys_created_by><sys_created_on>2022-02-08 00:01:28</sys_created_on><sys_id>45907b592fa90110a8ce2b5df699b619</sys_id><sys_mod_count>2</sys_mod_count><sys_name>Script Include Test</sys_name><sys_package display_value="Developer Tools 2.0" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package><sys_policy/><sys_scope display_value="Developer Tools 2.0">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope><sys_update_name>u_dev_tool_operation_45907b592fa90110a8ce2b5df699b619</sys_update_name><sys_updated_by>erik.anderson</sys_updated_by><sys_updated_on>2022-02-08 02:21:01</sys_updated_on><u_active>true</u_active><u_condition table="sys_script_include">nameSTARTSWITHDev^EQ<item endquery="false" field="name" goto="false" newquery="false" operator="STARTSWITH" or="false" value="Dev"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></u_condition><u_conditional>true</u_conditional><u_description/><u_name>Script Include Test</u_name><u_script/><u_table>sys_script_include</u_table></u_dev_tool_operation></record_update>]]></payload>
+        <payload_hash>-2118344512</payload_hash>
+        <record_name>Script Include Test</record_name>
+        <reverted_from/>
+        <source>c1d181836d6620100acb70b3534330af</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-02-08 02:21:01</sys_created_on>
+        <sys_id>6ba0d8252f2d0110a8ce2b5df699b6d4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17ed72260880000001</sys_recorded_at>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-02-08 02:21:01</sys_updated_on>
+        <type>Dev Tool Operation</type>
+        <update_guid>23a0d825172d0110b93b520bb4047ad4</update_guid>
+        <update_guid_history>23a0d825172d0110b93b520bb4047ad4:-2118344512,6b01375923a9011010b67b13030c1f93:1897523894,5bb03b59cca901104209ebbfb82ae5e5:1140274574</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Script Include Test">f258c8152f520110a8ce2b5df699b6c3</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-03-16 13:53:16</sys_created_on>
+        <sys_db_object display_value="" name="u_dev_tool_operation">u_dev_tool_operation</sys_db_object>
+        <sys_id>226d4c797ff74f2993f175be2c9f15c1</sys_id>
+        <sys_metadata>45907b592fa90110a8ce2b5df699b619</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Script Include Test</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_scope_delete display_value="">3b255f5eab984b4ca2d4e8de4c0cdc10</sys_scope_delete>
+        <sys_update_name>u_dev_tool_operation_45907b592fa90110a8ce2b5df699b619</sys_update_name>
+        <sys_update_version display_value="u_dev_tool_operation_45907b592fa90110a8ce2b5df699b619">6ba0d8252f2d0110a8ce2b5df699b6d4</sys_update_version>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-03-16 13:53:16</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

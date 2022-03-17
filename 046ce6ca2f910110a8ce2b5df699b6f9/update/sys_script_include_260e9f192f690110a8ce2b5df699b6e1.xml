@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>global.DevOperationController</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>DevOperationController</name>
+        <script><![CDATA[var DevOperationController = Class.create();
+DevOperationController.prototype = {
+    initialize: function () {
+    },
+
+    getOperations: function (tableName, sysIds) {
+        if (!tableName || !sysIds || sysIds.length == 0) {
+            return [];
+        }
+        var grArray = this._getTargetGlideRecords(tableName, sysIds);
+        var operationArray = [];
+        var operationGr = new GlideRecord('u_dev_tool_operation');
+        operationGr.addQuery('u_active', true);
+        operationGr.query();
+        while (operationGr.next()) {
+            var operation = new DevOperation(operationGr);
+            for (var i = 0; i < grArray.length; i++) {
+                operation.isRecordCompatible(grArray[i]);
+            }
+            if (operation.recordCount.valid > 0 && operation.isTableCompatible(tableName)) {
+                operationArray.push(operation);
+            }
+        }
+        return operationArray;
+    },
+
+    executeOperation: function (selectedOperation, tableName, sysIds, async) {
+       // gs.info("op: " + selectedOperation)
+        var operation = new DevOperation(selectedOperation);
+        if(async){
+            operation.executeAsync(tableName, sysIds);
+            //var processor = new DevProcessor();
+            //processor.startNewJob(operation, tableName, sysIds);
+        }else{
+            var recordGr = this._getGlideRecordStream(tableName, sysIds);
+            operation.execute(recordGr);
+        }
+        return operation;
+    },
+
+    generateScript: function(selectedOperation, tableName, sysIds){
+        var operation = new DevOperation(selectedOperation);
+        var generatedScript = operation.getImplementationScript(sysIds, tableName)
+        return generatedScript;
+    },
+
+
+    //Internal Function
+
+    _getGlideRecordStream: function(tableName, sysIds){
+        var recordGr = new GlideRecord(tableName);
+        var query;
+        for(var i = 0; i < sysIds.length; i++){
+            var id = sysIds[i];
+            if(i === 0){
+                query = recordGr.addQuery('sys_id', id);
+            }else{
+                query.addOrCondition('sys_id', id);
+            }
+        }
+        recordGr.query();
+        return recordGr;
+    },
+
+    _getTargetGlideRecords: function (tableName, sysIds) {
+        var grArray = [];
+        for (var i = 0; i < sysIds.length; i++) {
+            var recordGr = new GlideRecord(tableName);
+            if (recordGr.get(sysIds[i])) {
+                grArray.push(recordGr);
+            }
+        }
+        return grArray;
+    },
+
+    type: 'DevOperationController'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-02-07 22:40:00</sys_created_on>
+        <sys_id>260e9f192f690110a8ce2b5df699b6e1</sys_id>
+        <sys_mod_count>51</sys_mod_count>
+        <sys_name>DevOperationController</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>sys_script_include_260e9f192f690110a8ce2b5df699b6e1</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-03-15 14:27:18</sys_updated_on>
+    </sys_script_include>
+</record_update>

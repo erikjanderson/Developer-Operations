@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>global.DevOperation</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>DevOperation</name>
+        <script><![CDATA[var DevOperation = Class.create();
+DevOperation.prototype = {
+	initialize: function (operationGr) {
+		if (operationGr) {
+			if (typeof operationGr === "string") {
+				operationGr = this._getGlideRecordWithId(operationGr);
+			}
+			if (operationGr + "" === "[object GlideRecord]") {
+				this._setFromGr(operationGr);
+			} else if (operationGr + "" === "[object Object]") {
+				this._setFromModel(operationGr);
+			}
+		}
+	},
+
+	execute: function (gr) {
+		if (this.operationGr && gr) {
+			this.output = new DevOperationOutput();
+			this.output.setStartTime();
+			var inputs = {};
+			inputs = this._setInputs();
+			if (!inputs) {
+				return;
+			}
+			while(gr.next()){
+				if (this.isRecordCompatible(gr)) {
+					this._runScript(this.operationGr, gr, inputs);
+				} else {
+					gs.info('developer_operations (execute): ' + this.name + ' Operation Execution was skipped for GR: ' + gr.getUniqueValue() + ' because it did not meet the condition requirement.');
+				}
+			}
+			this.output.setEndTime();
+			return this.output;
+		} else {
+			gs.warn('Developer Tools: DevOperation (execute) could not execute. Operation record not specified');
+		}
+	},
+	
+	executeAsync: function(tableName, sysIds){
+		if (!tableName || !sysIds) {
+            gs.info("developer_operation (executeAsync): Can't start a new job. Must provide a valid operation, table name, and sys id(s).");
+            return false;
+        }
+
+        this.output = new DevOperationOutput();
+        this.output.setStartTime();
+
+        var worker = new GlideScriptedProgressWorker();
+        worker.setProgressName("Developer Operations Job (" + gs.getUserID() + ")");
+        worker.setName('DevProcessor');
+
+        worker.addNonEscapedParameter(JSON.stringify(this));
+        worker.addNonEscapedParameter(tableName);
+        worker.addNonEscapedParameter(JSON.stringify(sysIds));
+
+        worker.setBackground(true);
+
+        worker.start();
+        var progressWorkerId = worker.getProgressID();
+        if(progressWorkerId){
+            this.output.addResult('success', 'New Job (' + progressWorkerId +') was created and is processing in the background.', this._getProgressWorker(progressWorkerId));
+        }else{
+            this.output.addResult('error', 'No background job was created.', null);
+        }
+        
+        this.output.setEndTimeAsync();
+	},
+
+	isTableCompatible: function (tableName) {
+		if (this.table === 'global' || tableName === this.table) {
+			return true;
+		}
+		if (tableName) {
+			var tableUtils = new TableUtils(this.table);
+			var tableArrayList = tableUtils.getTableExtensions();
+			gs.include("j2js");
+			var tableArray = j2js(tableArrayList);
+			if (tableArray.indexOf(tableName) > -1) {
+				return true;
+			}
+		}
+		return false;
+	},
+
+	isRecordCompatible: function (gr) {
+		if (!this.recordCount) {
+			this.recordCount = {
+				total: 0,
+				valid: 0
+			};
+		}
+		this.recordCount.total++;
+		if (this.isConditional && this.condition) {
+			if (GlideFilter.checkRecord(gr, this.condition)) {
+				this.recordCount.valid++;
+				return true;
+			}
+		} else {
+			this.recordCount.valid++;
+			return true;
+		}
+	},
+
+	getImplementationScript: function(sysIds, tableName){
+		var operationScript = new DevOperationScript();
+		operationScript.buildExecuteScript(this.script, this.inputs);
+		operationScript.buildProcessScript(tableName, this.inputs, sysIds, '');
+		var impScript = operationScript.reportFunctions();
+		impScript += "\n\nprocess();";
+		return impScript
+	},
+
+	//Internal Functions
+	_setFromGr: function (operationGr) {
+		this.sysId = operationGr.getUniqueValue();
+		this.name = operationGr.getValue("u_name");
+		this.table = operationGr.getValue("u_table");
+		this.isConditional = (operationGr.getValue("u_conditional") == "1");
+		this.sysScope = this._getReferenceField("sys_scope", operationGr);
+		this.active = (operationGr.getValue("u_active") == "1");
+		this.description = operationGr.getValue("u_description");
+		this.condition = operationGr.getValue("u_condition");
+		this.script = operationGr.getValue("u_script");
+		this.inputs = this._getInputs();
+		this.operationGr = operationGr;
+	},
+
+	_setFromModel: function (model) {
+		for (var key in model) {
+			if (key === 'inputs') {
+				for (var i = 0; i < model[key].length; i++) {
+					model[key][i] = new DevOperationInput(model[key][i]);
+				}
+			}
+			if (key === 'output') {
+				for (var o = 0; o < model[key].length; o++) {
+					model[key][o] = new DevOperationOutput(model[key][o]);
+				}
+			}
+			this[key] = model[key];
+		}
+		if (model.sysId) {
+			this.operationGr = this._getGlideRecordWithId(model.sysId);
+		}
+	},
+
+	_getInputs: function () {
+		var inputs = [];
+		if (this.sysId) {
+			var inputGr = new GlideRecord('u_dev_tool_operation_input');
+			inputGr.addQuery('u_dev_tool_operation', this.sysId);
+			inputGr.orderBy('u_order');
+			inputGr.query();
+			while (inputGr.next()) {
+				inputs.push(new DevOperationInput(inputGr));
+			}
+		}
+		return inputs;
+	},
+
+	_getReferenceField: function (columnName, operationGr) {
+		var returnObj = {};
+		if (columnName) {
+			returnObj.value = operationGr.getValue(columnName);
+			returnObj.displayValue = operationGr.getDisplayValue(columnName);
+		}
+		return returnObj;
+	},
+
+	_getGlideRecordWithId: function (id) {
+		var operationGr = new GlideRecord("u_dev_tool_operation");
+		if (operationGr.get(id)) {
+			return operationGr;
+		}
+	},
+
+	_setInputs: function () {
+		var userInputs = {};
+		if(this.inputs){
+			for (var i = 0; i < this.inputs.length; i++) {
+				var input = this.inputs[i];
+				if (!input.userValue && input.required) {
+					gs.warn('Developer Tools: DevOperation (execute) could not execute ' + input.inputLabel + ' is a required input for operation ' + this.name);
+					return false;
+				}
+				userInputs[input.inputName] = input.getUserValue();
+			}
+		}
+		return userInputs;
+	},
+
+	_runScript: function (operationGr, gr, inputs) {
+		try {
+			var evaluator = new GlideScopedEvaluator();
+			for (var key in inputs) {
+				evaluator.putVariable(key, inputs[key]);
+			}
+			evaluator.putVariable('current', gr);
+			evaluator.putVariable('result', '');
+			evaluator.evaluateScript(operationGr, 'u_script');
+			this.output.addResult('success', evaluator.getVariable('result'), gr);
+		} catch (e) {
+			this.output.addResult('error', e.getMessage(), gr);
+		}
+	},
+	
+	_getProgressWorker: function(sysId){
+        var progressWorkerGr = new GlideRecord('sys_progress_worker');
+        if(progressWorkerGr.get(sysId)){
+            return progressWorkerGr;
+        }
+    },
+
+	type: 'DevOperation'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-01-28 17:19:42</sys_created_on>
+        <sys_id>2ce43ec22fd10110a8ce2b5df699b618</sys_id>
+        <sys_mod_count>118</sys_mod_count>
+        <sys_name>DevOperation</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>sys_script_include_2ce43ec22fd10110a8ce2b5df699b618</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-03-16 14:52:59</sys_updated_on>
+    </sys_script_include>
+</record_update>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_policy_action">
+    <sys_ui_policy_action action="INSERT_OR_UPDATE">
+        <cleared>false</cleared>
+        <disabled>ignore</disabled>
+        <field>u_max_length</field>
+        <mandatory>ignore</mandatory>
+        <sys_class_name>sys_ui_policy_action</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-02-21 20:25:07</sys_created_on>
+        <sys_id>b165c73d2fbd0110a8ce2b5df699b6ff</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>u_max_length</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>sys_ui_policy_action_b165c73d2fbd0110a8ce2b5df699b6ff</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-02-21 20:25:27</sys_updated_on>
+        <table>u_dev_tool_operation_input</table>
+        <ui_policy display_value="Show/Hide Max Length">8f25073d2fbd0110a8ce2b5df699b644</ui_policy>
+        <visible>false</visible>
+    </sys_ui_policy_action>
+</record_update>

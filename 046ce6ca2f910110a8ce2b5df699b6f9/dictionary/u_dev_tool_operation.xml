@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="update_synch=true" extends="sys_metadata" label="Dev Tool Operation" max_length="40" name="u_dev_tool_operation" sizeclass="7" type="collection">
+        <element default="true" label="Active" max_length="40" name="u_active" type="boolean"/>
+        <element dependent="u_table" dependent_on_field="u_table" label="Condition" max_length="4000" name="u_condition" type="conditions" use_dependent_field="true"/>
+        <element label="Conditional" max_length="40" name="u_conditional" type="boolean"/>
+        <element label="Description" max_length="240" name="u_description" type="string"/>
+        <element label="Name" max_length="40" name="u_name" type="string"/>
+        <element default="var currentRecord = current; //Current GlideRecord&#10;//Each operation input is available as a variable witin this script.&#10;//Ex: var userName = name&#10;&#10;//Enter Code Below&#10;&#10;result = 'script_output';" label="Script" max_length="8000" name="u_script" type="script"/>
+        <element attributes="allow_public" label="Table" max_length="80" name="u_table" type="table_name"/>
+    </element>
+</database>

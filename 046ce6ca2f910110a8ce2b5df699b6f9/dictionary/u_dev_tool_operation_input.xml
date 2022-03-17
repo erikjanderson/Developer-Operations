@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="update_synch=true" extends="sys_metadata" label="Dev Tool Operation Input" max_length="40" name="u_dev_tool_operation_input" sizeclass="14" type="collection">
+        <element default="true" label="Active" max_length="40" name="u_active" type="boolean"/>
+        <element label="Choice list" max_length="65535" name="u_choice_list" type="simple_name_values"/>
+        <element label="Dev tool operation" max_length="32" name="u_dev_tool_operation" reference="u_dev_tool_operation" reference_floats="true" type="reference"/>
+        <element display="true" label="Input label" max_length="40" name="u_input_label" type="string"/>
+        <element label="Input name" max_length="40" name="u_input_name" type="string"/>
+        <element label="Mandatory" max_length="40" name="u_mandatory" type="boolean"/>
+        <element label="Max length" max_length="40" name="u_max_length" type="integer"/>
+        <element default="0" label="Order" max_length="40" name="u_order" type="integer"/>
+        <element dependent="u_reference" dependent_on_field="u_reference" label="Qualifier" max_length="4000" name="u_qualifier" type="conditions" use_dependent_field="true"/>
+        <element attributes="allow_public" label="Reference" max_length="80" name="u_reference" type="table_name"/>
+        <element dependent="u_reference" dependent_on_field="u_reference" label="Display field" max_length="80" name="u_reference_display_field" type="field_name" use_dependent_field="true"/>
+        <element choice="3" default="text" label="Type" max_length="40" name="u_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Text" sequence="1" value="text"/>
+                <element inactive_on_update="false" label="Number" sequence="2" value="number"/>
+                <element inactive_on_update="false" label="Reference" sequence="3" value="reference"/>
+                <element inactive_on_update="false" label="True/False" sequence="4" value="bool"/>
+                <element inactive_on_update="false" label="Choice" sequence="5" value="choice"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="u_dev_tool_operation"/>
+        </index>
+    </element>
+</database>

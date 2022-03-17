@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_fix">
+    <sys_script_fix action="DELETE">
+        <before>false</before>
+        <description/>
+        <name>Fix Script Sleep 30</name>
+        <record_for_rollback>false</record_for_rollback>
+        <script><![CDATA[
+function execute(current) {
+	var result
+	var currentRecord = current; //Current GlideRecord
+//Each operation input is available as a variable witin this script.
+//Ex: var userName = name
+
+//Enter Code Below
+
+var output = {
+	userName: gs.getUserName(),
+	userId: gs.getUserID(),
+	scope: gs.getCurrentApplicationId()
+};
+gs.info(JSON.stringify(output));
+
+gs.sleep(30000);
+
+result = output;
+	return result;
+}
+
+function process() {
+	 
+	var gr = new GlideRecord('sys_script_fix');
+	gr.addQuery('sys_id','IN', 'd6fd3a742fb58110a8ce2b5df699b6e0')
+	gr.query()
+	while(gr.next())
+	{
+		var result = execute(gr);
+		gs.info(result);
+	}
+}
+
+
+process();]]></script>
+        <sys_class_name>sys_script_fix</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-02-21 14:57:45</sys_created_on>
+        <sys_id>1a7af1392fb90110a8ce2b5df699b688</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Fix Script Sleep 30</sys_name>
+        <sys_package display_value="Developer Tools 2.0" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Tools 2.0">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>sys_script_fix_1a7af1392fb90110a8ce2b5df699b688</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-02-21 14:57:45</sys_updated_on>
+        <unloadable>false</unloadable>
+    </sys_script_fix>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</application>
+        <file_path/>
+        <instance_id>54f0e1b4db429bc0536ad5b0cf9619dd</instance_id>
+        <instance_name>dev58956</instance_name>
+        <name>sys_script_fix_1a7af1392fb90110a8ce2b5df699b688</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_script_fix"&gt;&lt;sys_script_fix action="INSERT_OR_UPDATE"&gt;&lt;before&gt;false&lt;/before&gt;&lt;description/&gt;&lt;name&gt;Fix Script Sleep 30&lt;/name&gt;&lt;record_for_rollback&gt;false&lt;/record_for_rollback&gt;&lt;script&gt;&lt;![CDATA[
+function execute(current) {
+	var result
+	var currentRecord = current; //Current GlideRecord
+//Each operation input is available as a variable witin this script.
+//Ex: var userName = name
+
+//Enter Code Below
+
+var output = {
+	userName: gs.getUserName(),
+	userId: gs.getUserID(),
+	scope: gs.getCurrentApplicationId()
+};
+gs.info(JSON.stringify(output));
+
+gs.sleep(30000);
+
+result = output;
+	return result;
+}
+
+function process() {
+	 
+	var gr = new GlideRecord('sys_script_fix');
+	gr.addQuery('sys_id','IN', 'd6fd3a742fb58110a8ce2b5df699b6e0')
+	gr.query()
+	while(gr.next())
+	{
+		var result = execute(gr);
+		gs.info(result);
+	}
+}
+
+
+process();]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_fix&lt;/sys_class_name&gt;&lt;sys_created_by&gt;erik.anderson&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-02-21 14:57:45&lt;/sys_created_on&gt;&lt;sys_id&gt;1a7af1392fb90110a8ce2b5df699b688&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;Fix Script Sleep 30&lt;/sys_name&gt;&lt;sys_package display_value="Developer Tools 2.0" source="046ce6ca2f910110a8ce2b5df699b6f9"&gt;046ce6ca2f910110a8ce2b5df699b6f9&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Developer Tools 2.0"&gt;046ce6ca2f910110a8ce2b5df699b6f9&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_fix_1a7af1392fb90110a8ce2b5df699b688&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;erik.anderson&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2022-02-21 14:57:45&lt;/sys_updated_on&gt;&lt;unloadable&gt;false&lt;/unloadable&gt;&lt;/sys_script_fix&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>989120164</payload_hash>
+        <record_name>Fix Script Sleep 30</record_name>
+        <reverted_from/>
+        <source>c1d181836d6620100acb70b3534330af</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-02-21 14:57:45</sys_created_on>
+        <sys_id>178a7d392fb90110a8ce2b5df699b621</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17f1cc9db730000001</sys_recorded_at>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-02-21 14:57:45</sys_updated_on>
+        <type>Fix Script</type>
+        <update_guid>1f8a7d39ceb90110c6e70d15e747f420</update_guid>
+        <update_guid_history>1f8a7d39ceb90110c6e70d15e747f420:989120164</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-02-21 19:39:37</sys_created_on>
+        <sys_db_object display_value="" name="sys_script_fix">sys_script_fix</sys_db_object>
+        <sys_id>81e286d0999b465ea3a069d0a68a0d19</sys_id>
+        <sys_metadata>1a7af1392fb90110a8ce2b5df699b688</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Fix Script Sleep 30</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_scope_delete display_value="">3b255f5eab984b4ca2d4e8de4c0cdc10</sys_scope_delete>
+        <sys_update_name>sys_script_fix_1a7af1392fb90110a8ce2b5df699b688</sys_update_name>
+        <sys_update_version display_value="sys_script_fix_1a7af1392fb90110a8ce2b5df699b688">178a7d392fb90110a8ce2b5df699b621</sys_update_version>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-02-21 19:39:37</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

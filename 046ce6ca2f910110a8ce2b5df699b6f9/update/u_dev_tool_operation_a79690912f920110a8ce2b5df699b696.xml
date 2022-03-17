@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="u_dev_tool_operation">
+    <u_dev_tool_operation action="INSERT_OR_UPDATE">
+        <sys_class_name>u_dev_tool_operation</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-03-16 15:02:51</sys_created_on>
+        <sys_id>a79690912f920110a8ce2b5df699b696</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Correct RTE Element Scopes</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>u_dev_tool_operation_a79690912f920110a8ce2b5df699b696</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-03-16 15:02:51</sys_updated_on>
+        <u_active>true</u_active>
+        <u_condition/>
+        <u_conditional>false</u_conditional>
+        <u_description>Scans over all elements related to the RTE Transform Definition and corrects any elements that my have accidently been created in the wrong scope.</u_description>
+        <u_name>Correct RTE Element Scopes</u_name>
+        <u_script><![CDATA[var currentRecord = current; //Current GlideRecord
+var resultString = '';
+var transform = currentRecord.getUniqueValue();
+var scope = currentRecord.getValue('sys_scope');
+
+
+function addLog(val){
+	if(resultString){
+		resultString += '\n';
+	}
+	resultString += 'val';
+}
+
+var grCIE = new GlideRecord('cmdb_inst_entity');
+grCIE.addQuery("sys_rte_eb_definition", transform);
+grCIE.addQuery("sys_scope", "!=", scope);
+grCIE.orderBy('sys_scope');
+grCIE.query();
+while (grCIE.next()) {
+	addLog('Updated cmdb_inst_entity: ' + grCIE.getDisplayValue() + ' from ' + grCIE.getValue('sys_scope') + ' to ' + scope);
+    grCIE.sys_scope = scope;
+    grCIE.update();
+}
+
+
+
+var grSREF = new GlideRecord('sys_rte_eb_field');
+grSREF.addQuery("sys_rte_eb_definition", transform);
+grSREF.addQuery("sys_scope", "!=", scope);
+grSREF.orderBy('sys_scope');
+grSREF.query();
+while (grSREF.next()) {
+	addLog('Updated sys_rte_eb_field: ' + grSREF.getDisplayValue() + ' from ' + grSREF.getValue('sys_scope') + ' to ' + scope);
+    grSREF.sys_scope = scope;
+    grSREF.update();
+}
+
+
+var grSREEM = new GlideRecord('sys_rte_eb_entity_mapping');
+grSREEM.addQuery("sys_rte_eb_definition", transform);
+grSREEM.addQuery("sys_scope", "!=", scope);
+grSREEM.orderByDesc('sys_scope');
+grSREEM.query();
+while (grSREEM.next()) {
+	addLog('Updated sys_rte_eb_entity_mapping: ' + grSREEM.getDisplayValue() + ' from ' + grSREEM.getValue('sys_scope') + ' to ' + scope);
+    grSREEM.sys_scope = scope;
+    grSREEM.update();
+}
+
+
+var grSREFM = new GlideRecord('sys_rte_eb_field_mapping');
+grSREFM.addQuery("sys_rte_eb_definition", transform);
+grSREFM.addQuery("sys_scope", "!=", scope);
+grSREFM.orderBy('sys_scope');
+grSREFM.query();
+while (grSREFM.next()) {
+	addLog('Updated sys_rte_eb_field_mapping: ' + grSREFM.getDisplayValue() + ' from ' + grSREFM.getValue('sys_scope') + ' to ' + scope);
+    grSREFM.sys_scope = scope;
+    grSREFM.update();
+}
+
+
+var grSREO = new GlideRecord('sys_rte_eb_operation');
+grSREO.addQuery("sys_rte_eb_definition", transform);
+grSREO.addQuery("sys_scope", "!=", scope);
+grSREO.orderBy('order');
+grSREO.query();
+while (grSREO.next()) {
+	addLog('Updated sys_rte_eb_operation: ' + grSREO.getDisplayValue() + ' from ' + grSREO.getValue('sys_scope') + ' to ' + scope);
+    grSREO.sys_scope = scope;
+    grSREO.update();
+}
+
+result = resultString;]]></u_script>
+        <u_table>cmdb_inst_application_feed</u_table>
+    </u_dev_tool_operation>
+</record_update>

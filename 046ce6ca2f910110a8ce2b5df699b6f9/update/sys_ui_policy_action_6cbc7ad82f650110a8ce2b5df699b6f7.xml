@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_policy_action">
+    <sys_ui_policy_action action="INSERT_OR_UPDATE">
+        <cleared>false</cleared>
+        <disabled>ignore</disabled>
+        <field>u_reference</field>
+        <mandatory>true</mandatory>
+        <sys_class_name>sys_ui_policy_action</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-02-04 17:40:34</sys_created_on>
+        <sys_id>6cbc7ad82f650110a8ce2b5df699b6f7</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>u_reference</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>sys_ui_policy_action_6cbc7ad82f650110a8ce2b5df699b6f7</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-02-04 17:42:28</sys_updated_on>
+        <table>u_dev_tool_operation_input</table>
+        <ui_policy display_value="Show/Hide Reference fields if input type is Reference">076cb6d82f650110a8ce2b5df699b603</ui_policy>
+        <visible>true</visible>
+    </sys_ui_policy_action>
+</record_update>
