@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="u_mandatory" label="Mandatory" language="en" table="u_dev_tool_operation_input">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>u_mandatory</element>
+            <help/>
+            <hint/>
+            <label>Mandatory</label>
+            <language>en</language>
+            <name>u_dev_tool_operation_input</name>
+            <plural>Mandatories</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>erik.anderson</sys_created_by>
+            <sys_created_on>2022-03-15 16:54:38</sys_created_on>
+            <sys_id>0a48ef302f564110a8ce2b5df699b68b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Mandatory</sys_name>
+            <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+            <sys_update_name>sys_documentation_u_dev_tool_operation_input_u_mandatory_en</sys_update_name>
+            <sys_updated_by>erik.anderson</sys_updated_by>
+            <sys_updated_on>2022-03-15 16:54:38</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

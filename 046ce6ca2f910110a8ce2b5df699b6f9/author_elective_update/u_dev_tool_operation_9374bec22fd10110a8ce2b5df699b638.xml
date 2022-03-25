@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="u_dev_tool_operation">
+    <u_dev_tool_operation action="DELETE">
+        <sys_class_name>u_dev_tool_operation</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-01-28 17:18:57</sys_created_on>
+        <sys_id>9374bec22fd10110a8ce2b5df699b638</sys_id>
+        <sys_mod_count>22</sys_mod_count>
+        <sys_name>Test</sys_name>
+        <sys_package display_value="Developer Tools 2.0" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Tools 2.0">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>u_dev_tool_operation_9374bec22fd10110a8ce2b5df699b638</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-02-08 03:50:55</sys_updated_on>
+        <u_active>true</u_active>
+        <u_condition/>
+        <u_conditional>false</u_conditional>
+        <u_description>Test Condition For Dev Purposes</u_description>
+        <u_name>Test</u_name>
+        <u_script><![CDATA[var currentRecord = current; //Current GlideRecord
+//Each operation input is available as a variable witin this script.
+//Ex: var userName = name
+
+var name = name;
+var reference = reference;
+gs.info('name: ' + name);
+gs.info('reference: ' + reference);
+
+gs.info(currentRecord);
+
+
+result = 'test';]]></u_script>
+        <u_table>global</u_table>
+    </u_dev_tool_operation>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</application>
+        <file_path/>
+        <instance_id>54f0e1b4db429bc0536ad5b0cf9619dd</instance_id>
+        <instance_name>dev58956</instance_name>
+        <name>u_dev_tool_operation_9374bec22fd10110a8ce2b5df699b638</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="u_dev_tool_operation"&gt;&lt;u_dev_tool_operation action="INSERT_OR_UPDATE"&gt;&lt;sys_class_name&gt;u_dev_tool_operation&lt;/sys_class_name&gt;&lt;sys_created_by&gt;erik.anderson&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-01-28 17:18:57&lt;/sys_created_on&gt;&lt;sys_id&gt;9374bec22fd10110a8ce2b5df699b638&lt;/sys_id&gt;&lt;sys_mod_count&gt;22&lt;/sys_mod_count&gt;&lt;sys_name&gt;Test&lt;/sys_name&gt;&lt;sys_package display_value="Developer Tools 2.0" source="046ce6ca2f910110a8ce2b5df699b6f9"&gt;046ce6ca2f910110a8ce2b5df699b6f9&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Developer Tools 2.0"&gt;046ce6ca2f910110a8ce2b5df699b6f9&lt;/sys_scope&gt;&lt;sys_update_name&gt;u_dev_tool_operation_9374bec22fd10110a8ce2b5df699b638&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;erik.anderson&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2022-02-08 03:50:55&lt;/sys_updated_on&gt;&lt;u_active&gt;true&lt;/u_active&gt;&lt;u_condition/&gt;&lt;u_conditional&gt;false&lt;/u_conditional&gt;&lt;u_description&gt;Test Condition For Dev Purposes&lt;/u_description&gt;&lt;u_name&gt;Test&lt;/u_name&gt;&lt;u_script&gt;&lt;![CDATA[var currentRecord = current; //Current GlideRecord
+//Each operation input is available as a variable witin this script.
+//Ex: var userName = name
+
+var name = name;
+var reference = reference;
+gs.info('name: ' + name);
+gs.info('reference: ' + reference);
+
+gs.info(currentRecord);
+
+
+result = 'test';]]&gt;&lt;/u_script&gt;&lt;u_table&gt;global&lt;/u_table&gt;&lt;/u_dev_tool_operation&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-224873033</payload_hash>
+        <record_name>Test</record_name>
+        <reverted_from/>
+        <source>c1d181836d6620100acb70b3534330af</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-02-08 03:50:56</sys_created_on>
+        <sys_id>a0456ce52f6d0110a8ce2b5df699b662</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17ed774b1380000001</sys_recorded_at>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-02-08 03:50:56</sys_updated_on>
+        <type>Dev Tool Operation</type>
+        <update_guid>68456ce5046d0110ef817b3883305e61</update_guid>
+        <update_guid_history>68456ce5046d0110ef817b3883305e61:-224873033,3e9320e5ee6d01100873ff191cc0c04e:1481719156,dd03ec65816d0110f2f985fbab04d565:-1078569040,03626c65706d011023c9f018b9f6e566:-662750973,8b22e0658f6d0110b42efe973f36bedf:980084581,1f512ce1216d0110598fda36c5673e6e:456842571,5f606025b76d0110388a57366de09eb2:438516514,daff58e1e86d011027cfe76d39bdd31e:-511061947,92df58e1396d01107c14c707df835db9:1270540144,7ecf54e1956d01101a16e69114d8e913:-709726110,908f5ca1606d0110e423794687a98c97:1270540144,970f1ca1b86d0110f4a911b3845e1db6:-362157437,f9ced061516d01103b0f34d12db4971d:-1975184105,96be9c612d6d0110e1e5a3d195e0c701:-362157437,805c90210c6d011058826756df6f3ffb:917579479,44dc839833a50110c960cb6cd518e635:466097450,02cc439800a50110c97f658830346cac:-2042742305,688c0f5893a50110814a72b9caedba27:255997180,917c035817a50110a8922779d42ed103:1371674024,f8b72ed4eb2501105f5f7c6ed2ae6323:2057420106,0746a69479250110657364aaf7f67eaa:-2079520998,20e4a25454250110ce72a5592562eab3:-1997946020,a9b43ec2b8d101100b855e294b95226b:-1204479728</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Test">0758c8152f520110a8ce2b5df699b6d8</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-03-16 13:53:16</sys_created_on>
+        <sys_db_object display_value="" name="u_dev_tool_operation">u_dev_tool_operation</sys_db_object>
+        <sys_id>11a9ae7dc5be4ef6853dc77640ed10c1</sys_id>
+        <sys_metadata>9374bec22fd10110a8ce2b5df699b638</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Test</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_scope_delete display_value="">3b255f5eab984b4ca2d4e8de4c0cdc10</sys_scope_delete>
+        <sys_update_name>u_dev_tool_operation_9374bec22fd10110a8ce2b5df699b638</sys_update_name>
+        <sys_update_version display_value="u_dev_tool_operation_9374bec22fd10110a8ce2b5df699b638">a0456ce52f6d0110a8ce2b5df699b662</sys_update_version>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-03-16 13:53:16</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

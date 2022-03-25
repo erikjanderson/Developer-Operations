@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>global.DevOperationScript</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>DevOperationScript</name>
+        <script><![CDATA[var DevOperationScript = Class.create();
+DevOperationScript.prototype = {
+    initialize: function () {
+        this.functions = {};
+    },
+
+    buildExecuteScript: function (script, inputs) {
+        var parameters = ['current'];
+        for (var i = 0; i < inputs.length; i++) {
+            parameters.push(inputs[i].inputName);
+        }
+        var executeFunction = this._addFunction('execute', parameters);
+        executeFunction.addLine('initResult', 'var result');
+        executeFunction.addLine(['script'], script);
+        executeFunction.addLine('returnResult', 'return result;');
+    },
+
+    buildProcessScript: function (table, inputs, sysIds, query) {
+        var processScript = this._addFunction('process');
+        var inputVarStr = '';
+        for (var i = 0; i < inputs.length; i++) {
+            var input = inputs[i];
+            var inputName = input.inputName;
+            inputVarStr += ', ' + inputName;
+            processScript.addLine('input_' + inputName, 'var ' + inputName + ' = ' + this._determineInputValue(input) + ';');
+        }
+        processScript.addLine('blank', ' ');
+        processScript.addLine('grInit', "var gr = new GlideRecord('" + table + "');");
+        processScript.addLine('grSysIDQuery', "gr.addQuery('sys_id','IN', '" + (sysIds || '') + "')");
+        if (query) {
+            processScript.addLine('grEncodedQuery', "gr.addEncodedQuery('" + query + "');");
+        }
+        processScript.addLine('grExecuteQuery', "gr.query()");
+        processScript.addLine('grWhile', "while(gr.next())");
+        var grWhileLoop = processScript.addBraceBlock('grWhileLoop');
+        grWhileLoop.addLine('execute', 'var result = execute(gr' + inputVarStr + ');');
+        grWhileLoop.addLine('logResult', 'gs.info(result);');
+    },
+
+    reportFunctions: function (type) {
+        if (this.functions && Object.keys(this.functions).length > 0) {
+            var str = "";
+            for (var name in this.functions) {
+                var func = this.functions[name];
+                var functionStr = this._newLine();
+                functionStr += this._getFunctionInit(type, name, func.parameters);
+                functionStr += this._reportBlockList(func.val, 1);
+                functionStr += this._newLine() + "}";
+                if (type === "scriptInclude") {
+                    functionStr += ",";
+                }
+                str += functionStr + this._newLine();
+            }
+            return str;
+        } else {
+            gs.warn("No functions have been added yet.");
+        }
+    },
+
+    //Internal Functions
+    _addFunction: function (name, parameters) {
+        if (!this.functions[name]) {
+            this.functions[name] = new this._Block("function", name);
+            this.functions[name].parameters = parameters;
+            return this.functions[name];
+        } else {
+            gs.warn("A function has already been registered under the name " + name);
+        }
+    },
+
+    _newLine: function (tabs) {
+        if (!tabs) {
+            tabs = 0;
+        }
+        var str = "\n";
+        for (var i = 0; i < tabs; i++) {
+            str += "\t";
+        }
+        return str;
+    },
+
+    _getFunctionInit: function (type, functionName, parameters) {
+        var str = "";
+        if (type === "scriptInclude") {
+            str += functionName + ": function(";
+        } else {
+            str += "function " + functionName + "(";
+        }
+
+        for (var i = 0; i < parameters.length; i++) {
+            if (i === 0) {
+                str += parameters[i];
+            } else {
+                str += ', ' + parameters[i];
+            }
+        }
+        str += ") {";
+        return str;
+    },
+
+    _reportBlock: function (block, tabs) {
+        var blockStr = "";
+        if (block.type === "line") {
+            blockStr += this._newLine(tabs) + block.val;
+        } else if (block.type === "ifStatement") {
+            blockStr += this._newLine(tabs) + "if(" + block.statement + "){";
+            blockStr += this._reportBlockList(block.val, tabs + 1);
+            blockStr += this._newLine(tabs) + "}";
+        } else if (block.type === "forLoop") {
+            blockStr += this._newLine(tabs) + "for(var " + block.indexVariable + " = 0; " + block.indexVariable + " < " + block.arrayName + ".length; " + block.indexVariable + "++){";
+            blockStr += this._reportBlockList(block.val, tabs + 1);
+            blockStr += this._newLine(tabs) + "}";
+        } else if (block.type === "block") {
+            blockStr += this._reportBlockList(block.val, tabs);
+        } else if (block.type === "braceBlock") {
+            blockStr += this._newLine(tabs) + "{";
+            blockStr += this._reportBlockList(block.val, tabs + 1);
+            blockStr += this._newLine(tabs) + "}";
+        }
+        return blockStr;
+    },
+
+    _reportBlockList: function (blocks, tabs) {
+        var str = "";
+        for (var name in blocks) {
+            var block = blocks[name];
+            str += this._reportBlock(block, tabs);
+        }
+        return str;
+    },
+
+    _determineInputValue: function (input) {
+        if (input.type === 'number') {
+            return input.userValue;
+        } else if (input.type === 'reference') {
+            if (!this.functions['getGr']) {
+                this._createGetGrFunction();
+            }
+            return "getGr('" + input.reference  + "','" + (input.userValue.value || '') + "')";
+        } else {
+            return "'" + input.userValue + "'";
+        }
+    },
+
+    _createGetGrFunction: function () {
+        var getGr = this._addFunction('getGr', ['table', 'sysId']);
+        var checkVars = getGr.addIfStatement('checkVars', 'table && sysId');
+        checkVars.addLine('initGr', "var gr = new GlideRecord(table);");
+        var ifGetGr = checkVars.addIfStatement('ifGetGr', "gr.get(sysId)");
+        ifGetGr.addLine('returnGr', 'return gr;');
+    },
+
+    _Block: function (type, name) {
+        this.type = type;
+        this.name = name;
+        this.val = {};
+        var newScope = new DevOperationScript();
+        this.addLine = function (name, value) {
+            if (!this.val[name]) {
+                this.val[name] = new newScope._Block("line", name);
+                this.val[name].val = value;
+                return this.val[name];
+            } else {
+                gs.warn("A value within block " + this.name + " already has a value with the name " + name);
+            }
+        };
+
+        this.addIfStatement = function (name, statement) {
+            if (!this.val[name]) {
+                this.val[name] = new newScope._Block("ifStatement", name);
+                this.val[name].statement = statement;
+                return this.val[name];
+            } else {
+                gs.warn("A value within block " + this.name + " already has a value with the name " + name);
+            }
+        };
+
+        this.addBlock = function (name) {
+            if (!this.val[name]) {
+                this.val[name] = new newScope._Block("block", name);
+                return this.val[name];
+            } else {
+                gs.warn("A value within block " + this.name + " already has a value with the name " + name);
+            }
+        };
+
+        this.addBraceBlock = function (name) {
+            if (!this.val[name]) {
+                this.val[name] = new newScope._Block("braceBlock", name);
+                return this.val[name];
+            } else {
+                gs.warn("A value within block " + this.name + " already has a value with the name " + name);
+            }
+        }
+
+        this.addForLoop = function (name, indexVariable, arrayName) {
+            if (!this.val[name]) {
+                this.val[name] = new newScope._Block("forLoop", name);
+                this.val[name].indexVariable = indexVariable;
+                this.val[name].arrayName = arrayName;
+                return this.val[name];
+            } else {
+                gs.warn("A value within block " + this.name + " already has a value with the name " + name);
+            }
+        };
+    },
+
+    type: 'DevOperationScript'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-02-15 17:11:01</sys_created_on>
+        <sys_id>267f93b32fa10110a8ce2b5df699b629</sys_id>
+        <sys_mod_count>78</sys_mod_count>
+        <sys_name>DevOperationScript</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>sys_script_include_267f93b32fa10110a8ce2b5df699b629</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-02-21 17:01:01</sys_updated_on>
+    </sys_script_include>
+</record_update>

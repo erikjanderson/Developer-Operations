@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_policy_action">
+    <sys_ui_policy_action action="DELETE">
+        <cleared>false</cleared>
+        <disabled>ignore</disabled>
+        <field>u_max_length</field>
+        <mandatory>ignore</mandatory>
+        <sys_class_name>sys_ui_policy_action</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-02-21 19:52:35</sys_created_on>
+        <sys_id>7ffd76752fbd0110a8ce2b5df699b6fc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>u_max_length</sys_name>
+        <sys_package display_value="Developer Tools 2.0" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Tools 2.0">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>sys_ui_policy_action_7ffd76752fbd0110a8ce2b5df699b6fc</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-02-21 19:52:35</sys_updated_on>
+        <table>u_dev_tool_operation_input</table>
+        <ui_policy display_value="Show/Hide Choice List">4fad32752fbd0110a8ce2b5df699b6cf</ui_policy>
+        <visible>false</visible>
+    </sys_ui_policy_action>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</application>
+        <file_path/>
+        <instance_id>54f0e1b4db429bc0536ad5b0cf9619dd</instance_id>
+        <instance_name>dev58956</instance_name>
+        <name>sys_ui_policy_action_7ffd76752fbd0110a8ce2b5df699b6fc</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_policy_action"><sys_ui_policy_action action="INSERT_OR_UPDATE"><cleared>false</cleared><disabled>ignore</disabled><field>u_max_length</field><mandatory>ignore</mandatory><sys_class_name>sys_ui_policy_action</sys_class_name><sys_created_by>erik.anderson</sys_created_by><sys_created_on>2022-02-21 19:52:35</sys_created_on><sys_id>7ffd76752fbd0110a8ce2b5df699b6fc</sys_id><sys_mod_count>0</sys_mod_count><sys_name>u_max_length</sys_name><sys_package display_value="Developer Tools 2.0" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package><sys_policy/><sys_scope display_value="Developer Tools 2.0">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope><sys_update_name>sys_ui_policy_action_7ffd76752fbd0110a8ce2b5df699b6fc</sys_update_name><sys_updated_by>erik.anderson</sys_updated_by><sys_updated_on>2022-02-21 19:52:35</sys_updated_on><table>u_dev_tool_operation_input</table><ui_policy display_value="Show/Hide Choice List">4fad32752fbd0110a8ce2b5df699b6cf</ui_policy><visible>false</visible></sys_ui_policy_action></record_update>]]></payload>
+        <payload_hash>1751090934</payload_hash>
+        <record_name>u_max_length</record_name>
+        <reverted_from/>
+        <source>c1d181836d6620100acb70b3534330af</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-02-21 19:52:35</sys_created_on>
+        <sys_id>420eb6752fbd0110a8ce2b5df699b603</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17f1dd7ca140000001</sys_recorded_at>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-02-21 19:52:35</sys_updated_on>
+        <type>UI Policy Action</type>
+        <update_guid>4a0eb6756ebd0110df1f96d127e24a02</update_guid>
+        <update_guid_history>4a0eb6756ebd0110df1f96d127e24a02:1751090934</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-02-21 20:23:33</sys_created_on>
+        <sys_db_object display_value="" name="sys_ui_policy_action">sys_ui_policy_action</sys_db_object>
+        <sys_id>0747ea75bd47411a864596a3ebbc7364</sys_id>
+        <sys_metadata>7ffd76752fbd0110a8ce2b5df699b6fc</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>u_max_length</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_parent display_value="Show/Hide Choice List">4fad32752fbd0110a8ce2b5df699b6cf</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_scope_delete display_value="">3b255f5eab984b4ca2d4e8de4c0cdc10</sys_scope_delete>
+        <sys_update_name>sys_ui_policy_action_7ffd76752fbd0110a8ce2b5df699b6fc</sys_update_name>
+        <sys_update_version display_value="sys_ui_policy_action_7ffd76752fbd0110a8ce2b5df699b6fc">420eb6752fbd0110a8ce2b5df699b603</sys_update_version>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-02-21 20:23:33</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

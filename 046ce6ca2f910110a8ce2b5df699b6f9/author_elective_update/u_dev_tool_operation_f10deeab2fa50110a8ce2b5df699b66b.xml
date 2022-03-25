@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="u_dev_tool_operation">
+    <u_dev_tool_operation action="DELETE">
+        <sys_class_name>u_dev_tool_operation</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-02-14 18:56:05</sys_created_on>
+        <sys_id>f10deeab2fa50110a8ce2b5df699b66b</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>CMDB MAC Computer Script</sys_name>
+        <sys_package display_value="Developer Tools 2.0" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Tools 2.0">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>u_dev_tool_operation_f10deeab2fa50110a8ce2b5df699b66b</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-02-14 19:00:37</sys_updated_on>
+        <u_active>true</u_active>
+        <u_condition table="cmdb_ci_computer">os=Mac OS/X^ORos=Mac OS 10 (OS/X)^EQ<item display_value="Mac OS/X" endquery="false" field="os" goto="false" newquery="false" operator="=" or="false" value="Mac OS/X"/>
+            <item display_value="Mac OS 10 (OS/X)" endquery="false" field="os" goto="false" newquery="false" operator="=" or="true" value="Mac OS 10 (OS/X)"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </u_condition>
+        <u_conditional>true</u_conditional>
+        <u_description>Report on MAC comptuers</u_description>
+        <u_name>CMDB MAC Computer Script</u_name>
+        <u_script><![CDATA[var currentRecord = current; //Current GlideRecord
+//Each operation input is available as a variable witin this script.
+//Ex: var userName = name
+
+var description = description;
+currentRecord.short_description = description;
+currentRecord.update();
+
+var compString = '';
+compString += "Name: " + currentRecord.getValue('name');
+compString += "\nSerial Number: " + currentRecord.getValue('serial_number');
+
+result = compString;]]></u_script>
+        <u_table>cmdb_ci_computer</u_table>
+    </u_dev_tool_operation>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</application>
+        <file_path/>
+        <instance_id>54f0e1b4db429bc0536ad5b0cf9619dd</instance_id>
+        <instance_name>dev58956</instance_name>
+        <name>u_dev_tool_operation_f10deeab2fa50110a8ce2b5df699b66b</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="u_dev_tool_operation"&gt;&lt;u_dev_tool_operation action="INSERT_OR_UPDATE"&gt;&lt;sys_class_name&gt;u_dev_tool_operation&lt;/sys_class_name&gt;&lt;sys_created_by&gt;erik.anderson&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-02-14 18:56:05&lt;/sys_created_on&gt;&lt;sys_id&gt;f10deeab2fa50110a8ce2b5df699b66b&lt;/sys_id&gt;&lt;sys_mod_count&gt;3&lt;/sys_mod_count&gt;&lt;sys_name&gt;CMDB MAC Computer Script&lt;/sys_name&gt;&lt;sys_package display_value="Developer Tools 2.0" source="046ce6ca2f910110a8ce2b5df699b6f9"&gt;046ce6ca2f910110a8ce2b5df699b6f9&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Developer Tools 2.0"&gt;046ce6ca2f910110a8ce2b5df699b6f9&lt;/sys_scope&gt;&lt;sys_update_name&gt;u_dev_tool_operation_f10deeab2fa50110a8ce2b5df699b66b&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;erik.anderson&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2022-02-14 19:00:37&lt;/sys_updated_on&gt;&lt;u_active&gt;true&lt;/u_active&gt;&lt;u_condition table="cmdb_ci_computer"&gt;os=Mac OS/X^ORos=Mac OS 10 (OS/X)^EQ&lt;item display_value="Mac OS/X" endquery="false" field="os" goto="false" newquery="false" operator="=" or="false" value="Mac OS/X"/&gt;&lt;item display_value="Mac OS 10 (OS/X)" endquery="false" field="os" goto="false" newquery="false" operator="=" or="true" value="Mac OS 10 (OS/X)"/&gt;&lt;item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/&gt;&lt;/u_condition&gt;&lt;u_conditional&gt;true&lt;/u_conditional&gt;&lt;u_description&gt;Report on MAC comptuers&lt;/u_description&gt;&lt;u_name&gt;CMDB MAC Computer Script&lt;/u_name&gt;&lt;u_script&gt;&lt;![CDATA[var currentRecord = current; //Current GlideRecord
+//Each operation input is available as a variable witin this script.
+//Ex: var userName = name
+
+var description = description;
+currentRecord.short_description = description;
+currentRecord.update();
+
+var compString = '';
+compString += "Name: " + currentRecord.getValue('name');
+compString += "\nSerial Number: " + currentRecord.getValue('serial_number');
+
+result = compString;]]&gt;&lt;/u_script&gt;&lt;u_table&gt;cmdb_ci_computer&lt;/u_table&gt;&lt;/u_dev_tool_operation&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-1015195225</payload_hash>
+        <record_name>CMDB MAC Computer Script</record_name>
+        <reverted_from/>
+        <source>c1d181836d6620100acb70b3534330af</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-02-14 19:00:38</sys_created_on>
+        <sys_id>3c0f2e6f2fa50110a8ce2b5df699b67b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17ef99bb3ff0000001</sys_recorded_at>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-02-14 19:00:38</sys_updated_on>
+        <type>Dev Tool Operation</type>
+        <update_guid>f00f2e6f17a50110c4f335f800cd797b</update_guid>
+        <update_guid_history>f00f2e6f17a50110c4f335f800cd797b:-1015195225,5cee266f0aa501103a922022c16144ad:1905605508,351ee26f4ba501107bb769e2d463eac4:455929976,9efd662f4fa5011011811c1ab94fb98c:-1699021036</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="CMDB MAC Computer Script">8f58c8152f520110a8ce2b5df699b6dd</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-03-16 13:53:16</sys_created_on>
+        <sys_db_object display_value="" name="u_dev_tool_operation">u_dev_tool_operation</sys_db_object>
+        <sys_id>115501c6865943c3a37548af687e50e1</sys_id>
+        <sys_metadata>f10deeab2fa50110a8ce2b5df699b66b</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>CMDB MAC Computer Script</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_scope_delete display_value="">3b255f5eab984b4ca2d4e8de4c0cdc10</sys_scope_delete>
+        <sys_update_name>u_dev_tool_operation_f10deeab2fa50110a8ce2b5df699b66b</sys_update_name>
+        <sys_update_version display_value="u_dev_tool_operation_f10deeab2fa50110a8ce2b5df699b66b">3c0f2e6f2fa50110a8ce2b5df699b67b</sys_update_version>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-03-16 13:53:16</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

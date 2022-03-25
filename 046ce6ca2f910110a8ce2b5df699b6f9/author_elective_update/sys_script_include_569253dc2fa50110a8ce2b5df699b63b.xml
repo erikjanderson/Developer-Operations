@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="DELETE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>global.DevToolController</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>DevToolController</name>
+        <script><![CDATA[var DevToolController = Class.create();
+DevToolController.prototype = {
+    initialize: function() {
+    },
+	
+	//Get all operations that fit the current conditions (table_name, currentFilter)
+	
+	
+	
+	//Search for GlideRecord(s) based on if selected operations looop through and execute the selected operation for each.
+	
+	
+	
+	//Do same as above but execute in background by creating a sys_trigger record to execute the same code.
+	
+
+    type: 'DevToolController'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-02-04 19:16:05</sys_created_on>
+        <sys_id>569253dc2fa50110a8ce2b5df699b63b</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>DevToolController</sys_name>
+        <sys_package display_value="Developer Tools 2.0" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Tools 2.0">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>sys_script_include_569253dc2fa50110a8ce2b5df699b63b</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-02-04 19:42:23</sys_updated_on>
+    </sys_script_include>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</application>
+        <file_path/>
+        <instance_id>54f0e1b4db429bc0536ad5b0cf9619dd</instance_id>
+        <instance_name>dev58956</instance_name>
+        <name>sys_script_include_569253dc2fa50110a8ce2b5df699b63b</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_script_include"&gt;&lt;sys_script_include action="INSERT_OR_UPDATE"&gt;&lt;access&gt;package_private&lt;/access&gt;&lt;active&gt;true&lt;/active&gt;&lt;api_name&gt;global.DevToolController&lt;/api_name&gt;&lt;caller_access/&gt;&lt;client_callable&gt;false&lt;/client_callable&gt;&lt;description/&gt;&lt;name&gt;DevToolController&lt;/name&gt;&lt;script&gt;&lt;![CDATA[var DevToolController = Class.create();
+DevToolController.prototype = {
+    initialize: function() {
+    },
+	
+	//Get all operations that fit the current conditions (table_name, currentFilter)
+	
+	
+	
+	//Search for GlideRecord(s) based on if selected operations looop through and execute the selected operation for each.
+	
+	
+	
+	//Do same as above but execute in background by creating a sys_trigger record to execute the same code.
+	
+
+    type: 'DevToolController'
+};]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_include&lt;/sys_class_name&gt;&lt;sys_created_by&gt;erik.anderson&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-02-04 19:16:05&lt;/sys_created_on&gt;&lt;sys_id&gt;569253dc2fa50110a8ce2b5df699b63b&lt;/sys_id&gt;&lt;sys_mod_count&gt;3&lt;/sys_mod_count&gt;&lt;sys_name&gt;DevToolController&lt;/sys_name&gt;&lt;sys_package display_value="Developer Tools 2.0" source="046ce6ca2f910110a8ce2b5df699b6f9"&gt;046ce6ca2f910110a8ce2b5df699b6f9&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Developer Tools 2.0"&gt;046ce6ca2f910110a8ce2b5df699b6f9&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_include_569253dc2fa50110a8ce2b5df699b63b&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;erik.anderson&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2022-02-04 19:42:23&lt;/sys_updated_on&gt;&lt;/sys_script_include&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>394492399</payload_hash>
+        <record_name>DevToolController</record_name>
+        <reverted_from/>
+        <source>c1d181836d6620100acb70b3534330af</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-02-04 19:42:23</sys_created_on>
+        <sys_id>47a8d3102fe50110a8ce2b5df699b6e6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17ec64257ef0000001</sys_recorded_at>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-02-04 19:42:23</sys_updated_on>
+        <type>Script Include</type>
+        <update_guid>0fa8d31033e50110e9f733315f5267e5</update_guid>
+        <update_guid_history>0fa8d31033e50110e9f733315f5267e5:394492399,a9f3d310cbe50110943c5129411a66dd:999915018,51d39f9c61a50110a17de4f11bb1fb38:-559889281,eda29398daa50110f2dea11d3933733d:144372598</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-02-08 03:54:14</sys_created_on>
+        <sys_db_object display_value="" name="sys_script_include">sys_script_include</sys_db_object>
+        <sys_id>4fe4be5759e74e48a00ab5044860c440</sys_id>
+        <sys_metadata>569253dc2fa50110a8ce2b5df699b63b</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>DevToolController</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_scope_delete display_value="">3b255f5eab984b4ca2d4e8de4c0cdc10</sys_scope_delete>
+        <sys_update_name>sys_script_include_569253dc2fa50110a8ce2b5df699b63b</sys_update_name>
+        <sys_update_version display_value="sys_script_include_569253dc2fa50110a8ce2b5df699b63b">47a8d3102fe50110a8ce2b5df699b6e6</sys_update_version>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-02-08 03:54:14</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

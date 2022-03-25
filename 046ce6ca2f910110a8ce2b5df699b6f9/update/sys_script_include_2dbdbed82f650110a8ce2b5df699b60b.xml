@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>global.DevOperationInput</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>DevOperationInput</name>
+        <script><![CDATA[var DevOperationInput = Class.create();
+DevOperationInput.prototype = {
+    initialize: function(inputGr) {
+		if(inputGr){
+            if(typeof inputGr === "string"){
+                inputGr = this._getGlideRecordWithId(inputGr);
+            }
+			if(inputGr + "" === "[object GlideRecord]"){
+				this._setFromGr(inputGr);
+			}else if(inputGr + "" === "[object Object]"){
+				this._setFromModel(inputGr);
+			}
+		}
+    },
+
+	getUserValue: function(){
+		var userValue = this.userValue;
+		if(userValue && this.type === 'reference'){
+			var gr = new GlideRecord(this.reference);
+			if(gr.get(userValue.value)){
+				userValue = gr;
+			}
+		}
+		return userValue || '';
+	},
+	
+	//Internal Functions
+	
+	_setFromGr: function(inputGr){
+		this.sysId = inputGr.getUniqueValue();
+		this.inputLabel = inputGr.getValue("u_input_label");
+		this.inputName = inputGr.getValue("u_input_name");
+		this.type = inputGr.getValue("u_type");
+		this.maxLength = parseInt(inputGr.getValue("u_max_length"));
+		this.sysScope = this._getReferenceField("sys_scope", inputGr);
+		this.active = (inputGr.getValue("u_active") == "1");
+		this.reference = inputGr.getValue('u_reference');
+		this.reference_display = inputGr.getValue("u_reference_display_field");
+		this.qualifier = inputGr.getValue("u_qualifier");
+		this.choiceList = this._organizeChoiceList(inputGr.getValue("u_choice_list"));
+		this.mandatory = (inputGr.getValue("u_mandatory") == "1");
+		this.userValue = '';
+	},
+
+	_setFromModel: function(model){
+		for(var key in model){
+			this[key] = model[key];
+		}
+		
+	},
+	
+	_getReferenceField: function(columnName, inputGr){
+		var returnObj = {};
+		if(columnName){
+			returnObj.value = inputGr.getValue(columnName);
+			returnObj.displayValue = inputGr.getDisplayValue(columnName);
+		}
+		return returnObj;
+	},
+
+    _getGlideRecordWithId: function(id){
+        var inputGr = new GlideRecord("u_dev_tool_operation_input");
+        if(inputGr.get(id)){
+            return inputGr;
+        }
+    },
+	
+	_organizeChoiceList: function(choiceList){
+		if(!choiceList){
+			return [];
+		}
+		var choiceArray = [];
+		choiceList = JSON.parse(choiceList);
+		for(var key in choiceList){
+			choiceArray.push({
+				name: key,
+				value: choiceList[key]
+			});
+		}
+		return choiceArray;
+	},
+				
+    type: 'DevOperationInput'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-02-04 17:44:36</sys_created_on>
+        <sys_id>2dbdbed82f650110a8ce2b5df699b60b</sys_id>
+        <sys_mod_count>19</sys_mod_count>
+        <sys_name>DevOperationInput</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>sys_script_include_2dbdbed82f650110a8ce2b5df699b60b</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-03-16 14:20:57</sys_updated_on>
+    </sys_script_include>
+</record_update>

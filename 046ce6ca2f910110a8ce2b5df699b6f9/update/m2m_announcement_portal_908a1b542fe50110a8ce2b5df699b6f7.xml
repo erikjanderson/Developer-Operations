@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_announcement_portal">
+    <m2m_announcement_portal action="INSERT_OR_UPDATE">
+        <announcement display_value="Alert : Appsec Daily Data Management">188a1b542fe50110a8ce2b5df699b6f7</announcement>
+        <order>100</order>
+        <sp_portal display_value="Instance Security Center">bebfa187536a1300a699ddeeff7b1223</sp_portal>
+        <sys_class_name>m2m_announcement_portal</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-02-04 19:50:24</sys_created_on>
+        <sys_id>908a1b542fe50110a8ce2b5df699b6f7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Alert : Appsec Daily Data Management.Instance Security Center</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>m2m_announcement_portal_908a1b542fe50110a8ce2b5df699b6f7</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-02-04 19:50:24</sys_updated_on>
+    </m2m_announcement_portal>
+</record_update>

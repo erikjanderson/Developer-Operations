@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="announcement">
+    <announcement action="INSERT_OR_UPDATE">
+        <active>false</active>
+        <click_target>urlNew</click_target>
+        <details/>
+        <details_link_text>[AppSec] Daily Data Management</details_link_text>
+        <details_page/>
+        <details_url>/sysauto_script.do?sys_id=2b98d54f53332300628eddeeff7b120b</details_url>
+        <dismiss_options>session_dismissible</dismiss_options>
+        <display_first>false</display_first>
+        <display_style display_value="La Jolla Urgent">7f8fe758c31023002ff2554d81d3ae99</display_style>
+        <from>2021-05-07 14:10:39</from>
+        <glyph>info-circle</glyph>
+        <glyph_alt_text/>
+        <name>Alert : Appsec Daily Data Management</name>
+        <public>false</public>
+        <roles>admin</roles>
+        <show_for_unauthenticated_users_only>false</show_for_unauthenticated_users_only>
+        <summary>Please assign valid Run As user with admin role.</summary>
+        <sys_class_name>announcement</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-02-04 19:50:24</sys_created_on>
+        <sys_id>188a1b542fe50110a8ce2b5df699b6f7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Alert : Appsec Daily Data Management</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>announcement_188a1b542fe50110a8ce2b5df699b6f7</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-02-04 19:50:24</sys_updated_on>
+        <title>Invalid Run As User</title>
+        <to/>
+        <type>67eaf134e7a3320075c2a117c2f6a9d2,52fa79f8e763320075c2a117c2f6a991</type>
+    </announcement>
+    <sys_translated_text action="delete_multiple" query="documentkey=188a1b542fe50110a8ce2b5df699b6f7"/>
+</record_update>
