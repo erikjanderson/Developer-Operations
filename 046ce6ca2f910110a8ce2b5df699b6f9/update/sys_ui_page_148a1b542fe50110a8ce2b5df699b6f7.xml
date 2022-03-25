@@ -13,11 +13,12 @@
 		<j:set var="jvar_tablename" value="${sysparm_tablename}"></j:set>
 		<j:set var="jvar_view" value="${sysparm_view}"></j:set>
 		<!-- initialize iFrame and link to the target widget-->
-		<iframe src="swp?id=dev_tools_operations${AMP}sysId=${jvar_sysid}${AMP}tableName=${jvar_tablename}${AMP}view=${jvar_view}"
+		<iframe allowtransparency="true"
+				src="developer_operations?id=dev_tools_operations${AMP}sysId=${jvar_sysid}${AMP}tableName=${jvar_tablename}${AMP}view=${jvar_view}"
 				scrolling="no"
 				width="860px"
 				height="650px"
-				style="border:none; overflow:auto;" />
+				style="border:none; overflow:auto; background: #FFFFFF;" />
 	</body>
 </j:jelly>]]></html>
         <name>dev_tools_operations_ui_page</name>
@@ -26,13 +27,13 @@
         <sys_created_by>erik.anderson</sys_created_by>
         <sys_created_on>2022-02-04 19:50:24</sys_created_on>
         <sys_id>148a1b542fe50110a8ce2b5df699b6f7</sys_id>
-        <sys_mod_count>9</sys_mod_count>
+        <sys_mod_count>12</sys_mod_count>
         <sys_name>dev_tools_operations_ui_page</sys_name>
         <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
         <sys_policy/>
         <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
         <sys_update_name>sys_ui_page_148a1b542fe50110a8ce2b5df699b6f7</sys_update_name>
         <sys_updated_by>erik.anderson</sys_updated_by>
-        <sys_updated_on>2022-02-11 19:20:29</sys_updated_on>
+        <sys_updated_on>2022-03-25 13:55:29</sys_updated_on>
     </sys_ui_page>
 </record_update>
