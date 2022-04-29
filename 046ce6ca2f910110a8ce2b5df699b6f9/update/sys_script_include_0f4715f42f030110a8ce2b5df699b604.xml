@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>global.DevOperationCSV</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Helper class used to generate CSV formatted outputs</description>
+        <name>DevOperationCSV</name>
+        <script><![CDATA[var DevOperationCSV = Class.create();
+DevOperationCSV.prototype = {
+	initialize: function () {
+		this.headers = [];
+		this.rows = [];
+		this.data = '';
+	},
+
+	addHeader: function () {
+		for(var i = 0; i < arguments.length; i++){
+			var name = arguments[i];
+			if (this.headers.indexOf(name) < 0) {
+				this.headers.push(name);
+			}
+		}
+		gs.info(this.headers)
+	},
+
+	addRow: function (obj) {
+		var row = {};
+		for (var i = 0; i < this.headers.length; i++) {
+			var header = this.headers[i];
+			if (obj && obj[header]) {
+				row[header] = obj[header];
+			} else {
+				row[header] = '';
+			}
+		}
+		this.rows.push(row);
+		return this.rows[this.rows.length - 1];
+	},
+
+	build: function () {
+		var headerAdded = false;
+		//Add Headers
+		if(this.headers.length > 0){
+			this.data = this._buildHeaderString();
+			headerAdded = true;
+		}
+		//Add Body
+		this.data += this._buildBodyString(headerAdded);
+		return this.data;
+	},
+
+	createAttachment: function(gr, name){
+		var attachment = new GlideSysAttachment();
+		var fileName = name;
+		if(!fileName){
+			fileName = gr.getDisplayValue() + '.csv'
+		}
+		var sysId = attachment.write(gr, fileName, 'text/csv', this.data);
+		if(sysId){
+			var attachmentGr = new GlideRecord('sys_attachment');
+			if(attachmentGr.get(sysId)){
+				return attachmentGr;
+			}
+		}
+	},
+
+
+
+	//Internal Functions
+
+	_buildHeaderString: function () {
+		var headerStr = '';
+		for (var i = 0; i < this.headers.length; i++) {
+			var header = this.headers[i];
+			var cell = this._buildCell(header);
+			if (!headerStr) {
+				headerStr = cell
+			} else {
+				headerStr += ',' + cell; 
+			}
+		}
+		return headerStr;
+	},
+
+	_buildBodyString: function(headerAdded){
+		var bodyStr = '';
+		for(var i = 0; i < this.rows.length; i++){
+			var row = this.rows[i];
+			var rowString = '';
+			if(headerAdded || i > 0){
+				rowString += '\n';
+			}
+			if(headerAdded){
+				rowString += this._buildRowString(row);
+			}else{
+				rowString += this._buildRowStringWithoutHeader(row);
+			}
+			bodyStr += rowString;
+		}
+		return bodyStr;
+	},
+
+	_buildRowString: function(row){
+		var rowString = '';
+		for (var i = 0; i < this.headers.length; i++) {
+			var header = this.headers[i];
+			var cell = this._buildCell((row[header] || ''));
+			if(i > 0){
+				rowString += ',';
+			}
+			rowString += cell;
+		}
+		return rowString;
+	},
+
+
+	_buildRowStringWithoutHeader: function(row){
+		var rowString = '';
+		for(var key in row){
+			var cell = this._buildCell((row[key] || ''));
+			if(rowString){
+				rowString += ',';
+			}
+			rowString += cell;
+		}
+		return rowString;
+	},
+
+	_buildCell: function(val){
+		if(typeof val === 'object'){
+			val = JSON.stringify(val);
+		}
+		if(typeof val === 'string'){
+			val = val.replace(/"/g, '""');
+		}
+		val = '"' + val + '"';
+		return val;
+	},
+
+
+	type: 'DevOperationCSV'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-04-21 13:17:09</sys_created_on>
+        <sys_id>0f4715f42f030110a8ce2b5df699b604</sys_id>
+        <sys_mod_count>62</sys_mod_count>
+        <sys_name>DevOperationCSV</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>sys_script_include_0f4715f42f030110a8ce2b5df699b604</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-04-27 19:41:18</sys_updated_on>
+    </sys_script_include>
+</record_update>

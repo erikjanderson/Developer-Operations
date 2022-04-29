@@ -28,8 +28,9 @@ DevOperationOutput.prototype = {
         this.duration.end = gdt.getDisplayValueInternal();
     },
 
-    addResult: function(status, result, gr){
+    addResult: function(type, status, result, gr){
         this.results.push({
+			'type': type,
             'status': status,
             'result': result,
             'gr': {
@@ -45,13 +46,13 @@ DevOperationOutput.prototype = {
         <sys_created_by>erik.anderson</sys_created_by>
         <sys_created_on>2022-02-11 14:10:33</sys_created_on>
         <sys_id>a7cf8a6a2f210110a8ce2b5df699b6d1</sys_id>
-        <sys_mod_count>18</sys_mod_count>
+        <sys_mod_count>19</sys_mod_count>
         <sys_name>DevOperationOutput</sys_name>
         <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
         <sys_policy/>
         <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
         <sys_update_name>sys_script_include_a7cf8a6a2f210110a8ce2b5df699b6d1</sys_update_name>
         <sys_updated_by>erik.anderson</sys_updated_by>
-        <sys_updated_on>2022-03-15 16:43:29</sys_updated_on>
+        <sys_updated_on>2022-04-27 16:13:45</sys_updated_on>
     </sys_script_include>
 </record_update>
