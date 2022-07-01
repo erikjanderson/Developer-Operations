@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="u_dev_tool_operation">
+    <u_dev_tool_operation action="DELETE">
+        <sys_class_name>u_dev_tool_operation</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-04-27 14:40:30</sys_created_on>
+        <sys_id>0ca524762f874110a8ce2b5df699b699</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>Test CSV</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>u_dev_tool_operation_0ca524762f874110a8ce2b5df699b699</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-05-02 12:57:04</sys_updated_on>
+        <u_active>true</u_active>
+        <u_condition/>
+        <u_conditional>false</u_conditional>
+        <u_description/>
+        <u_name>Test CSV</u_name>
+        <u_script><![CDATA[var currentRecord = current; //Current GlideRecord
+
+var csv = new DevOperationCSV();
+csv.addHeader('name', 'age', 'coolness', 'description', 'some object');
+
+var row = csv.addRow();
+row.name = 'Erik Anderson';
+row.age = 27;
+row.coolness = 'wicked';
+row.description = 'Some guy';
+row['some object'] = {
+    hello: 'hi',
+    hello2: 'whatsup'
+};
+
+
+csv.build();
+result = csv.createAttachment('Test_' + new GlideDateTime().getDisplayValue());]]></u_script>
+        <u_table>global</u_table>
+    </u_dev_tool_operation>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</application>
+        <file_path/>
+        <instance_id>54f0e1b4db429bc0536ad5b0cf9619dd</instance_id>
+        <instance_name>dev58956</instance_name>
+        <name>u_dev_tool_operation_0ca524762f874110a8ce2b5df699b699</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="u_dev_tool_operation"&gt;&lt;u_dev_tool_operation action="INSERT_OR_UPDATE"&gt;&lt;sys_class_name&gt;u_dev_tool_operation&lt;/sys_class_name&gt;&lt;sys_created_by&gt;erik.anderson&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-04-27 14:40:30&lt;/sys_created_on&gt;&lt;sys_id&gt;0ca524762f874110a8ce2b5df699b699&lt;/sys_id&gt;&lt;sys_mod_count&gt;6&lt;/sys_mod_count&gt;&lt;sys_name&gt;Test CSV&lt;/sys_name&gt;&lt;sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9"&gt;046ce6ca2f910110a8ce2b5df699b6f9&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Developer Operations"&gt;046ce6ca2f910110a8ce2b5df699b6f9&lt;/sys_scope&gt;&lt;sys_update_name&gt;u_dev_tool_operation_0ca524762f874110a8ce2b5df699b699&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;erik.anderson&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2022-05-02 12:57:04&lt;/sys_updated_on&gt;&lt;u_active&gt;true&lt;/u_active&gt;&lt;u_condition/&gt;&lt;u_conditional&gt;false&lt;/u_conditional&gt;&lt;u_description/&gt;&lt;u_name&gt;Test CSV&lt;/u_name&gt;&lt;u_script&gt;&lt;![CDATA[var currentRecord = current; //Current GlideRecord
+
+var csv = new DevOperationCSV();
+csv.addHeader('name', 'age', 'coolness', 'description', 'some object');
+
+var row = csv.addRow();
+row.name = 'Erik Anderson';
+row.age = 27;
+row.coolness = 'wicked';
+row.description = 'Some guy';
+row['some object'] = {
+    hello: 'hi',
+    hello2: 'whatsup'
+};
+
+
+csv.build();
+result = csv.createAttachment('Test_' + new GlideDateTime().getDisplayValue());]]&gt;&lt;/u_script&gt;&lt;u_table&gt;global&lt;/u_table&gt;&lt;/u_dev_tool_operation&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>623660441</payload_hash>
+        <record_name>Test CSV</record_name>
+        <reverted_from/>
+        <source>c1d181836d6620100acb70b3534330af</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-05-02 12:57:04</sys_created_on>
+        <sys_id>823e71542f530110a8ce2b5df699b65d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>18084d886ea0000001</sys_recorded_at>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-05-02 12:57:04</sys_updated_on>
+        <type>Dev Tool Operation</type>
+        <update_guid>4a3e715477530110f68248e50fb8155c</update_guid>
+        <update_guid_history>4a3e715477530110f68248e50fb8155c:623660441,73e97154705301106aab26d33d46f421:313294070,e5f8b43aebc74110244293e2e9a9b58a:1478238071,1e3b20ba47874110016836ac1747204e:-209572201,6c0b607a45874110c63bb72db13a0223:76915064,85966076fe87411061644391ea70e49d:1998788048,d8f52476688741103f24a904ad9cb1d7:1043771001</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Test CSV">46cec5c92f1b4110a8ce2b5df699b6e6</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-05-04 17:25:16</sys_created_on>
+        <sys_db_object display_value="" name="u_dev_tool_operation">u_dev_tool_operation</sys_db_object>
+        <sys_id>7ff4fecb694d4cc3abd59efdbf285ae9</sys_id>
+        <sys_metadata>0ca524762f874110a8ce2b5df699b699</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Test CSV</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_scope_delete display_value="">3b255f5eab984b4ca2d4e8de4c0cdc10</sys_scope_delete>
+        <sys_update_name>u_dev_tool_operation_0ca524762f874110a8ce2b5df699b699</sys_update_name>
+        <sys_update_version display_value="u_dev_tool_operation_0ca524762f874110a8ce2b5df699b699">823e71542f530110a8ce2b5df699b65d</sys_update_version>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-05-04 17:25:16</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

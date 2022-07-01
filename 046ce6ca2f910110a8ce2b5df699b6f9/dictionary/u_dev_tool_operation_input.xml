@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element attributes="update_synch=true" extends="sys_metadata" label="Dev Tool Operation Input" max_length="40" name="u_dev_tool_operation_input" sizeclass="14" type="collection">
+    <element attributes="update_synch=true" extends="sys_metadata" label="Dev Tool Operation Input" max_length="40" name="u_dev_tool_operation_input" sizeclass="15" type="collection">
         <element default="true" label="Active" max_length="40" name="u_active" type="boolean"/>
         <element label="Choice list" max_length="65535" name="u_choice_list" type="simple_name_values"/>
         <element label="Dev tool operation" max_length="32" name="u_dev_tool_operation" reference="u_dev_tool_operation" reference_floats="true" type="reference"/>

@@ -4,14 +4,14 @@
         <sys_created_by>erik.anderson</sys_created_by>
         <sys_created_on>2022-02-22 13:39:22</sys_created_on>
         <sys_id>7b61be0a2f310110a8ce2b5df699b63b</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>11</sys_mod_count>
         <sys_name>Source Analysis (Single Column)</sys_name>
         <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
         <sys_policy/>
         <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
         <sys_update_name>u_dev_tool_operation_7b61be0a2f310110a8ce2b5df699b63b</sys_update_name>
         <sys_updated_by>erik.anderson</sys_updated_by>
-        <sys_updated_on>2022-02-22 13:39:22</sys_updated_on>
+        <sys_updated_on>2022-05-03 14:45:30</sys_updated_on>
         <u_active>true</u_active>
         <u_condition/>
         <u_conditional>false</u_conditional>
@@ -28,6 +28,7 @@
 ////Script Configuration Settings////
 /////////////////////////////////////
 var currentRecord = current; //Current GlideRecord
+var createCSV = create_csv;
 //Definition of the parent RTE transform which references all contained entities
 var transformDefinitionId = currentRecord.getUniqueValue();
 
@@ -38,9 +39,9 @@ var searchLimit = 100;
 //////////Processing Logic////////////
 //////////////////////////////////////
 
-
-
-var reportString = '\nNative File/Table' + '\t' +	'Native Column Header' + '\t' +	'Sample Data' + '\t' +	'NOW Table	NOW Attribute' + '\t' +	'Reference' + '\t' +	'Referenced	Invalid Value Check' + '\t' +	'Transform' + '\t' +	'Comments';
+var csv = new DevOperationCSV();
+csv.addHeader('Native File/Table', 'Native Column Header', 'Sample Data', 'NOW Table','NOW Attribute', 'Reference', 'Referenced	Invalid Value Check', 'Transform', 'Comments')
+//var reportString = '\nNative File/Table' + '\t' +	'Native Column Header' + '\t' +	'Sample Data' + '\t' +	'NOW Table	NOW Attribute' + '\t' +	'Reference' + '\t' +	'Referenced	Invalid Value Check' + '\t' +	'Transform' + '\t' +	'Comments';
 var importEntityId = '';
 var importEntityTableName = '';
 var importEntityGr = searchForImportEntity();
@@ -57,9 +58,15 @@ for(var i = 0; i <entityList.length; i++){
         var entityGr = getEntity(currentEntity.id);
         var entity = getEntitySourceInfo(entityGr);
         //gs.info(JSON.stringify(entity))
-        reportString = reportString + excelReportEntity(entity);
+        excelReportEntity(entity);
 }
-result = reportString;
+if(createCSV){
+    csv.build();
+    result = csv.createAttachment(currentRecord.getValue('name') + ' Source Analysis');
+}else{
+    result = csv.buildDisplay();
+}
+
 
 
 function getTargetEntities(){
@@ -102,13 +109,14 @@ function getEntitySourceInfo(entityGr) {
 
 
 function excelReportRelationships(relationships) {
-    var relationshipString = '\nRelationships';
+    //var relationshipString = '\nRelationships';
+    csv.addRow('Relationships');
     for (var i = 0; i < relationships.length; i++) {
         var relationship = relationships[i];
-        var relFields = excelReportFields(relationship.inverseEntityFields);
-        relationshipString += relFields;
+        excelReportFields(relationship.inverseEntityFields);
+        //relationshipString += relFields;
     }
-    return relationshipString;
+    //return relationshipString;
 }
 
 
@@ -363,17 +371,15 @@ function flattenObjectClean(object, returnObj, stack) {
 
 //Excel Report Functions
 function excelReportEntity(entity) {
-    var reportString = ''
-    reportString += '\n' + entity.name;
-    var fieldsString = excelReportFields(entity.fields);
-    reportString += fieldsString;
-    var relationshipString = excelReportRelationships(entity.relationships);
-    reportString += relationshipString;
-    return reportString;
+    //var reportString = ''
+    //reportString += '\n' + entity.name;
+    csv.addRow(entity.name)
+    excelReportFields(entity.fields);
+    excelReportRelationships(entity.relationships);
+    
 }
 
 function excelReportFields(entityFields) {
-    var reportString = '';
     for (var i = 0; i < entityFields.length; i++) {
         var field = entityFields[i];
         var fieldName = field.name;
@@ -384,9 +390,9 @@ function excelReportFields(entityFields) {
 
         sourceObj.fields = cleanseFieldsString(sourceObj.fields);
         //build report string line
-        reportString += '\n\t' + sourceObj.fields + '\t' + sourceObj.sampleValues + '\t' + table + '\t' + fieldName + '\t' + sourceObj.referenceField + '\t' + sourceObj.referenceTable + '\t\t' + operations;
+        csv.addRow('', sourceObj.fields, sourceObj.sampleValues, table, fieldName, sourceObj.referenceField, sourceObj.referenceTable, '', operations)
+        //reportString += '\n\t' + sourceObj.fields + '\t' + sourceObj.sampleValues + '\t' + table + '\t' + fieldName + '\t' + sourceObj.referenceField + '\t' + sourceObj.referenceTable + '\t\t' + operations;
     }
-    return reportString;
 }
 
 function getOperationInfo(operations){
@@ -430,9 +436,13 @@ function getSourceFieldInfo(sourceFields) {
 
 function cleanseFieldsString(fields){
     if(fields){
-        fields = 'object➛' + fields
-        fields = fields.replace(/\&/g, '& object➛');
-        fields = fields.replace(/\./g, '➛');
+        // fields = 'object➛' + fields
+        // fields = fields.replace(/\&/g, '& object➛');
+        // fields = fields.replace(/\./g, '➛');
+        // fields = fields.replace(/\[\*\]/g, '');
+        fields = 'object > ' +fields;
+        fields = fields.replace(/\&/g, '& object > ');
+        fields = fields.replace(/\./g, ' > ');
         fields = fields.replace(/\[\*\]/g, '');
     } 
     

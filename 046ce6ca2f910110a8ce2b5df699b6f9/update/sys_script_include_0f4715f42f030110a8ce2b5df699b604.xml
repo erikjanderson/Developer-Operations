@@ -22,7 +22,7 @@ DevOperationCSV.prototype = {
 				this.headers.push(name);
 			}
 		}
-		gs.info(this.headers)
+		gs.info(this.headers);
 	},
 
 	addRow: function (obj) {
@@ -31,6 +31,8 @@ DevOperationCSV.prototype = {
 			var header = this.headers[i];
 			if (obj && obj[header]) {
 				row[header] = obj[header];
+			} else if(arguments[i] && typeof arguments[i] != 'object'){
+				row[header] = arguments[i];
 			} else {
 				row[header] = '';
 			}
@@ -40,6 +42,7 @@ DevOperationCSV.prototype = {
 	},
 
 	build: function () {
+		this.data = '';
 		var headerAdded = false;
 		//Add Headers
 		if(this.headers.length > 0){
@@ -51,13 +54,54 @@ DevOperationCSV.prototype = {
 		return this.data;
 	},
 
-	createAttachment: function(gr, name){
+	buildDisplay: function(){
+		var headerAdded = false;
+		this.data = '';
+		//Add Headers
+		for (var i = 0; i < this.headers.length; i++) {
+			headerAdded = true;
+			var header = this.headers[i];
+			if(i > 0){
+				this.data += '\t';
+			}
+			this.data += header;
+		}
+
+		for(var r = 0; r < this.rows.length; r++ ){
+			var row = this.rows[r];
+			var rowString = '';
+			if(headerAdded || r > 0){
+				rowString += '\n';
+			}
+			var first = true;
+			for(var key in row){
+				if(!first){
+					rowString += '\t';
+				}
+				first =false;
+				rowString += row[key] || ''
+			}
+			this.data += rowString;
+		}
+		return this.data;
+	},
+
+	createAttachment: function(name, gr){
 		var attachment = new GlideSysAttachment();
+
+		if(!gr){
+			gr = this._createPollRecord();
+		}
+
 		var fileName = name;
 		if(!fileName){
-			fileName = gr.getDisplayValue() + '.csv'
+			fileName = gr.getDisplayValue();
 		}
-		var sysId = attachment.write(gr, fileName, 'text/csv', this.data);
+		if(!fileName){
+			fileName = gr.getUniqueValue() + '-' + new GlideDateTime().getDisplayValue();
+		}
+
+		var sysId = attachment.write(gr, fileName + '.csv', 'text/csv', this.data);
 		if(sysId){
 			var attachmentGr = new GlideRecord('sys_attachment');
 			if(attachmentGr.get(sysId)){
@@ -76,7 +120,7 @@ DevOperationCSV.prototype = {
 			var header = this.headers[i];
 			var cell = this._buildCell(header);
 			if (!headerStr) {
-				headerStr = cell
+				headerStr = cell;
 			} else {
 				headerStr += ',' + cell; 
 			}
@@ -139,6 +183,19 @@ DevOperationCSV.prototype = {
 		return val;
 	},
 
+	_createPollRecord: function(){
+		var pollGr = new GlideRecord('sys_poll');
+		pollGr.initialize();
+		pollGr.session_id = gs.getSessionID();
+		pollGr.session_user = gs.getUserID();
+		pollGr.state = 'complete';
+		pollGr.max = '0';
+		pollGr.current = '0';
+		pollGr.message = 'Created by the Developer Operations DevOperationCSV Script include.';
+		pollGr.insert();
+		return pollGr;
+	},
+
 
 	type: 'DevOperationCSV'
 };]]></script>
@@ -146,13 +203,13 @@ DevOperationCSV.prototype = {
         <sys_created_by>erik.anderson</sys_created_by>
         <sys_created_on>2022-04-21 13:17:09</sys_created_on>
         <sys_id>0f4715f42f030110a8ce2b5df699b604</sys_id>
-        <sys_mod_count>62</sys_mod_count>
+        <sys_mod_count>76</sys_mod_count>
         <sys_name>DevOperationCSV</sys_name>
         <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
         <sys_policy/>
         <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
         <sys_update_name>sys_script_include_0f4715f42f030110a8ce2b5df699b604</sys_update_name>
         <sys_updated_by>erik.anderson</sys_updated_by>
-        <sys_updated_on>2022-04-27 19:41:18</sys_updated_on>
+        <sys_updated_on>2022-05-03 14:56:03</sys_updated_on>
     </sys_script_include>
 </record_update>
