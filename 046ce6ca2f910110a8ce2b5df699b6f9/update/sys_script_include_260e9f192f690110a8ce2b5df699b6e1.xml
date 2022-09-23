@@ -33,21 +33,21 @@ DevOperationController.prototype = {
         return operationArray;
     },
 
-    executeOperation: function (selectedOperation, tableName, sysIds, async) {
+    executeOperation: function (selectedOperation, tableName, sysIds, view, async) {
        // gs.info("op: " + selectedOperation)
         var operation = new DevOperation(selectedOperation);
         if(async){
-            operation.executeAsync(tableName, sysIds);
+            operation.executeAsync(tableName, sysIds, view);
             //var processor = new DevProcessor();
             //processor.startNewJob(operation, tableName, sysIds);
         }else{
             var recordGr = this._getGlideRecordStream(tableName, sysIds);
-            operation.execute(recordGr);
+            operation.execute(recordGr, view);
         }
         return operation;
     },
 
-    generateScript: function(selectedOperation, tableName, sysIds){
+    generateScript: function(selectedOperation, tableName, sysIds, view){
         var operation = new DevOperation(selectedOperation);
         var generatedScript = operation.getImplementationScript(sysIds, tableName)
         return generatedScript;
@@ -88,13 +88,13 @@ DevOperationController.prototype = {
         <sys_created_by>erik.anderson</sys_created_by>
         <sys_created_on>2022-02-07 22:40:00</sys_created_on>
         <sys_id>260e9f192f690110a8ce2b5df699b6e1</sys_id>
-        <sys_mod_count>51</sys_mod_count>
+        <sys_mod_count>53</sys_mod_count>
         <sys_name>DevOperationController</sys_name>
         <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
         <sys_policy/>
         <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
         <sys_update_name>sys_script_include_260e9f192f690110a8ce2b5df699b6e1</sys_update_name>
         <sys_updated_by>erik.anderson</sys_updated_by>
-        <sys_updated_on>2022-03-15 14:27:18</sys_updated_on>
+        <sys_updated_on>2022-09-23 14:29:41</sys_updated_on>
     </sys_script_include>
 </record_update>
