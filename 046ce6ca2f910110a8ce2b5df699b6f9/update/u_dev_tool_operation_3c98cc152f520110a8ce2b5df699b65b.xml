@@ -4,14 +4,14 @@
         <sys_created_by>erik.anderson</sys_created_by>
         <sys_created_on>2022-03-16 14:00:04</sys_created_on>
         <sys_id>3c98cc152f520110a8ce2b5df699b65b</sys_id>
-        <sys_mod_count>21</sys_mod_count>
+        <sys_mod_count>26</sys_mod_count>
         <sys_name>Get Modified Files</sys_name>
         <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
         <sys_policy/>
         <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
         <sys_update_name>u_dev_tool_operation_3c98cc152f520110a8ce2b5df699b65b</sys_update_name>
         <sys_updated_by>erik.anderson</sys_updated_by>
-        <sys_updated_on>2022-03-16 15:56:37</sys_updated_on>
+        <sys_updated_on>2022-08-30 13:22:35</sys_updated_on>
         <u_active>true</u_active>
         <u_condition/>
         <u_conditional>false</u_conditional>
@@ -20,8 +20,9 @@
         <u_script><![CDATA[var appGr = current;
 var versionOverride = version_override;
 var changedFiles = getChangedRecords(appGr, versionOverride);
-result = reportChangedFiles(changedFiles);
-    
+//result = reportChangedFiles(changedFiles);
+result = generateCSVReport(changedFiles, appGr, versionOverride);
+
 
 
 
@@ -38,6 +39,35 @@ function reportChangedFiles(changedFiles) {
     return reportString;
 }
 
+function generateCSVReport(changedFiles, appGr, versionOverride) {
+    var csv = new DevOperationCSV();
+    csv.addHeader('Updated On', 'Display', 'Table', 'State', 'Record', 'Previous Version', 'Compare');
+    for (var i = 0; i < changedFiles.length; i++) {
+        var file = changedFiles[i];
+        var row = csv.addRow();
+        row['Updated On'] = file.updated + '';
+        row['Display'] = file.display;
+        row['Table'] = file.table;
+        row['State'] = file.state;
+        row['Record'] = generateLink(file.link);
+        row['Previous Version'] = generateLink(file.previousVersion);
+        var compareLink = '';
+        if (file.versionSysId) {
+            compareLink = generateLink('/merge_form_current_version.do?sysparm_version_id=' + file.versionSysId);
+        }
+        row['Compare'] = compareLink;
+    }
+
+    csv.build();
+    var version = appGr.getValue('version');
+    if (versionOverride) {
+        version = versionOverride;
+    }
+    var fileName = appGr.getValue('name') + ' Changes Since ' + version;
+    return csv.createAttachment(fileName);
+
+}
+
 function generateLink(url) {
     if (url) {
         return gs.getProperty('glide.servlet.uri') + 'nav_to.do?uri=/' + url;
@@ -50,86 +80,94 @@ function generateLink(url) {
 function getChangedAppFiles(versionCreateGdt, appGr) {
     var serializer = new GlideRecordXMLSerializer();
     var changedFiles = [];
-    if (!versionCreateGdt || !appGr) { gs.info('No versionCreateGdt or appGr was specified'); return false; }
+    if (!versionCreateGdt || !appGr) {
+        gs.info('No versionCreateGdt or appGr was specified');
+        return false;
+    }
     var metadataGr = new GlideRecord('sys_metadata');
     metadataGr.addQuery('sys_scope', appGr.getUniqueValue());
     metadataGr.addQuery('sys_updated_on', '>=', versionCreateGdt);
     metadataGr.orderByDesc('sys_updated_on');
     metadataGr.query();
+	gs.info("Potentially Changed Files: " + metadataGr.getRowCount());
     while (metadataGr.next()) {
         var tableName = metadataGr.getValue('sys_class_name');
         var recordGr = new GlideRecord(tableName);
         if (recordGr.get(metadataGr.getUniqueValue())) {
             var current = {};
-            var currentPayload = serializer.serialize(recordGr);
+            var currentPayload = serializer.serialize(recordGr) + '';
             var isDeleted = false;
-            if(tableName === 'sys_metadata_delete'){
-                if(recordGr.sys_audit_delete){
+            if (tableName === 'sys_metadata_delete') {
+				tableName = recordGr.getValue('sys_db_object');
+                if (recordGr.sys_audit_delete) {
                     currentPayload = recordGr.sys_audit_delete.payload + '';
-                }else{
+                } else if (recordGr.sys_update_version) {
                     currentPayload = recordGr.sys_update_version.payload + '';
                 }
                 isDeleted = true;
             }
+            currentPayload = currentPayload.replace(/&#13;/g, '\r');
             currentPayload = gs.xmlToJSON(currentPayload);
-            currentPayload = getPrimaryObject(currentPayload);
+            currentPayload = getPrimaryObject(currentPayload, tableName);
+            if (isDeleted && new GlideDateTime(currentPayload.sys_created_on) > versionCreateGdt) {
+                continue;
+            }
             current.display = currentPayload.sys_name;
             current.table = currentPayload.sys_class_name;
-			
+
             current.link = recordGr.getLink();
             var updatedOnGdt = new GlideDateTime(recordGr.getValue('sys_updated_on'));
             current.updated = updatedOnGdt.getDisplayValue();
-            var createdOnGdt =  new GlideDateTime(currentPayload.sys_created_on);
-            if(createdOnGdt > versionCreateGdt && isDeleted){
+            var createdOnGdt = new GlideDateTime(currentPayload.sys_created_on);
+            if (createdOnGdt > versionCreateGdt && isDeleted) {
                 continue;
-            }else if(createdOnGdt > versionCreateGdt){
+            } else if (createdOnGdt > versionCreateGdt) {
                 current.state = 'NEW';
-            }else if(isDeleted){
+            } else if (isDeleted) {
                 current.state = 'DELETE';
-				gs.info(JSON.stringify(currentPayload));
-            }else{
+            } else {
                 current.state = 'UPDATE';
                 var versionGr = getPreviousVersion(tableName, recordGr.getUniqueValue(), versionCreateGdt);
                 if (versionGr) {
                     current.versionSysId = versionGr.getUniqueValue();
                     current.previousVersion = versionGr.getLink();
                     var prevPayload = versionGr.getValue('payload');
+                    prevPayload = prevPayload.replace(/&#13;/g, '\r');
                     prevPayload = gs.xmlToJSON(prevPayload);
-                    prevPayload = getPrimaryObject(prevPayload);
+                    prevPayload = getPrimaryObject(prevPayload, tableName);
                     var changedFields = findChangedFields(currentPayload, prevPayload);
-                    if(changedFields.length > 0){
+                    if (changedFields.length > 0) {
                         current.state = 'UPDATE';
-                    }else{
+                    } else {
                         current.state = 'UPDATE_NO_CHANGE';
                     }
                     current.changedFields = changedFields;
                 }
             }
-// 			if(isDeleted){
-// 				gs.info(JSON.stringify(current));
-// 			}
             changedFiles.push(current);
         }
     }
     return changedFiles;
 }
 
-function findChangedFields(currentPayload, prevPayload){
+function findChangedFields(currentPayload, prevPayload) {
     var changedFields = [];
-    if(!currentPayload || !prevPayload){return changedFields;}
-    for(var key in currentPayload){
-        if(key.startsWith('sys_')){
+    if (!currentPayload || !prevPayload) {
+        return changedFields;
+    }
+    for (var key in currentPayload) {
+        if (key.startsWith('sys_')) {
             continue;
         }
-        
-        var prevValue =  prevPayload[key];
+
+        var prevValue = prevPayload[key];
         var currentValue = currentPayload[key];
-        if(typeof currentValue === 'object' && currentValue.content){
+        if (typeof currentValue === 'object' && currentValue.content) {
             currentValue = currentValue.content;
             prevValue = prevValue.content;
         }
 
-        if(currentValue != prevValue){
+        if (currentValue != prevValue) {
             changedFields.push({
                 "field": key,
                 "prevValue": prevValue,
@@ -162,7 +200,7 @@ function getPreviousVersion(table, sysId, versionCreateGdt) {
 
 function getLastAppVersion(appGr, versionOverride) {
     var currentVersion = appGr.getValue('version');
-    if(versionOverride){
+    if (versionOverride) {
         currentVersion = versionOverride;
     }
     var versionGr = getVersions('sys_app', appGr.getUniqueValue());
@@ -173,7 +211,7 @@ function getLastAppVersion(appGr, versionOverride) {
         var versionObj = getObj(xml);
         if (versionObj) {
             var oldVersion = versionObj.version;
-            if(oldVersion == currentVersion){
+            if (oldVersion == currentVersion) {
                 trace = true;
             }
             if (currentVersion != oldVersion && trace === true) {
@@ -183,7 +221,7 @@ function getLastAppVersion(appGr, versionOverride) {
             }
         }
     }
-	return lastSysUpdatedOn;
+    return lastSysUpdatedOn;
 }
 
 function getVersions(table, sysId) {
@@ -203,17 +241,52 @@ function getObj(xml) {
     }
 }
 
-function getPrimaryObject(currentPayload){
+function getPrimaryObject(currentPayload, tableName) {
     var keys = Object.keys(currentPayload);
     currentPayload = currentPayload[keys[0]];
-    if(keys[0] === 'record_update'){
-		gs.info(JSON.stringify(currentPayload));
-        var table = currentPayload.table;
-        return currentPayload[table];
-    }else{
+    if (keys[0] === 'record_update') {
+		return getSubObject(currentPayload, tableName);
+		
+        //var table = currentPayload.table;
+//         if (currentPayload[tableName]) {
+// 		return currentPayload[tableName];
+// 	} else {
+// 		keys = Object.keys(currentPayload);
+// 		currentPayload = currentPayload[keys[0]];
+// 		if (currentPayload[tableName]) {
+// 			return currentPayload[tableName];
+// 		}else{
+// 			return currentPayload;
+// 		}
+// 	}
+    } else {
         return currentPayload;
     }
 }
+
+function getSubObject(currentPayload, tableName){
+	if (currentPayload[tableName]) {
+		currentPayload = currentPayload[tableName];
+		
+		if(Array.isArray(currentPayload)){
+			return currentPayload[currentPayload.length - 1];
+		}
+		
+		if(!currentPayload.sys_created_on){
+			return getSubObject(currentPayload, tableName);
+		}else{
+			return currentPayload;
+		}
+	} else {try{
+		keys = Object.keys(currentPayload);
+		return getSubObject(currentPayload[keys[0]], tableName);
+	}catch(e){
+		gs.info('ERROR: ' + tableName + currentPayload);
+	}
+		
+	}
+}
+
 
 ]]></u_script>
         <u_table>sys_app</u_table>

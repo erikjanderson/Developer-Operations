@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="u_dev_tool_operation">
+    <u_dev_tool_operation action="INSERT_OR_UPDATE">
+        <sys_class_name>u_dev_tool_operation</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-09-26 20:15:20</sys_created_on>
+        <sys_id>3ce360f72f021110a8ce2b5df699b6e6</sys_id>
+        <sys_mod_count>13</sys_mod_count>
+        <sys_name>Copy File Into New Scope</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>u_dev_tool_operation_3ce360f72f021110a8ce2b5df699b6e6</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-09-26 21:59:59</sys_updated_on>
+        <u_active>true</u_active>
+        <u_condition/>
+        <u_conditional>false</u_conditional>
+        <u_description>Copies all properties of the the current file to a new application scope</u_description>
+        <u_name>Copy File Into New Scope</u_name>
+        <u_script><![CDATA[var currentRecord = current; //Current GlideRecord
+var targetAppGr = target_application;
+
+if(targetAppGr){
+    //Source Info
+    var sourceAppGr = currentRecord.sys_scope.getRefRecord();
+    var sourceScope = sourceAppGr.getValue('sys_scope');
+    var sourceAppId = sourceAppGr.getUniqueValue();
+
+    //Target Info
+    var targetScope = targetAppGr.getValue('sys_scope');
+    var targetAppId = targetAppGr.getUniqueValue();
+    var targetClass = currentRecord.getTableName();
+
+    var newGr = new GlideRecord(targetClass);
+    newGr.initialize();
+    for(var column in currentRecord){
+        var value = currentRecord.getValue(column);
+        if(value){
+            var appIdRegExp = new RegExp(sourceAppId, 'g');
+            value = value.replace(appIdRegExp, targetAppId);
+            var appScope = new RegExp(sourceScope, 'g');
+            value = value.replace(appScope, targetScope);
+            newGr[column] =  value;
+        }
+    }
+    var sysId = newGr.insert();
+    if(sysId){
+        result = newGr;
+    }else{
+        result = 'Something went wrong and the application file was not copied. Check the logs to see what went wrong.'
+    }
+    
+
+}else{
+    result = 'No target app specified';
+}
+
+
+]]></u_script>
+        <u_table>sys_metadata</u_table>
+    </u_dev_tool_operation>
+</record_update>

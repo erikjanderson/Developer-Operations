@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element attributes="update_synch=true" extends="sys_metadata" label="Dev Tool Operation" max_length="40" name="u_dev_tool_operation" sizeclass="7" type="collection">
+    <element attributes="update_synch=true" extends="sys_metadata" label="Dev Tool Operation" max_length="40" name="u_dev_tool_operation" sizeclass="8" type="collection">
         <element default="true" label="Active" max_length="40" name="u_active" type="boolean"/>
         <element dependent="u_table" dependent_on_field="u_table" label="Condition" max_length="4000" name="u_condition" type="conditions" use_dependent_field="true"/>
         <element label="Conditional" max_length="40" name="u_conditional" type="boolean"/>

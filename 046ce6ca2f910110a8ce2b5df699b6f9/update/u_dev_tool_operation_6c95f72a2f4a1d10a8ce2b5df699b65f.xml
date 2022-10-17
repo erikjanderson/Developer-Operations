@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="u_dev_tool_operation">
+    <u_dev_tool_operation action="INSERT_OR_UPDATE">
+        <sys_class_name>u_dev_tool_operation</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-09-23 14:22:58</sys_created_on>
+        <sys_id>6c95f72a2f4a1d10a8ce2b5df699b65f</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>Generate Class Script Include</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>u_dev_tool_operation_6c95f72a2f4a1d10a8ce2b5df699b65f</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-09-23 15:01:47</sys_updated_on>
+        <u_active>true</u_active>
+        <u_condition/>
+        <u_conditional>false</u_conditional>
+        <u_description>Use the current form to generate a standardized script include with basic CRUD operations for this table.</u_description>
+        <u_name>Generate Class Script Include</u_name>
+        <u_script><![CDATA[var DevOperationClassGenerator = Class.create();
+DevOperationClassGenerator.prototype = {
+    initialize: function(tableName, view, targetScopeGr) {
+		gs.info(tableName + ' : ' + view);
+		if(tableName){
+			this.tableName = tableName;
+			this.view = view;
+            if(targetScopeGr){
+                this.targetApplicationId = targetScopeGr.getUniqueValue();
+            }else{
+                this.targetApplicationId = gs.getCurrentApplicationId();
+            }
+			var tableGr = this._getTableGlideRecord(this.tableName);
+			this._tableHierarchy = this._getTableHierarchy(this.tableName);
+			var formElements = this._getFormFields();
+			this._addTypesToColumns(formElements);
+			this.tableColumns = this._addInternalNames(formElements);
+			gs.info(JSON.stringify(this.tableColumns));
+			
+			this.tableLabel = tableGr.getValue("label");
+			this.className = this.tableLabel.replace(/ /g, "");
+			this.glideRecordName = this._generateGlideRecordName(tableGr.getValue("label"));
+		}
+		
+    },
+
+    insertNewScriptIncludeClass: function() {
+        var scriptIncludeGr = new GlideRecord("sys_script_include");
+        scriptIncludeGr.initialize();
+        scriptIncludeGr.name = this.className;
+        scriptIncludeGr.script = this._baseTemplate;
+        scriptIncludeGr.sys_scope = this.targetApplicationId;
+        scriptIncludeGr.insert();
+        return scriptIncludeGr;
+    },
+
+
+    addClassInfo: function() {
+        this._baseTemplate = this._baseTemplate.replace(/{{ClassName}}/g, this.className);
+        this._baseTemplate = this._baseTemplate.replace(/{{GlideRecordName}}/g, this.glideRecordName);
+        this._baseTemplate = this._baseTemplate.replace(/{{TableName}}/g, this.tableName);
+    },
+
+    addSetters: function() {
+        var setterString = "";
+        for (var i = 0; i < this.tableColumns.length; i++) {
+            var column = this.tableColumns[i];
+            var setter = this._getSetterTempalte(column.name, column.type);
+            if (i === 0) {
+                setterString += "this." + column.internalName + " = " + setter;
+            } else {
+                setterString += "\n\t\tthis." + column.internalName + " = " + setter;
+            }
+        }
+        this._baseTemplate = this._baseTemplate.replace(/{{SetScript}}/g, setterString);
+    },
+
+    addGlideRecordAssign: function() {
+        var grAssignString = "";
+        for (var i = 0; i < this.tableColumns.length; i++) {
+            var column = this.tableColumns[i];
+            if (i > 0) {
+                grAssignString += "\n\t\t";
+            }
+            if (column.type === "reference") {
+                grAssignString += this.glideRecordName + "." + column.name + " = this." + column.internalName + ".sysId;";
+            } else {
+                grAssignString += this.glideRecordName + "." + column.name + " = this." + column.internalName + ";";
+            }
+        }
+        this._baseTemplate = this._baseTemplate.replace(/{{AssignGlideRecordScript}}/g, grAssignString);
+    },
+
+
+
+    //Internal Functions
+
+    _getFormFields: function() {
+		var returnArray = [];
+        var uiElementGr = new GlideRecord('sys_ui_element');
+        uiElementGr.addQuery("sys_ui_section.name", this.tableName);
+        if (!this.view) {
+            uiElementGr.addQuery("sys_ui_section.view", "Default view");
+        } else {
+            uiElementGr.addQuery("sys_ui_section.view.name", this.view);
+        }
+        uiElementGr.addQuery("type", "");
+        uiElementGr.query();
+        while (uiElementGr.next()) {
+			returnArray.push({
+				name: uiElementGr.getValue('element')
+			});
+        }
+		return returnArray;
+    },
+
+	_addTypesToColumns: function(columns){
+		for(var i = 0; i < columns.length; i++){
+			var column = columns[i];
+			var columnGr = new GlideRecord("sys_dictionary");
+			columnGr.addEncodedQuery(this._generateTableNameQuery());
+			columnGr.addQuery("element", column.name);
+			columnGr.setLimit(1);
+			columnGr.query();
+			if(columnGr.next()){
+				column.type = columnGr.internal_type.name + "";
+			}
+		}
+	},
+	
+	_generateTableNameQuery: function(){
+		var str = "";
+		for(var i = 0;  i < this._tableHierarchy.length; i++){
+			if(i === 0){
+				str = "name="+ this._tableHierarchy[i];
+			}else{
+				str += "^ORname=" + this._tableHierarchy[i];
+			}
+		}
+		return str;
+	},
+	
+    _generateGlideRecordName: function() {
+        var name = "gr";
+        var indexedName = this.tableLabel.split(" ");
+        for (var i = 0; i < indexedName.length; i++) {
+            name += indexedName[0][0].toUpperCase();
+        }
+        return name;
+    },
+
+    _addInternalNames: function(formElements) {
+        for (var i = 0; i < formElements.length; i++) {
+            formElements[i].internalName = this._camelcaseColumn(formElements[i].name);
+        }
+        return formElements;
+    },
+
+    _camelcaseColumn: function(columnName) {
+        var nameArray = columnName.split("_");
+        var internalName = "";
+        for (var i = 0; i < nameArray.length; i++) {
+            if (nameArray[0] === "u") {
+                continue;
+            }
+            if (!internalName) {
+                internalName += nameArray[i];
+            } else {
+                internalName += nameArray[i].charAt(0).toUpperCase() + nameArray[i].slice(1);
+            }
+        }
+        return internalName;
+    },
+
+    _getSetterTempalte: function(columnName, columnType) {
+        var template = "";
+        if (columnName && columnType) {
+            if (this._setterTemplates[columnType]) {
+                template = this._setterTemplates[columnType];
+            } else {
+                template = this._setterTemplates["Default"];
+            }
+            template = template.replace(/{{ColumnName}}/g, columnName);
+            template = template.replace(/{{GlideRecordName}}/g, this.glideRecordName);
+            return template;
+        }
+    },
+
+    _getTableGlideRecord: function(tableName) {
+        var tableGr = new GlideRecord("sys_db_object");
+        if (tableGr.get("name", tableName)) {
+            return tableGr;
+        }
+    },
+	
+	_getTableHierarchy: function(tableName){
+		var table = new TableUtils(tableName);
+		return table.getTables();
+	},
+
+    _setterTemplates: {
+        "boolean": '({{GlideRecordName}}.getValue("{{ColumnName}}") == "1");',
+        "integer": 'parseInt({{GlideRecordName}}.getValue("{{ColumnName}}"));',
+        "reference": 'this._getReferenceField("{{ColumnName}}", {{GlideRecordName}});',
+        "Default": '{{GlideRecordName}}.getValue("{{ColumnName}}");'
+    },
+
+    _baseTemplate: 'var {{ClassName}} = Class.create();\n{{ClassName}}.prototype = {\n    initialize: function({{GlideRecordName}}) {\n\t\tif({{GlideRecordName}}){\n            if(typeof {{GlideRecordName}} === "string"){\n                {{GlideRecordName}} = this._getGlideRecordWithId({{GlideRecordName}});\n            }\n\t\t\tif({{GlideRecordName}} + "" === "[object GlideRecord]"){\n\t\t\t\tthis.setFromGr({{GlideRecordName}});\n\t\t\t}else if({{GlideRecordName}} + "" === "[object Object]"){\n\t\t\t\tthis.setFromModel({{GlideRecordName}});\n\t\t\t}\n\t\t}\n    },\n\t\n\tsetFromGr: function({{GlideRecordName}}){\n\t\tthis.sysId = {{GlideRecordName}}.getUniqueValue();\n\t\t{{SetScript}}  \n\t},\n\n\tsetFromModel: function(model){\n\t\tfor(var key in model){\n\t\t\tthis[key] = model[key];\n\t\t}\n\t},\n\n\tinsert: function(){\n\t\tvar {{GlideRecordName}} = new GlideRecord("{{TableName}}");\n\t\t{{GlideRecordName}}.initialize();\n\t\t{{GlideRecordName}} = this._assignGlideRecordValues({{GlideRecordName}});\n\t\tthis.sysId = {{GlideRecordName}}.insert();\n\t},\n\t\t\n\tupdate: function(){\n\t\tvar {{GlideRecordName}} = new GlideRecord("{{TableName}}");\n\t\tif({{GlideRecordName}}.get(this.sysId)){\n\t\t\t{{GlideRecordName}} = this._assignGlideRecordValues({{GlideRecordName}});\n\t\t\t{{GlideRecordName}}.update();\n\t\t}\n\t},\n\n\tdeleteRecord: function(){\n\t\tvar {{GlideRecordName}} = new GlideRecord("{{TableName}}");\n\t\tif({{GlideRecordName}}.get(this.sysId)){\n\t\t\t{{GlideRecordName}}.deleteRecord();\n\t\t}\n\t},\n\n\t//Internal Functions\n\t\n\t_getReferenceField: function(columnName, {{GlideRecordName}}){\n\t\tvar returnObj = {};\n\t\tif(columnName){\n\t\t\treturnObj.id = {{GlideRecordName}}.getValue(columnName);\n\t\t\treturnObj.displayValue = {{GlideRecordName}}.getDisplayValue(columnName);\n\t\t}\n\t\treturn returnObj;\n\t},\n\n\t_assignGlideRecordValues: function({{GlideRecordName}}){\n        {{AssignGlideRecordScript}}\n        return {{GlideRecordName}};\n\t},\n\n    _getGlideRecordWithId: function(id){\n        var {{GlideRecordName}} = new GlideRecord("{{TableName}}");\n        if({{GlideRecordName}}.get(id)){\n            return {{GlideRecordName}};\n        }\n    },\n\t\t\t\t\n    type: \'{{ClassName}}\'\n};',
+
+    type: 'DevOperationClassGenerator'
+};
+
+var currentRecord = current; //Current GlideRecord
+var currentView = view; //Current form view (Default View will be empty)
+var tableName = currentRecord.getTableName();
+var targetScopeGr = target_app_scope;
+
+var classGenerator = new DevOperationClassGenerator(tableName, currentView, targetScopeGr);
+classGenerator.addClassInfo();
+classGenerator.addSetters();
+classGenerator.addGlideRecordAssign();
+var scriptIncludeGr = classGenerator.insertNewScriptIncludeClass();
+
+result = scriptIncludeGr;
+
+
+
+]]></u_script>
+        <u_table>global</u_table>
+    </u_dev_tool_operation>
+</record_update>

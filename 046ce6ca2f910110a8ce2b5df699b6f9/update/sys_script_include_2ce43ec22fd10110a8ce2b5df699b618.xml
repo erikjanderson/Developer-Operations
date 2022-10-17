@@ -22,7 +22,7 @@ DevOperation.prototype = {
 		}
 	},
 
-	execute: function (gr) {
+	execute: function (gr, view) {
 		if (this.operationGr && gr) {
 			this.output = new DevOperationOutput();
 			this.output.setStartTime();
@@ -33,7 +33,7 @@ DevOperation.prototype = {
 			}
 			while(gr.next()){
 				if (this.isRecordCompatible(gr)) {
-					this._runScript(this.operationGr, gr, inputs);
+					this._runScript(this.operationGr, gr, view, inputs);
 				} else {
 					gs.info('developer_operations (execute): ' + this.name + ' Operation Execution was skipped for GR: ' + gr.getUniqueValue() + ' because it did not meet the condition requirement.');
 				}
@@ -45,7 +45,7 @@ DevOperation.prototype = {
 		}
 	},
 	
-	executeAsync: function(tableName, sysIds){
+	executeAsync: function(tableName, sysIds, view){
 		if (!tableName || !sysIds) {
             gs.info("developer_operation (executeAsync): Can't start a new job. Must provide a valid operation, table name, and sys id(s).");
             return false;
@@ -198,16 +198,19 @@ DevOperation.prototype = {
 		return userInputs;
 	},
 
-	_runScript: function (operationGr, gr, inputs) {
+	_runScript: function (operationGr, gr, view, inputs) {
 		try {
 			var evaluator = new GlideScopedEvaluator();
 			for (var key in inputs) {
 				evaluator.putVariable(key, inputs[key]);
 			}
 			evaluator.putVariable('current', gr);
+			evaluator.putVariable('view', view);
 			evaluator.putVariable('result', '');
 			evaluator.evaluateScript(operationGr, 'u_script');
-			this.output.addResult('success', evaluator.getVariable('result'), gr);
+			var result = this._parseResult(evaluator.getVariable('result'));
+
+			this.output.addResult(result.type, 'success', result.value, gr);
 		} catch (e) {
 			this.output.addResult('error', e.getMessage(), gr);
 		}
@@ -220,19 +223,34 @@ DevOperation.prototype = {
         }
     },
 
+	_parseResult: function(result){
+		var response = {
+			type: 'basic',
+			value: result
+		}
+		if(response.value + "" === "[object GlideRecord]"){
+			response.value = {
+				link: response.value.getLink(),
+				display: response.value.getDisplayValue()
+			} 
+			response.type = 'link';
+		}
+		return response;
+	},
+
 	type: 'DevOperation'
 };]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>erik.anderson</sys_created_by>
         <sys_created_on>2022-01-28 17:19:42</sys_created_on>
         <sys_id>2ce43ec22fd10110a8ce2b5df699b618</sys_id>
-        <sys_mod_count>118</sys_mod_count>
+        <sys_mod_count>135</sys_mod_count>
         <sys_name>DevOperation</sys_name>
         <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
         <sys_policy/>
         <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
         <sys_update_name>sys_script_include_2ce43ec22fd10110a8ce2b5df699b618</sys_update_name>
         <sys_updated_by>erik.anderson</sys_updated_by>
-        <sys_updated_on>2022-03-16 14:52:59</sys_updated_on>
+        <sys_updated_on>2022-09-23 14:35:57</sys_updated_on>
     </sys_script_include>
 </record_update>

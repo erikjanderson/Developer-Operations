@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="u_dev_tool_operation">
+    <u_dev_tool_operation action="INSERT_OR_UPDATE">
+        <sys_class_name>u_dev_tool_operation</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-09-23 15:07:52</sys_created_on>
+        <sys_id>d3908c3a2f425d10a8ce2b5df699b619</sys_id>
+        <sys_mod_count>13</sys_mod_count>
+        <sys_name>Generate SysId System Property</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>u_dev_tool_operation_d3908c3a2f425d10a8ce2b5df699b619</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-09-23 15:24:11</sys_updated_on>
+        <u_active>true</u_active>
+        <u_condition/>
+        <u_conditional>false</u_conditional>
+        <u_description>Create a system property that represents the sys_id of this record.</u_description>
+        <u_name>Generate SysId System Property</u_name>
+        <u_script><![CDATA[var currentRecord = current; //Current GlideRecord
+var targetAppGr = target_app_scope;
+
+//Enter Code Below
+var displayValue = currentRecord.getDisplayValue();
+var cleanDisplayValue = _cleanDisplayValue(displayValue);
+var propName = _buildPropertyName(cleanDisplayValue, targetAppGr);
+if(_isValidPropertyName("name", propName)){
+    result = _buildSystemProperty(propName, currentRecord.getUniqueValue() , "The sys_id of the "+ displayValue +" Record", targetAppGr.getUniqueValue());
+}else{
+    result =  "A system property already exists with the name: " + propName;
+}
+
+
+function _cleanDisplayValue(displayValue){
+    if(displayValue){
+        displayValue =  displayValue.toLowerCase();
+        displayValue = displayValue.replace(/ /g, "_");
+        displayValue += '_sys_id';
+        return displayValue;
+    }
+    
+}
+
+
+function _buildPropertyName(name, targetAppGr){
+    var targetScope = targetAppGr.getValue('scope');
+    if(targetScope  === "global"){
+        return name;
+    }else{
+        return targetScope + "." + name;
+    }
+}
+
+function _isValidPropertyName(column, name){
+    var sysPropertyGr = new GlideRecord("sys_properties");
+    if(sysPropertyGr.get(column, name)){
+        return false;
+    }else{
+        return true;
+    }
+}
+
+function _buildSystemProperty(name, value, description, targetAppId){
+    if(name){
+        var sysPropertyGr = new GlideRecord("sys_properties");
+        sysPropertyGr.initialize();
+        sysPropertyGr.name = name;
+        sysPropertyGr.value = value;
+        sysPropertyGr.description = description;
+        sysPropertyGr.sys_scope = targetAppId;
+        sysPropertyGr.ignore_cache = true;
+        sysPropertyGr.insert();
+        return sysPropertyGr;
+        
+    }
+    
+}]]></u_script>
+        <u_table>sys_metadata</u_table>
+    </u_dev_tool_operation>
+</record_update>

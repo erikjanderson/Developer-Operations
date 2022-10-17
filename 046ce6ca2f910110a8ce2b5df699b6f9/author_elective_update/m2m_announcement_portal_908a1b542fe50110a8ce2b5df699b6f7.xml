@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_announcement_portal">
+    <m2m_announcement_portal action="DELETE">
+        <announcement display_value="Alert : Appsec Daily Data Management">188a1b542fe50110a8ce2b5df699b6f7</announcement>
+        <order>100</order>
+        <sp_portal display_value="Instance Security Center">bebfa187536a1300a699ddeeff7b1223</sp_portal>
+        <sys_class_name>m2m_announcement_portal</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-02-04 19:50:24</sys_created_on>
+        <sys_id>908a1b542fe50110a8ce2b5df699b6f7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Alert : Appsec Daily Data Management.Instance Security Center</sys_name>
+        <sys_package display_value="Developer Tools 2.0" source="global">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Tools 2.0">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>m2m_announcement_portal_908a1b542fe50110a8ce2b5df699b6f7</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-02-04 19:50:24</sys_updated_on>
+    </m2m_announcement_portal>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</application>
+        <file_path/>
+        <instance_id>54f0e1b4db429bc0536ad5b0cf9619dd</instance_id>
+        <instance_name>dev58956</instance_name>
+        <name>m2m_announcement_portal_908a1b542fe50110a8ce2b5df699b6f7</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_announcement_portal"><m2m_announcement_portal action="INSERT_OR_UPDATE"><announcement display_value="Alert : Appsec Daily Data Management">188a1b542fe50110a8ce2b5df699b6f7</announcement><order>100</order><sp_portal display_value="Instance Security Center">bebfa187536a1300a699ddeeff7b1223</sp_portal><sys_class_name>m2m_announcement_portal</sys_class_name><sys_created_by>erik.anderson</sys_created_by><sys_created_on>2022-02-04 19:50:24</sys_created_on><sys_id>908a1b542fe50110a8ce2b5df699b6f7</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Alert : Appsec Daily Data Management.Instance Security Center</sys_name><sys_package display_value="Developer Tools 2.0" source="global">046ce6ca2f910110a8ce2b5df699b6f9</sys_package><sys_policy/><sys_scope display_value="Developer Tools 2.0">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope><sys_update_name>m2m_announcement_portal_908a1b542fe50110a8ce2b5df699b6f7</sys_update_name><sys_updated_by>erik.anderson</sys_updated_by><sys_updated_on>2022-02-04 19:50:24</sys_updated_on></m2m_announcement_portal></record_update>]]></payload>
+        <payload_hash>-989898099</payload_hash>
+        <record_name>Alert : Appsec Daily Data Management.Instance Security Center</record_name>
+        <reverted_from/>
+        <source>adaad3942fe50110a8ce2b5df699b643</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-02-04 19:51:07</sys_created_on>
+        <sys_id>32aad3942fe50110a8ce2b5df699b6cd</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17ec64a55660000001</sys_recorded_at>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-02-04 19:51:07</sys_updated_on>
+        <type>Portal Announcements</type>
+        <update_guid>feaad39421e501105bc173b5dcc4dacc</update_guid>
+        <update_guid_history>feaad39421e501105bc173b5dcc4dacc:-989898099</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Alert : Appsec Daily Data Management.Instance Security Center">0d9d51012f5b4110a8ce2b5df699b65f</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-05-04 18:29:55</sys_created_on>
+        <sys_db_object display_value="" name="m2m_announcement_portal">m2m_announcement_portal</sys_db_object>
+        <sys_id>678697d3f60f42a28bd4e4a3c5446c64</sys_id>
+        <sys_metadata>908a1b542fe50110a8ce2b5df699b6f7</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Alert : Appsec Daily Data Management.Instance Security Center</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_scope_delete display_value="">3b255f5eab984b4ca2d4e8de4c0cdc10</sys_scope_delete>
+        <sys_update_name>m2m_announcement_portal_908a1b542fe50110a8ce2b5df699b6f7</sys_update_name>
+        <sys_update_version display_value="m2m_announcement_portal_908a1b542fe50110a8ce2b5df699b6f7">32aad3942fe50110a8ce2b5df699b6cd</sys_update_version>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-05-04 18:29:55</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="u_dev_tool_operation">
+    <u_dev_tool_operation action="INSERT_OR_UPDATE">
+        <sys_class_name>u_dev_tool_operation</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-09-23 14:31:22</sys_created_on>
+        <sys_id>19a873ea2f025d10a8ce2b5df699b603</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>[DEBUG] - Test Operation</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>u_dev_tool_operation_19a873ea2f025d10a8ce2b5df699b603</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-09-26 22:05:39</sys_updated_on>
+        <u_active>false</u_active>
+        <u_condition/>
+        <u_conditional>false</u_conditional>
+        <u_description/>
+        <u_name>[DEBUG] - Test Operation</u_name>
+        <u_script><![CDATA[var currentRecord = current; //Current GlideRecord
+//Each operation input is available as a variable witin this script.
+//Ex: var userName = name
+
+//Enter Code Below
+
+result = 'script_output';]]></u_script>
+        <u_table>global</u_table>
+    </u_dev_tool_operation>
+</record_update>
