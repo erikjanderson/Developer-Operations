@@ -6,15 +6,11 @@
             <sys_class_name>sys_choice_set</sys_class_name>
             <sys_created_by>erik.anderson</sys_created_by>
             <sys_created_on>2022-02-04 16:44:22</sys_created_on>
-            <sys_id>03efe69c2f250110a8ce2b5df699b65a</sys_id>
-            <sys_mod_count>0</sys_mod_count>
             <sys_name>u_type</sys_name>
             <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
             <sys_policy/>
             <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
             <sys_update_name>sys_choice_u_dev_tool_operation_input_u_type</sys_update_name>
-            <sys_updated_by>erik.anderson</sys_updated_by>
-            <sys_updated_on>2022-02-04 16:44:22</sys_updated_on>
         </sys_choice_set>
         <sys_choice action="INSERT_OR_UPDATE">
             <dependent_value/>
@@ -30,10 +26,6 @@
             <sys_created_on>2022-02-04 17:17:07</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>c667b2542f650110a8ce2b5df699b625</sys_id>
-            <sys_mod_count>4</sys_mod_count>
-            <sys_updated_by>erik.anderson</sys_updated_by>
-            <sys_updated_on>2022-02-11 18:24:59</sys_updated_on>
             <value>text</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
@@ -50,10 +42,6 @@
             <sys_created_on>2022-02-04 17:17:13</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>4b6736942f650110a8ce2b5df699b658</sys_id>
-            <sys_mod_count>4</sys_mod_count>
-            <sys_updated_by>erik.anderson</sys_updated_by>
-            <sys_updated_on>2022-02-11 18:25:02</sys_updated_on>
             <value>number</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
@@ -70,10 +58,6 @@
             <sys_created_on>2022-02-04 17:17:18</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>9477f6942f650110a8ce2b5df699b619</sys_id>
-            <sys_mod_count>2</sys_mod_count>
-            <sys_updated_by>erik.anderson</sys_updated_by>
-            <sys_updated_on>2022-02-11 18:25:03</sys_updated_on>
             <value>reference</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
@@ -90,10 +74,6 @@
             <sys_created_on>2022-02-21 16:56:57</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>bcc556712f3d0110a8ce2b5df699b659</sys_id>
-            <sys_mod_count>2</sys_mod_count>
-            <sys_updated_by>erik.anderson</sys_updated_by>
-            <sys_updated_on>2022-02-21 16:57:06</sys_updated_on>
             <value>bool</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
@@ -110,10 +90,6 @@
             <sys_created_on>2022-02-21 16:57:13</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>e9d59e7d2ff90110a8ce2b5df699b632</sys_id>
-            <sys_mod_count>2</sys_mod_count>
-            <sys_updated_by>erik.anderson</sys_updated_by>
-            <sys_updated_on>2022-02-21 16:57:20</sys_updated_on>
             <value>choice</value>
         </sys_choice>
     </sys_choice>

@@ -12,14 +12,11 @@
         <sys_created_by>erik.anderson</sys_created_by>
         <sys_created_on>2022-02-04 16:30:31</sys_created_on>
         <sys_id>1ccc621c2f250110a8ce2b5df699b67e</sys_id>
-        <sys_mod_count>0</sys_mod_count>
         <sys_name>u_dev_tool_operation_input</sys_name>
         <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
         <sys_policy/>
         <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
         <sys_update_name>sys_security_acl_1ccc621c2f250110a8ce2b5df699b67e</sys_update_name>
-        <sys_updated_by>erik.anderson</sys_updated_by>
-        <sys_updated_on>2022-02-04 16:30:31</sys_updated_on>
         <type display_value="record">record</type>
     </sys_security_acl>
 </record_update>

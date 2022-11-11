@@ -4,14 +4,11 @@
         <sys_created_by>erik.anderson</sys_created_by>
         <sys_created_on>2022-02-14 19:02:59</sys_created_on>
         <sys_id>df5f62af2fa50110a8ce2b5df699b66d</sys_id>
-        <sys_mod_count>2</sys_mod_count>
         <sys_name>Deep Search Application</sys_name>
         <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
         <sys_policy/>
         <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
         <sys_update_name>u_dev_tool_operation_df5f62af2fa50110a8ce2b5df699b66d</sys_update_name>
-        <sys_updated_by>erik.anderson</sys_updated_by>
-        <sys_updated_on>2022-02-14 19:05:50</sys_updated_on>
         <u_active>true</u_active>
         <u_condition/>
         <u_conditional>false</u_conditional>

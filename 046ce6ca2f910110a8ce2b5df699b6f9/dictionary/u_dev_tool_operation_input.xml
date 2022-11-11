@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element attributes="update_synch=true" extends="sys_metadata" label="Dev Tool Operation Input" max_length="40" name="u_dev_tool_operation_input" sizeclass="15" type="collection">
-        <element default="true" label="Active" max_length="40" name="u_active" type="boolean"/>
-        <element label="Choice list" max_length="65535" name="u_choice_list" type="simple_name_values"/>
-        <element label="Dev tool operation" max_length="32" name="u_dev_tool_operation" reference="u_dev_tool_operation" reference_floats="true" type="reference"/>
+    <element attributes="update_synch=true" db_object_id="f8281b562fa6111003377f572799b6b8" extends="sys_metadata" label="Dev Tool Operation Input" max_length="40" name="u_dev_tool_operation_input" type="collection">
+        <element attributes="edge_encryption_enabled=true" default="true" label="Active" max_length="40" name="u_active" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true" label="Choice list" max_length="65535" name="u_choice_list" type="simple_name_values"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Dev tool operation" max_length="32" name="u_dev_tool_operation" reference="u_dev_tool_operation" reference_floats="true" type="reference"/>
         <element display="true" label="Input label" max_length="40" name="u_input_label" type="string"/>
         <element label="Input name" max_length="40" name="u_input_name" type="string"/>
-        <element label="Mandatory" max_length="40" name="u_mandatory" type="boolean"/>
-        <element label="Max length" max_length="40" name="u_max_length" type="integer"/>
-        <element default="0" label="Order" max_length="40" name="u_order" type="integer"/>
-        <element dependent="u_reference" dependent_on_field="u_reference" label="Qualifier" max_length="4000" name="u_qualifier" type="conditions" use_dependent_field="true"/>
-        <element attributes="allow_public" label="Reference" max_length="80" name="u_reference" type="table_name"/>
-        <element dependent="u_reference" dependent_on_field="u_reference" label="Display field" max_length="80" name="u_reference_display_field" type="field_name" use_dependent_field="true"/>
-        <element choice="3" default="text" label="Type" max_length="40" name="u_type" type="choice">
+        <element attributes="edge_encryption_enabled=true" label="Mandatory" max_length="40" name="u_mandatory" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true" label="Max length" max_length="40" name="u_max_length" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" default="0" label="Order" max_length="40" name="u_order" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" dependent="u_reference" dependent_on_field="u_reference" label="Qualifier" max_length="4000" name="u_qualifier" type="conditions" use_dependent_field="true"/>
+        <element attributes="allow_public=true,base_start=true,edge_encryption_enabled=true" label="Reference" max_length="80" name="u_reference" type="table_name"/>
+        <element attributes="edge_encryption_enabled=true" dependent="u_reference" dependent_on_field="u_reference" label="Display field" max_length="80" name="u_reference_display_field" type="field_name" use_dependent_field="true"/>
+        <element attributes="edge_encryption_enabled=true" choice="3" default="text" label="Type" max_length="40" name="u_type" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Text" sequence="1" value="text"/>
                 <element inactive_on_update="false" label="Number" sequence="2" value="number"/>

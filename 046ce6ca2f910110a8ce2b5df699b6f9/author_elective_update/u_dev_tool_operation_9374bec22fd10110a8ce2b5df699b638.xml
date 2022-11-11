@@ -70,14 +70,13 @@ result = 'test';]]&gt;&lt;/u_script&gt;&lt;u_table&gt;global&lt;/u_table&gt;&lt;
         <update_guid_history>68456ce5046d0110ef817b3883305e61:-224873033,3e9320e5ee6d01100873ff191cc0c04e:1481719156,dd03ec65816d0110f2f985fbab04d565:-1078569040,03626c65706d011023c9f018b9f6e566:-662750973,8b22e0658f6d0110b42efe973f36bedf:980084581,1f512ce1216d0110598fda36c5673e6e:456842571,5f606025b76d0110388a57366de09eb2:438516514,daff58e1e86d011027cfe76d39bdd31e:-511061947,92df58e1396d01107c14c707df835db9:1270540144,7ecf54e1956d01101a16e69114d8e913:-709726110,908f5ca1606d0110e423794687a98c97:1270540144,970f1ca1b86d0110f4a911b3845e1db6:-362157437,f9ced061516d01103b0f34d12db4971d:-1975184105,96be9c612d6d0110e1e5a3d195e0c701:-362157437,805c90210c6d011058826756df6f3ffb:917579479,44dc839833a50110c960cb6cd518e635:466097450,02cc439800a50110c97f658830346cac:-2042742305,688c0f5893a50110814a72b9caedba27:255997180,917c035817a50110a8922779d42ed103:1371674024,f8b72ed4eb2501105f5f7c6ed2ae6323:2057420106,0746a69479250110657364aaf7f67eaa:-2079520998,20e4a25454250110ce72a5592562eab3:-1997946020,a9b43ec2b8d101100b855e294b95226b:-1204479728</update_guid_history>
     </sys_update_version>
     <sys_metadata_delete action="INSERT_OR_UPDATE">
-        <sys_audit_delete display_value="Test">0758c8152f520110a8ce2b5df699b6d8</sys_audit_delete>
+        <sys_audit_delete display_value="">0758c8152f520110a8ce2b5df699b6d8</sys_audit_delete>
         <sys_class_name>sys_metadata_delete</sys_class_name>
         <sys_created_by>erik.anderson</sys_created_by>
         <sys_created_on>2022-03-16 13:53:16</sys_created_on>
         <sys_db_object display_value="" name="u_dev_tool_operation">u_dev_tool_operation</sys_db_object>
         <sys_id>11a9ae7dc5be4ef6853dc77640ed10c1</sys_id>
         <sys_metadata>9374bec22fd10110a8ce2b5df699b638</sys_metadata>
-        <sys_mod_count>0</sys_mod_count>
         <sys_name>Test</sys_name>
         <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
         <sys_parent/>
@@ -86,7 +85,5 @@ result = 'test';]]&gt;&lt;/u_script&gt;&lt;u_table&gt;global&lt;/u_table&gt;&lt;
         <sys_scope_delete display_value="">3b255f5eab984b4ca2d4e8de4c0cdc10</sys_scope_delete>
         <sys_update_name>u_dev_tool_operation_9374bec22fd10110a8ce2b5df699b638</sys_update_name>
         <sys_update_version display_value="u_dev_tool_operation_9374bec22fd10110a8ce2b5df699b638">a0456ce52f6d0110a8ce2b5df699b662</sys_update_version>
-        <sys_updated_by>erik.anderson</sys_updated_by>
-        <sys_updated_on>2022-03-16 13:53:16</sys_updated_on>
     </sys_metadata_delete>
 </record_update>

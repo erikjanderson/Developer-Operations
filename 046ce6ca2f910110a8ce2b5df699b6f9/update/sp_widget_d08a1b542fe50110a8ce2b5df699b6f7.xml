@@ -36,7 +36,15 @@
 
 		c.server.get(input).then(function (response) {
 			if (response && response.data) {
-				c.operations = response.data.operations;
+				c.operations = [];
+				var operations = response.data.operations;
+				for(var i = 0; i < operations.length; i++){
+					c.operations.push({
+						"display": operations[i].name,
+						"value": operations[i]
+					});
+				}
+
 
 			}
 		});
@@ -134,7 +142,7 @@
         <css>.copy-button {
   width: 37px;
   padding: 6px 1px;
-  background-color: #293e40;
+  background-color: #2f5357;
 }
 
 .option-select {
@@ -147,12 +155,25 @@
   overflow-wrap: anywhere;
 }
 
-.process-button {
-  width: 100%;
-  height: 37px !important;
+button {
   background-color: #293e40;
   color: white;
 }
+
+button:hover {
+  color: white;
+}
+
+button:focus {
+  color: white;
+}
+
+button.process-button {
+  width: 100%;
+  height: 49px !important;
+  
+}
+
 
 .content-footer {
   position: absolute;
@@ -267,11 +288,22 @@ input:checked+.slider:before {
 }
 
 .operation-content {
-  background-color: #f0f0f0;
+  background-image: linear-gradient(to right bottom, #181826, #364352, #5a737d, #88a6a6, #c0dad0);
   padding: 10px;
   border-radius: 5px;
   max-height: 500px;
   overflow: auto;
+  font-size: 16px;
+  color: white;
+}
+
+.operation-results {
+  background-image: linear-gradient(to right bottom, #181826, #364352, #5a737d, #88a6a6, #c0dad0);
+  padding: 10px;
+  border-radius: 5px;
+  overflow: auto;
+  font-size: 16px;
+  color: white;
 }
 
 .control-end {
@@ -279,6 +311,89 @@ input:checked+.slider:before {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.option-header .select2-drop-active {
+    border: 1px solid #cbcbcb;
+    margin-top: 6px;
+    padding-top: 20px;
+}
+
+
+
+.option-description {
+  font-size: 16px;
+  margin: 15px;
+}
+
+.output-raw-text {
+  height: 415px;
+    width: 100%;
+    //background-color: #505050;
+    //background-color: hsla(0, 0%, 31%, 0.78);
+    background-color:rgba(80, 80, 80, .9);
+    color: white;
+    border-radius: 5px;
+}
+
+.select2-container {
+  font-size: 16px;
+  height: 44px;
+
+}
+.select2-choice {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  border-width: 1px 1px 3px 1px;
+    border-color: #707070;
+}
+
+
+input {
+  height: 44px;
+    border-width: 1px 1px 3px 1px;
+    border-color: #636363;
+}
+
+.btn-primary {
+  background-color: #2f5357;
+  border-color: #707070;
+}
+
+.btn-primary:focus:active {
+  background-color: #2f5357;
+}
+
+
+.operation-results a {
+  outline: none;
+  text-decoration:underline;
+  background: rgba(80, 80, 80, .9);
+  border-radius: 9px;
+  padding: 7px;
+}
+
+.operation-results a:link {
+  color: #f5f5f5;
+}
+
+.operation-results a:visited {
+  color: #182b08;
+}
+
+.operation-results a:focus {
+  border-bottom: 1px solid;
+  background: rgba(80, 80, 80, .9);
+}
+
+.operation-results a:hover {
+  border: 1px solid;
+  background: rgba(80, 80, 80, .9);
+}
+
+.operation-results a:active {
+  background: rgba(80, 80, 80, .5);
 }</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
@@ -315,38 +430,36 @@ input:checked+.slider:before {
         <sys_created_by>erik.anderson</sys_created_by>
         <sys_created_on>2022-02-04 19:50:24</sys_created_on>
         <sys_id>d08a1b542fe50110a8ce2b5df699b6f7</sys_id>
-        <sys_mod_count>345</sys_mod_count>
         <sys_name>Developer Tools</sys_name>
         <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
         <sys_policy/>
         <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
         <sys_update_name>sp_widget_d08a1b542fe50110a8ce2b5df699b6f7</sys_update_name>
-        <sys_updated_by>erik.anderson</sys_updated_by>
-        <sys_updated_on>2022-09-26 22:01:44</sys_updated_on>
-        <template><![CDATA[<div style="height: 579px;">
+        <template><![CDATA[<div style="height: 650px;">
 	<!-- your widget template -->
 	<div class="option-header">
-		<!-- <sn-choice-list placeholder="-- Choose an operation --" sn-model="c.selectedOperation" sn-value-field="operation" sn-text-field="name" sn-items="c.operations">
-    </sn-choice-list> -->
-		<select class="form-control option-select" ng-disabled="c.running"
+		<sn-choice-list ng-change="c.executeAsync = false" placeholder="-- Choose an operation --" sn-model="c.selectedOperation" sn-value-field="value" sn-text-field="display" sn-items="c.operations" sn-options="c.operations" field="c.selectedOperation">
+    </sn-choice-list>
+		<!-- <select class="form-control option-select" ng-disabled="c.running"
 			ng-options="operation as operation.name for operation in c.operations track by operation.sysId"
 			ng-model="c.selectedOperation" ng-change="c.executeAsync = false">
 			<option value="">-- Choose an operation --</option>
-		</select>
+		</select> -->
 		<button ng-disabled="!c.selectedOperation" data-toggle="tooltip" data-placement="bottom"
-			title="Copy Script to Clipboard" class="btn btn-primary copy-button"
-			style="margin-bottom: 20px; margin-left: 9px; height: 34px;" ng-click="c.generateScript()">
+			title="Copy Script to Clipboard" class="btn copy-button"
+			style="margin-bottom: 20px; margin-left: 9px; height: 44px;" ng-click="c.generateScript()">
 			<i ng-if="!c.generating" class="fa fa-clone"></i>
 			<span ng-if="c.generating"><i class="fa fa-spinner fa-spin fa-fw"></i></span>
 		</button>
 	</div>
+	<!-- <pre>{{c.selectedOperation | json}}</pre> -->
 
 	<p class="option-description" ng-bind-html="c.selectedOperation.description"></p>
 	<div class="operation-content"
 		ng-if="c.selectedOperation && !c.selectedOperation.output && c.selectedOperation.inputs.length">
 		<div class="form-group" ng-repeat="userInput in c.selectedOperation.inputs">
 			<label>{{userInput.inputLabel}} 
-				<span ng-if="userInput.mandatory && (!userInput.userValue  || userInput.type === 'reference' && !userInput.userValue.value)"style="color:#cf0707; font-size:10px"><i class="fa fa-asterisk"></i></span>
+				<span ng-if="userInput.mandatory && (!userInput.userValue  || userInput.type === 'reference' && !userInput.userValue.value)"style="color:#cf0707; font-size:16px"><i class="fa fa-asterisk"></i></span>
 				<span ng-if="userInput.mandatory && (userInput.type != 'reference' && userInput.userValue) || userInput.type === 'reference' && userInput.userValue.value" style="color:#00ae00;"><i class="fa fa-check"></i></span>
 				<!-- -- {{userInput.userValue}} --> </label>
 			<sn-record-picker ng-if="userInput.type === 'reference'" placeholder="-- Select --"
@@ -371,8 +484,8 @@ input:checked+.slider:before {
 				maxlength="{{userInput.maxLength}}" placeholder="{{userInput.inputName}}">
 		</div>
 	</div>
-	<div class="" ng-if="c.selectedOperation.output">
-		<hr>
+	<div class="operation-results" ng-if="c.selectedOperation.output">
+		<!-- <pre>{{c.selectedOperation.output | json}}</pre> -->
 		<!-- <label>Operation completed in: </label> -->
 		<!-- <a href="/syslog_list.do?sysparm_query=sys_created_onBETWEENjavascript:gs.dateGenerate('{{c.selectedOperation.output.duration.start.split(' ')[0]}}','{{c.selectedOperation.output.duration.start.split(' ')[1]}}')@javascript:gs.dateGenerate('{{c.selectedOperation.output.duration.end.split(' ')[0]}}','{{c.selectedOperation.output.duration.end.split(' ')[1]}}')" target="_blank">Link</a> -->
 		<span><label>Record: {{c.selectedOperation.output.results[c.resultIndex - 1].gr.displayValue}}</label></span>
@@ -383,7 +496,7 @@ input:checked+.slider:before {
 			<span><i style="color: #00ae00; font-size: 20px;" class="fa fa-check"
 					ng-if="c.selectedOperation.output.results[c.resultIndex - 1].status === 'success'"></i></span>
 		</div>
-		<pre ng-if="c.selectedOperation.output.results[c.resultIndex - 1].type === 'basic'" style="height: 415px; width: 100%;">{{c.selectedOperation.output.results[c.resultIndex - 1].result}}</pre>
+		<pre class="output-raw-text" ng-if="c.selectedOperation.output.results[c.resultIndex - 1].type === 'basic'" style="height: 415px; width: 100%;">{{c.selectedOperation.output.results[c.resultIndex - 1].result}}</pre>
 		<div ng-if="c.selectedOperation.output.results[c.resultIndex - 1].type === 'link'"><label>Result: </label><a  href="{{c.selectedOperation.output.results[c.resultIndex - 1].result.link}}">{{c.selectedOperation.output.results[c.resultIndex - 1].result.display}}</a></div>
 	</div>
 	<div class="content-footer">
@@ -403,7 +516,7 @@ input:checked+.slider:before {
 				</a>
 
 				<button data-toggle="tooltip" data-placement="top" title="Copy Results to Clipboard"
-					class="btn btn-primary copy-button"><i class="fa fa-clone"
+					class="btn copy-button"><i class="fa fa-clone"
 						ng-click="c.copyToClipboard(c.selectedOperation.output.results[c.resultIndex - 1].result)"></i>
 				</button>
 			</div>

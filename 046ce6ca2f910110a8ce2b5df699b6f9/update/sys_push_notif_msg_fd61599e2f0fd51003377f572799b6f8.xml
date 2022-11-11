@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_push_notif_msg">
+    <sys_push_notif_msg action="INSERT_OR_UPDATE">
+        <message_string>Yo you got something</message_string>
+        <name>Test</name>
+        <push_app/>
+        <push_message_content/>
+        <subject/>
+        <sys_class_name>sys_push_notif_msg</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-11-11 00:44:53</sys_created_on>
+        <sys_id>fd61599e2f0fd51003377f572799b6f8</sys_id>
+        <sys_name>Test</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>sys_push_notif_msg_fd61599e2f0fd51003377f572799b6f8</sys_update_name>
+        <table/>
+        <type>push</type>
+    </sys_push_notif_msg>
+</record_update>
