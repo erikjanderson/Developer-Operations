@@ -80,14 +80,13 @@ result = csv.createAttachment('Test_' + new GlideDateTime().getDisplayValue());]
         <update_guid_history>4a3e715477530110f68248e50fb8155c:623660441,73e97154705301106aab26d33d46f421:313294070,e5f8b43aebc74110244293e2e9a9b58a:1478238071,1e3b20ba47874110016836ac1747204e:-209572201,6c0b607a45874110c63bb72db13a0223:76915064,85966076fe87411061644391ea70e49d:1998788048,d8f52476688741103f24a904ad9cb1d7:1043771001</update_guid_history>
     </sys_update_version>
     <sys_metadata_delete action="INSERT_OR_UPDATE">
-        <sys_audit_delete display_value="Test CSV">46cec5c92f1b4110a8ce2b5df699b6e6</sys_audit_delete>
+        <sys_audit_delete display_value="">46cec5c92f1b4110a8ce2b5df699b6e6</sys_audit_delete>
         <sys_class_name>sys_metadata_delete</sys_class_name>
         <sys_created_by>erik.anderson</sys_created_by>
         <sys_created_on>2022-05-04 17:25:16</sys_created_on>
         <sys_db_object display_value="" name="u_dev_tool_operation">u_dev_tool_operation</sys_db_object>
         <sys_id>7ff4fecb694d4cc3abd59efdbf285ae9</sys_id>
         <sys_metadata>0ca524762f874110a8ce2b5df699b699</sys_metadata>
-        <sys_mod_count>0</sys_mod_count>
         <sys_name>Test CSV</sys_name>
         <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
         <sys_parent/>
@@ -96,7 +95,5 @@ result = csv.createAttachment('Test_' + new GlideDateTime().getDisplayValue());]
         <sys_scope_delete display_value="">3b255f5eab984b4ca2d4e8de4c0cdc10</sys_scope_delete>
         <sys_update_name>u_dev_tool_operation_0ca524762f874110a8ce2b5df699b699</sys_update_name>
         <sys_update_version display_value="u_dev_tool_operation_0ca524762f874110a8ce2b5df699b699">823e71542f530110a8ce2b5df699b65d</sys_update_version>
-        <sys_updated_by>erik.anderson</sys_updated_by>
-        <sys_updated_on>2022-05-04 17:25:16</sys_updated_on>
     </sys_metadata_delete>
 </record_update>

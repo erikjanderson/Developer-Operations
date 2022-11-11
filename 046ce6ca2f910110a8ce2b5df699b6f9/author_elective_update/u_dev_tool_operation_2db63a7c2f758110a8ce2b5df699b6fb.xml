@@ -72,14 +72,13 @@ result = currentRecord.getDisplayValue() + ':   ' + active + ' &gt; ' + newActiv
         <update_guid_history>e4297afc7375811052cb1c9b4f9b56d1:-1719447271,d6f8b6fc077581109de28c1593fda75d:-275774463,35a8f2fcb7758110dfda07ad0985a2a7:-1591720959,66973e7c2c758110e4a66af7160e316e:-258793765,7617fe7c0a7581108db2fc0ebf9acdaa:1668336439</update_guid_history>
     </sys_update_version>
     <sys_metadata_delete action="INSERT_OR_UPDATE">
-        <sys_audit_delete display_value="Toggle Active">b258c8152f520110a8ce2b5df699b6bf</sys_audit_delete>
+        <sys_audit_delete display_value="">b258c8152f520110a8ce2b5df699b6bf</sys_audit_delete>
         <sys_class_name>sys_metadata_delete</sys_class_name>
         <sys_created_by>erik.anderson</sys_created_by>
         <sys_created_on>2022-03-16 13:53:16</sys_created_on>
         <sys_db_object display_value="" name="u_dev_tool_operation">u_dev_tool_operation</sys_db_object>
         <sys_id>13b6dd5088f647ca869c8747118626c4</sys_id>
         <sys_metadata>2db63a7c2f758110a8ce2b5df699b6fb</sys_metadata>
-        <sys_mod_count>0</sys_mod_count>
         <sys_name>Toggle Active</sys_name>
         <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
         <sys_parent/>
@@ -88,7 +87,5 @@ result = currentRecord.getDisplayValue() + ':   ' + active + ' &gt; ' + newActiv
         <sys_scope_delete display_value="">3b255f5eab984b4ca2d4e8de4c0cdc10</sys_scope_delete>
         <sys_update_name>u_dev_tool_operation_2db63a7c2f758110a8ce2b5df699b6fb</sys_update_name>
         <sys_update_version display_value="u_dev_tool_operation_2db63a7c2f758110a8ce2b5df699b6fb">20297afc2f758110a8ce2b5df699b6d2</sys_update_version>
-        <sys_updated_by>erik.anderson</sys_updated_by>
-        <sys_updated_on>2022-03-16 13:53:16</sys_updated_on>
     </sys_metadata_delete>
 </record_update>

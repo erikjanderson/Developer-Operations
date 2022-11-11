@@ -73,14 +73,13 @@ result = compString;]]&gt;&lt;/u_script&gt;&lt;u_table&gt;cmdb_ci_computer&lt;/u
         <update_guid_history>f00f2e6f17a50110c4f335f800cd797b:-1015195225,5cee266f0aa501103a922022c16144ad:1905605508,351ee26f4ba501107bb769e2d463eac4:455929976,9efd662f4fa5011011811c1ab94fb98c:-1699021036</update_guid_history>
     </sys_update_version>
     <sys_metadata_delete action="INSERT_OR_UPDATE">
-        <sys_audit_delete display_value="CMDB MAC Computer Script">8f58c8152f520110a8ce2b5df699b6dd</sys_audit_delete>
+        <sys_audit_delete display_value="">8f58c8152f520110a8ce2b5df699b6dd</sys_audit_delete>
         <sys_class_name>sys_metadata_delete</sys_class_name>
         <sys_created_by>erik.anderson</sys_created_by>
         <sys_created_on>2022-03-16 13:53:16</sys_created_on>
         <sys_db_object display_value="" name="u_dev_tool_operation">u_dev_tool_operation</sys_db_object>
         <sys_id>115501c6865943c3a37548af687e50e1</sys_id>
         <sys_metadata>f10deeab2fa50110a8ce2b5df699b66b</sys_metadata>
-        <sys_mod_count>0</sys_mod_count>
         <sys_name>CMDB MAC Computer Script</sys_name>
         <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
         <sys_parent/>
@@ -89,7 +88,5 @@ result = compString;]]&gt;&lt;/u_script&gt;&lt;u_table&gt;cmdb_ci_computer&lt;/u
         <sys_scope_delete display_value="">3b255f5eab984b4ca2d4e8de4c0cdc10</sys_scope_delete>
         <sys_update_name>u_dev_tool_operation_f10deeab2fa50110a8ce2b5df699b66b</sys_update_name>
         <sys_update_version display_value="u_dev_tool_operation_f10deeab2fa50110a8ce2b5df699b66b">3c0f2e6f2fa50110a8ce2b5df699b67b</sys_update_version>
-        <sys_updated_by>erik.anderson</sys_updated_by>
-        <sys_updated_on>2022-03-16 13:53:16</sys_updated_on>
     </sys_metadata_delete>
 </record_update>

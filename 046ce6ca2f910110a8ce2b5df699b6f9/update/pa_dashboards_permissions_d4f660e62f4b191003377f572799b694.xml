@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="pa_dashboards_permissions">
+    <pa_dashboards_permissions action="INSERT_OR_UPDATE">
+        <dashboard display_value="Problem Management">42205102bf201100b96dac808c07392a</dashboard>
+        <delete>false</delete>
+        <group/>
+        <identity>pa_viewer</identity>
+        <read>true</read>
+        <role display_value="pa_viewer" name="pa_viewer">a90d30b3bf101100b96dac808c073950</role>
+        <sys_class_name>pa_dashboards_permissions</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-11-11 16:17:32</sys_created_on>
+        <sys_id>d4f660e62f4b191003377f572799b694</sys_id>
+        <sys_name>pa_viewer</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>pa_dashboards_permissions_d4f660e62f4b191003377f572799b694</sys_update_name>
+        <type>1</type>
+        <user/>
+        <write>false</write>
+    </pa_dashboards_permissions>
+</record_update>

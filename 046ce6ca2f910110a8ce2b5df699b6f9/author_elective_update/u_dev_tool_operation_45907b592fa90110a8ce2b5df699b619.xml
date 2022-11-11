@@ -48,14 +48,13 @@
         <update_guid_history>23a0d825172d0110b93b520bb4047ad4:-2118344512,6b01375923a9011010b67b13030c1f93:1897523894,5bb03b59cca901104209ebbfb82ae5e5:1140274574</update_guid_history>
     </sys_update_version>
     <sys_metadata_delete action="INSERT_OR_UPDATE">
-        <sys_audit_delete display_value="Script Include Test">f258c8152f520110a8ce2b5df699b6c3</sys_audit_delete>
+        <sys_audit_delete display_value="">f258c8152f520110a8ce2b5df699b6c3</sys_audit_delete>
         <sys_class_name>sys_metadata_delete</sys_class_name>
         <sys_created_by>erik.anderson</sys_created_by>
         <sys_created_on>2022-03-16 13:53:16</sys_created_on>
         <sys_db_object display_value="" name="u_dev_tool_operation">u_dev_tool_operation</sys_db_object>
         <sys_id>226d4c797ff74f2993f175be2c9f15c1</sys_id>
         <sys_metadata>45907b592fa90110a8ce2b5df699b619</sys_metadata>
-        <sys_mod_count>0</sys_mod_count>
         <sys_name>Script Include Test</sys_name>
         <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
         <sys_parent/>
@@ -64,7 +63,5 @@
         <sys_scope_delete display_value="">3b255f5eab984b4ca2d4e8de4c0cdc10</sys_scope_delete>
         <sys_update_name>u_dev_tool_operation_45907b592fa90110a8ce2b5df699b619</sys_update_name>
         <sys_update_version display_value="u_dev_tool_operation_45907b592fa90110a8ce2b5df699b619">6ba0d8252f2d0110a8ce2b5df699b6d4</sys_update_version>
-        <sys_updated_by>erik.anderson</sys_updated_by>
-        <sys_updated_on>2022-03-16 13:53:16</sys_updated_on>
     </sys_metadata_delete>
 </record_update>

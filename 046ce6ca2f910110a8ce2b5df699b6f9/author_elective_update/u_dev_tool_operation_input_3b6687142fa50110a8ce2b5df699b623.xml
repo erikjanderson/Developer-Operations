@@ -50,14 +50,13 @@
         <update_guid_history>ab29dc2d7a2d0110a6510bf6d5cc1ffd:-727026907,12c59869882d0110f91178c0090a451f:-927385445,a776c71474a5011095dbbfa0f755fd11:-451743369,4b760714bda5011002a43399165c494e:-1341799869,86768fdcea650110b09d75774e07c16b:-574699408</update_guid_history>
     </sys_update_version>
     <sys_metadata_delete action="INSERT_OR_UPDATE">
-        <sys_audit_delete display_value="Reference">ae2c36f12fbd0110a8ce2b5df699b673</sys_audit_delete>
+        <sys_audit_delete display_value="">ae2c36f12fbd0110a8ce2b5df699b673</sys_audit_delete>
         <sys_class_name>sys_metadata_delete</sys_class_name>
         <sys_created_by>erik.anderson</sys_created_by>
         <sys_created_on>2022-02-21 19:44:25</sys_created_on>
         <sys_db_object display_value="" name="u_dev_tool_operation_input">u_dev_tool_operation_input</sys_db_object>
         <sys_id>38d189e63c00439c9be6df658d1a4b99</sys_id>
         <sys_metadata>3b6687142fa50110a8ce2b5df699b623</sys_metadata>
-        <sys_mod_count>0</sys_mod_count>
         <sys_name>Reference</sys_name>
         <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
         <sys_parent/>
@@ -66,7 +65,5 @@
         <sys_scope_delete display_value="">3b255f5eab984b4ca2d4e8de4c0cdc10</sys_scope_delete>
         <sys_update_name>u_dev_tool_operation_input_3b6687142fa50110a8ce2b5df699b623</sys_update_name>
         <sys_update_version display_value="u_dev_tool_operation_input_3b6687142fa50110a8ce2b5df699b623">e329dc2d2f2d0110a8ce2b5df699b6fe</sys_update_version>
-        <sys_updated_by>erik.anderson</sys_updated_by>
-        <sys_updated_on>2022-02-21 19:44:25</sys_updated_on>
     </sys_metadata_delete>
 </record_update>

@@ -106,14 +106,11 @@
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>3ed86b702f564110a8ce2b5df699b6a3</sys_id>
-            <sys_mod_count>0</sys_mod_count>
             <sys_name>u_dev_tool_operation_input</sys_name>
             <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
             <sys_policy/>
             <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
             <sys_update_name>sys_ui_list_u_dev_tool_operation_input_null</sys_update_name>
-            <sys_updated_by>erik.anderson</sys_updated_by>
-            <sys_updated_on>2022-03-15 16:57:09</sys_updated_on>
             <sys_user/>
             <view display_value="Default view" name="NULL">Default view</view>
             <view_name/>

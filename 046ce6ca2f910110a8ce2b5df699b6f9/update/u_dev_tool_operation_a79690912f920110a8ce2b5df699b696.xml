@@ -4,14 +4,11 @@
         <sys_created_by>erik.anderson</sys_created_by>
         <sys_created_on>2022-03-16 15:02:51</sys_created_on>
         <sys_id>a79690912f920110a8ce2b5df699b696</sys_id>
-        <sys_mod_count>0</sys_mod_count>
         <sys_name>Correct RTE Element Scopes</sys_name>
         <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
         <sys_policy/>
         <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
         <sys_update_name>u_dev_tool_operation_a79690912f920110a8ce2b5df699b696</sys_update_name>
-        <sys_updated_by>erik.anderson</sys_updated_by>
-        <sys_updated_on>2022-03-16 15:02:51</sys_updated_on>
         <u_active>true</u_active>
         <u_condition/>
         <u_conditional>false</u_conditional>
