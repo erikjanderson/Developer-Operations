@@ -42,7 +42,7 @@ With this you can do the following:
 
   
 
-You can either fork this branch to import it to your instance or just download the update set here. [DeveloperOperationsUpdateSet(11-11-2022.xml)](DeveloperOperationsUpdateSet%2811-11-2022%29.xml)
+You can either fork this branch to import it to your instance or just download the repository from and import the DeveloperOperationsUpdateSet file directily in your instance. 
 
   
 
