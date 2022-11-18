@@ -8,7 +8,7 @@
         <condition/>
         <description/>
         <event display_value="example.event">982510a62f0b191003377f572799b6de</event>
-        <event_parm_1>false</event_parm_1>
+        <event_parm_1>true</event_parm_1>
         <event_parm_1_table>sys_user</event_parm_1_table>
         <event_parm_2>false</event_parm_2>
         <event_parm_2_table>sys_user</event_parm_2_table>
@@ -16,7 +16,7 @@
         <name>Test Notification</name>
         <order>100</order>
         <recipient_fields/>
-        <recipient_users>2f4efe1e2f26111003377f572799b60a</recipient_users>
+        <recipient_users/>
         <script><![CDATA[(function runRecipientScript(/*String*/ parm1, /*String*/ parm2) {
       /*
       //Create instance of AdvancedNotificationRecipients to add recipients
@@ -43,7 +43,7 @@
         <sys_policy/>
         <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
         <sys_update_name>sys_notification_bf051c662f0b191003377f572799b649</sys_update_name>
-        <table/>
+        <table>u_dev_tool_operation</table>
         <triggered_by>event</triggered_by>
     </sys_notification>
 </record_update>

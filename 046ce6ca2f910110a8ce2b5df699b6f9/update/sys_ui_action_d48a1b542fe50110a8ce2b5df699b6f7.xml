@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_action">
     <sys_ui_action action="INSERT_OR_UPDATE">
-        <action_name/>
+        <action_name>sysverb_developer_operations</action_name>
         <active>true</active>
         <client>true</client>
         <client_script_v2><![CDATA[function onClick(g_form) {
@@ -20,7 +20,7 @@
         <isolate_script>true</isolate_script>
         <list_action>true</list_action>
         <list_banner_button>false</list_banner_button>
-        <list_button>false</list_button>
+        <list_button>true</list_button>
         <list_choice>true</list_choice>
         <list_context_menu>false</list_context_menu>
         <list_link>false</list_link>
@@ -37,21 +37,30 @@
 	//get parameters about the current record that you are on and set parameter values
 	var sysid = '';
 	var tableName = '';
+	var type = '';
+	var filter = '';
 	var view = getView();
 	var isForm = false;
 	if(g_form.getUniqueValue){
 		isForm = true;
+		type = 'form';
 		sysid = g_form.getUniqueValue();
 		tableName = g_form.getTableName();
 	}
-	if(!isForm){
+	if(!isForm && g_list){
+		type = 'list';
 		sysid = g_list.getChecked();
 		tableName = g_list.getTableName();
+		filter = g_list.getQuery({orderby: true});
 	}
+	
+	
 	
 	dialog.setPreference("sysparm_tablename", tableName);
 	dialog.setPreference("sysparm_sysid", sysid);
 	dialog.setPreference("sysparm_view", view);
+	dialog.setPreference("sysparm_type", type);
+	dialog.setPreference("sysparm_filter", filter);
 	dialog.render();
 }]]></script>
         <show_insert>true</show_insert>
@@ -72,6 +81,6 @@
         <sys_update_name>sys_ui_action_d48a1b542fe50110a8ce2b5df699b6f7</sys_update_name>
         <table>global</table>
         <ui11_compatible>true</ui11_compatible>
-        <ui16_compatible>false</ui16_compatible>
+        <ui16_compatible>true</ui16_compatible>
     </sys_ui_action>
 </record_update>

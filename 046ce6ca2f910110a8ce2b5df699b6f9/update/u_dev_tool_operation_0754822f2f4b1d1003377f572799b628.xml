@@ -2,20 +2,20 @@
     <u_dev_tool_operation action="INSERT_OR_UPDATE">
         <sys_class_name>u_dev_tool_operation</sys_class_name>
         <sys_created_by>erik.anderson</sys_created_by>
-        <sys_created_on>2022-03-16 15:09:24</sys_created_on>
-        <sys_id>3719d0912f920110a8ce2b5df699b6b9</sys_id>
-        <sys_name>Accept All Remote Change on Update Set</sys_name>
+        <sys_created_on>2022-11-15 02:11:37</sys_created_on>
+        <sys_id>0754822f2f4b1d1003377f572799b628</sys_id>
+        <sys_name>Skip All Conflicting Remote Updates</sys_name>
         <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
         <sys_policy/>
         <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
-        <sys_update_name>u_dev_tool_operation_3719d0912f920110a8ce2b5df699b6b9</sys_update_name>
+        <sys_update_name>u_dev_tool_operation_0754822f2f4b1d1003377f572799b628</sys_update_name>
         <u_active>true</u_active>
         <u_condition table="sys_remote_update_set">state=previewed^EQ<item display_value="Previewed" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="previewed"/>
             <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
         </u_condition>
         <u_conditional>true</u_conditional>
-        <u_description>Goes go through any update set conflicts and set the status to ignored of the preview problems to ignore.</u_description>
-        <u_name>Accept All Remote Change on Update Set</u_name>
+        <u_description>Bulk skip remote updates that are conflicting with what is currently on the platform.</u_description>
+        <u_name>Skip All Conflicting Remote Updates</u_name>
         <u_script><![CDATA[var currentRecord = current; //Current GlideRecord
 var updateSetId = currentRecord.getUniqueValue();
 var updateCount = 0;
@@ -28,9 +28,11 @@ while (current.next()) {
     var ppa = new GlidePreviewProblemAction(gs.action, current);
     ppa.ignoreProblem();
 	updateCount++;
+	var ppa = new GlidePreviewProblemAction(action, current);
+	ppa.skipUpdate();
 }
 
-result = 'Successfully ignored ' + updateCount + ' conflicts.';]]></u_script>
+result = 'Successfully accepted ' + updateCount + ' conflicts.';]]></u_script>
         <u_table>sys_remote_update_set</u_table>
         <u_type>basic</u_type>
     </u_dev_tool_operation>

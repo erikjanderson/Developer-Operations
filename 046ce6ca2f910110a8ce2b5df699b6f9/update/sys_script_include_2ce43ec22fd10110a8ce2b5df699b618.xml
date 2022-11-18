@@ -131,6 +131,7 @@ DevOperation.prototype = {
 		this.condition = operationGr.getValue("u_condition");
 		this.script = operationGr.getValue("u_script");
 		this.inputs = this._getInputs();
+		this.type = operationGr.getValue("u_type");
 		this.operationGr = operationGr;
 	},
 
@@ -227,12 +228,13 @@ DevOperation.prototype = {
 		var response = {
 			type: 'basic',
 			value: result
-		}
+		};
 		if(response.value + "" === "[object GlideRecord]"){
 			response.value = {
 				link: response.value.getLink(),
-				display: response.value.getDisplayValue()
-			} 
+				display: response.value.getDisplayValue(),
+				gr: response.value
+			};
 			response.type = 'link';
 		}
 		return response;

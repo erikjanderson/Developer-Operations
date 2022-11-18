@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description/>
+        <field>u_type</field>
+        <global>true</global>
+        <isolate_script>true</isolate_script>
+        <messages/>
+        <name>Set default script based on type</name>
+        <order/>
+        <script><![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+    if (isLoading || newValue === '') {
+        return;
+    }
+
+    var defaultListScript = 'var currentRecord = current; //Current GlideRecord' + '\n' +
+        '//Each operation input is available as a variable witin this script.' + '\n' +
+        '//Ex: var userName = name' + '\n' +
+        '\n' +
+        '//Enter Code Below' + '\n' +
+		'currentRecord.query();' + '\n' +
+        'while(currentRecord.next()){' + '\n' +
+        '\n' +
+        '}' + '\n' +
+        '\n' +
+		"result = 'script_output';";
+    var defaultBasicScript = 'var currentRecord = current; //Current GlideRecord' + '\n' +
+        '//Each operation input is available as a variable witin this script.' + '\n' +
+        '//Ex: var userName = name' + '\n' +
+        '\n' +
+        '//Enter Code Below' + '\n' +
+        '\n' +
+        "result = 'script_output';";
+
+    var defaultScript = g_form.getValue('u_script');
+
+    if (newValue === 'basic' && defaultScript === '' || defaultScript === defaultListScript) {
+        g_form.setValue('u_script', defaultBasicScript);
+    } else if (newValue === 'basic' && defaultScript === '' || defaultScript === defaultBasicScript) {
+        g_form.setValue('u_script', defaultListScript);
+    }
+
+
+    //Type appropriate comment here, and begin script below
+
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-11-14 14:16:59</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>d786e79b2f031d1003377f572799b691</sys_id>
+        <sys_name>Set default script based on type</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>sys_script_client_d786e79b2f031d1003377f572799b691</sys_update_name>
+        <table>u_dev_tool_operation</table>
+        <type>onChange</type>
+        <ui_type>0</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>

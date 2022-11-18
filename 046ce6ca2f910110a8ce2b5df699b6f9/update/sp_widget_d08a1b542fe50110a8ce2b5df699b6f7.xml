@@ -11,6 +11,7 @@
 	c.validInputs = validInputs;
 
 	var params = $location.search();
+	c.params = params;
 	c.targetSysIds = params.sysId;
 	if (c.targetSysIds) {
 		c.targetSysIds = c.targetSysIds.split(',');
@@ -287,6 +288,12 @@ input:checked+.slider:before {
   border-radius: 50%;
 }
 
+.operation-body {
+  height: 540px;
+  display: flex;
+  flex-flow: column;
+}
+
 .operation-content {
   background-image: linear-gradient(to right bottom, #181826, #364352, #5a737d, #88a6a6, #c0dad0);
   padding: 10px;
@@ -301,7 +308,7 @@ input:checked+.slider:before {
   background-image: linear-gradient(to right bottom, #181826, #364352, #5a737d, #88a6a6, #c0dad0);
   padding: 10px;
   border-radius: 5px;
-  overflow: auto;
+  overflow: hidden;
   font-size: 16px;
   color: white;
 }
@@ -327,7 +334,7 @@ input:checked+.slider:before {
 }
 
 .output-raw-text {
-  height: 415px;
+  height: 386px;
     width: 100%;
     //background-color: #505050;
     //background-color: hsla(0, 0%, 31%, 0.78);
@@ -437,6 +444,7 @@ input {
         <sys_update_name>sp_widget_d08a1b542fe50110a8ce2b5df699b6f7</sys_update_name>
         <template><![CDATA[<div style="height: 650px;">
 	<!-- your widget template -->
+	<!--<pre>{{c.params | json}}</pre>-->
 	<div class="option-header">
 		<sn-choice-list ng-change="c.executeAsync = false" placeholder="-- Choose an operation --" sn-model="c.selectedOperation" sn-value-field="value" sn-text-field="display" sn-items="c.operations" sn-options="c.operations" field="c.selectedOperation">
     </sn-choice-list>
@@ -454,8 +462,9 @@ input {
 	</div>
 	<!-- <pre>{{c.selectedOperation | json}}</pre> -->
 
-	<p class="option-description" ng-bind-html="c.selectedOperation.description"></p>
-	<div class="operation-content"
+	<div class="operation-body">
+		<p class="option-description" ng-bind-html="c.selectedOperation.description"></p>
+		<div class="operation-content"
 		ng-if="c.selectedOperation && !c.selectedOperation.output && c.selectedOperation.inputs.length">
 		<div class="form-group" ng-repeat="userInput in c.selectedOperation.inputs">
 			<label>{{userInput.inputLabel}} 
@@ -496,9 +505,11 @@ input {
 			<span><i style="color: #00ae00; font-size: 20px;" class="fa fa-check"
 					ng-if="c.selectedOperation.output.results[c.resultIndex - 1].status === 'success'"></i></span>
 		</div>
-		<pre class="output-raw-text" ng-if="c.selectedOperation.output.results[c.resultIndex - 1].type === 'basic'" style="height: 415px; width: 100%;">{{c.selectedOperation.output.results[c.resultIndex - 1].result}}</pre>
+		<pre class="output-raw-text" ng-if="c.selectedOperation.output.results[c.resultIndex - 1].type === 'basic'" style="">{{c.selectedOperation.output.results[c.resultIndex - 1].result}}</pre>
 		<div ng-if="c.selectedOperation.output.results[c.resultIndex - 1].type === 'link'"><label>Result: </label><a  href="{{c.selectedOperation.output.results[c.resultIndex - 1].result.link}}">{{c.selectedOperation.output.results[c.resultIndex - 1].result.display}}</a></div>
 	</div>
+	</div>
+	
 	<div class="content-footer">
 		<div ng-if="c.selectedOperation.output.results.length > 0" class="result-controls">
 			<div class="control-end"></div>
