@@ -18,6 +18,8 @@
 	}
 	c.targetTableName = params.tableName;
 	c.view = params.view;
+	c.operationsType = params.type;
+	c.filter = params.filter;
 	/*if(c.targetFormElements){
 		c.targetFormElements = JSON.parse(c.targetFormElements);
 	}*/
@@ -26,13 +28,16 @@
 	c.selectedOperation = ''
 
 
+
 	init();
 	function init() {
 		var input = {
 			"action": "init",
 			"sysIds": c.targetSysIds,
 			"tableName": c.targetTableName,
-			"view": c.view
+			"view": c.view,
+			"type": c.operationsType,
+			"filter": c.filter
 		}
 
 		c.server.get(input).then(function (response) {
@@ -40,13 +45,15 @@
 				c.operations = [];
 				var operations = response.data.operations;
 				for(var i = 0; i < operations.length; i++){
-					c.operations.push({
+					var op = {
 						"display": operations[i].name,
 						"value": operations[i]
-					});
+					}
+					if(c.operationsType === 'list'){
+						op.display += ' (' + operations[i].recordCount.valid + ' Rows)'
+					}
+					c.operations.push(op);
 				}
-
-
 			}
 		});
 
@@ -66,7 +73,8 @@
 				"tableName": c.targetTableName,
 				"view": c.view,
 				"async": c.executeAsync,
-				"selectedOperation": c.selectedOperation
+				"selectedOperation": c.selectedOperation,
+				"filter": c.filter
 			}
 			c.server.get(input).then(function (response) {
 				if (response && response.data && response.data.selectedOperation) {
@@ -420,12 +428,12 @@ input {
 	/* e.g., data.table = $sp.getValue('table'); */
 	if (input) {
 		var controller = new global.DevOperationController();
-		if (input.action == "init" && input.sysIds && input.tableName) {
-			data.operations = controller.getOperations(input.tableName, input.sysIds);
+		if (input.action == "init" && input.tableName) {
+			data.operations = controller.getOperations(input.tableName, input.sysIds, input.type, input.filter);
 		}
-		if (input.action == "executeOperation" && input.selectedOperation && input.tableName && input.sysIds) {
+		if (input.action == "executeOperation" && input.selectedOperation && input.tableName) {
 			// executeOperation: function(selectedOperation, tableName, sysIds){
-			data.selectedOperation = controller.executeOperation(input.selectedOperation, input.tableName, input.sysIds, input.view, input.async);
+			data.selectedOperation = controller.executeOperation(input.selectedOperation, input.tableName, input.sysIds, input.filter, input.view, input.async);
 		}
 		if (input.action == "generateScript") {
 			data.generatedScript = controller.generateScript(input.selectedOperation, input.tableName, input.sysIds, input.view);
@@ -444,7 +452,7 @@ input {
         <sys_update_name>sp_widget_d08a1b542fe50110a8ce2b5df699b6f7</sys_update_name>
         <template><![CDATA[<div style="height: 650px;">
 	<!-- your widget template -->
-	<!--<pre>{{c.params | json}}</pre>-->
+	<!-- <pre>{{c.params | json}}</pre> -->
 	<div class="option-header">
 		<sn-choice-list ng-change="c.executeAsync = false" placeholder="-- Choose an operation --" sn-model="c.selectedOperation" sn-value-field="value" sn-text-field="display" sn-items="c.operations" sn-options="c.operations" field="c.selectedOperation">
     </sn-choice-list>

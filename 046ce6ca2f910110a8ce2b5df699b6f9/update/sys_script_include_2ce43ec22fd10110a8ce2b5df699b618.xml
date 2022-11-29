@@ -25,29 +25,36 @@ DevOperation.prototype = {
 	execute: function (gr, view) {
 		if (this.operationGr && gr) {
 			this.output = new DevOperationOutput();
+			this.output.script = this.script;
 			this.output.setStartTime();
 			var inputs = {};
 			inputs = this._setInputs();
 			if (!inputs) {
 				return;
 			}
-			while(gr.next()){
-				if (this.isRecordCompatible(gr)) {
-					this._runScript(this.operationGr, gr, view, inputs);
-				} else {
-					gs.info('developer_operations (execute): ' + this.name + ' Operation Execution was skipped for GR: ' + gr.getUniqueValue() + ' because it did not meet the condition requirement.');
+			if(this.type === 'basic'){
+				while(gr.next()){
+					if (this.isRecordCompatible(gr)) {
+						this._runScript(this.operationGr, gr, view, inputs);
+					} else {
+						gs.info('developer_operations (execute): ' + this.name + ' Operation Execution was skipped for GR: ' + gr.getUniqueValue() + ' because it did not meet the condition requirement.');
+					}
 				}
+			}else if(this.type === 'list'){
+				this._runScript(this.operationGr, gr, view, inputs);
 			}
+			
 			this.output.setEndTime();
+			this.output.insertScriptExecution();
 			return this.output;
 		} else {
 			gs.warn('Developer Tools: DevOperation (execute) could not execute. Operation record not specified');
 		}
 	},
 	
-	executeAsync: function(tableName, sysIds, view){
-		if (!tableName || !sysIds) {
-            gs.info("developer_operation (executeAsync): Can't start a new job. Must provide a valid operation, table name, and sys id(s).");
+	executeAsync: function(tableName, sysIds, filter, view){
+		if (!tableName) {
+            gs.info("developer_operation (executeAsync): Can't start a new job. Must provide a valid operation table name");
             return false;
         }
 
@@ -61,6 +68,7 @@ DevOperation.prototype = {
         worker.addNonEscapedParameter(JSON.stringify(this));
         worker.addNonEscapedParameter(tableName);
         worker.addNonEscapedParameter(JSON.stringify(sysIds));
+		worker.addNonEscapedParameter(filter);
 
         worker.setBackground(true);
 
@@ -108,6 +116,28 @@ DevOperation.prototype = {
 			this.recordCount.valid++;
 			return true;
 		}
+	},
+
+	isFilterCompatible: function(tableName, filter) {
+		this.recordCount = {
+			total: 0,
+			valid: 0
+		};
+
+		var ga = new GlideAggregate(tableName);
+		ga.addEncodedQuery(filter);
+		//ga.addEncodedQuery(this.condition);
+		ga.addAggregate('COUNT');
+		ga.query();
+		while(ga.next()){
+			this.recordCount.total = ga.getAggregate('COUNT');
+		}
+		ga.addEncodedQuery(this.condition);
+		ga.query();
+		while(ga.next()){
+			this.recordCount.valid = ga.getAggregate('COUNT');
+		}
+
 	},
 
 	getImplementationScript: function(sysIds, tableName){

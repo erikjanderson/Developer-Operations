@@ -9,10 +9,19 @@
         <name>DevOperationController</name>
         <script><![CDATA[var DevOperationController = Class.create();
 DevOperationController.prototype = {
-    initialize: function () {
+    initialize: function() {},
+
+    getOperations: function(tableName, sysIds, type, filter) {
+        if(type === 'basic'){
+            return this.getBasicOperations(tableName, sysIds);
+        }else if(type === 'list'){
+            var operations = this.getListOperations(tableName, filter);
+            operations =  operations.concat(this.getBasicOperations(tableName, sysIds));
+            return operations
+        }
     },
 
-    getOperations: function (tableName, sysIds) {
+    getBasicOperations: function(tableName, sysIds) {
         if (!tableName || !sysIds || sysIds.length == 0) {
             return [];
         }
@@ -20,6 +29,7 @@ DevOperationController.prototype = {
         var operationArray = [];
         var operationGr = new GlideRecord('u_dev_tool_operation');
         operationGr.addQuery('u_active', true);
+        operationGr.addQuery('u_type', 'basic');
         operationGr.query();
         while (operationGr.next()) {
             var operation = new DevOperation(operationGr);
@@ -33,21 +43,46 @@ DevOperationController.prototype = {
         return operationArray;
     },
 
-    executeOperation: function (selectedOperation, tableName, sysIds, view, async) {
-       // gs.info("op: " + selectedOperation)
+    getListOperations: function(tableName, filter) {
+        if (!tableName) {
+            return [];
+        }
+        var operationArray = [];
+        var operationGr = new GlideRecord('u_dev_tool_operation');
+        operationGr.addQuery('u_active', true);
+        operationGr.addQuery('u_type', 'list');
+        operationGr.query();
+        while (operationGr.next()) {
+            var operation = new DevOperation(operationGr);
+            if(!operation.isTableCompatible(tableName)){
+                continue;
+            }
+            operation.isFilterCompatible(tableName, filter);
+            if (operation.recordCount.valid > 0) {
+                operationArray.push(operation);
+            }
+        }
+        return operationArray;
+    },
+
+    executeOperation: function(selectedOperation, tableName, sysIds, filter, view, async) {
+
         var operation = new DevOperation(selectedOperation);
-        if(async){
-            operation.executeAsync(tableName, sysIds, view);
-            //var processor = new DevProcessor();
-            //processor.startNewJob(operation, tableName, sysIds);
-        }else{
-            var recordGr = this._getGlideRecordStream(tableName, sysIds);
+        if (async) {
+            operation.executeAsync(tableName, sysIds, filter, view);
+        } else {
+            var recordGr;
+            if(operation.type === 'basic'){
+                recordGr = this._getGlideRecordStream(tableName, sysIds);
+            }else if(operation.type === 'list'){
+                recordGr = this._getListGideRecordStream(tableName, filter, operation.condition);
+            }
             operation.execute(recordGr, view);
         }
         return operation;
     },
 
-    generateScript: function(selectedOperation, tableName, sysIds, view){
+    generateScript: function(selectedOperation, tableName, sysIds, view) {
         var operation = new DevOperation(selectedOperation);
         var generatedScript = operation.getImplementationScript(sysIds, tableName)
         return generatedScript;
@@ -56,14 +91,14 @@ DevOperationController.prototype = {
 
     //Internal Function
 
-    _getGlideRecordStream: function(tableName, sysIds){
+    _getGlideRecordStream: function(tableName, sysIds) {
         var recordGr = new GlideRecord(tableName);
         var query;
-        for(var i = 0; i < sysIds.length; i++){
+        for (var i = 0; i < sysIds.length; i++) {
             var id = sysIds[i];
-            if(i === 0){
+            if (i === 0) {
                 query = recordGr.addQuery('sys_id', id);
-            }else{
+            } else {
                 query.addOrCondition('sys_id', id);
             }
         }
@@ -71,7 +106,7 @@ DevOperationController.prototype = {
         return recordGr;
     },
 
-    _getTargetGlideRecords: function (tableName, sysIds) {
+    _getTargetGlideRecords: function(tableName, sysIds) {
         var grArray = [];
         for (var i = 0; i < sysIds.length; i++) {
             var recordGr = new GlideRecord(tableName);
@@ -80,6 +115,18 @@ DevOperationController.prototype = {
             }
         }
         return grArray;
+    },
+
+    _getListGideRecordStream: function(tableName, filter, operationFilter){
+        var recordGr = new GlideRecord(tableName);
+        if(filter){
+            recordGr.addEncodedQuery(filter);
+        }
+        if(operationFilter){
+            recordGr.addEncodedQuery(operationFilter);
+        }
+        recordGr.query();
+        return recordGr;
     },
 
     type: 'DevOperationController'

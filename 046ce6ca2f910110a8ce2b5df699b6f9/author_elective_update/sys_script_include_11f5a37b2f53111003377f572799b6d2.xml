@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="DELETE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>global.DevOperationScriptExecution</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>DevOperationScriptExecution</name>
+        <script><![CDATA[var DevOperationScriptExecution = Class.create();
+DevOperationScriptExecution.prototype = {
+    initialize: function(scriptExecutionGr) {
+		if(scriptExecutionGr){
+            if(typeof scriptExecutionGr === "string"){
+                scriptExecutionGr = this._getGlideRecordWithId(scriptExecutionGr);
+            }
+			if(scriptExecutionGr + "" === "[object GlideRecord]"){
+				this.setFromGr(scriptExecutionGr);
+			}else if(scriptExecutionGr + "" === "[object Object]"){
+				this.setFromModel(scriptExecutionGr);
+			}
+		}
+    },
+	
+	setFromGr: function(scriptExecutionGr){
+		this.sysId = scriptExecutionGr.getUniqueValue();
+		this.result = scriptExecutionGr.getValue("result");
+		this.executedBy = this._getReferenceField("executed_by", scriptExecutionGr);
+		this.started = scriptExecutionGr.getValue("started");
+		this.finished = scriptExecutionGr.getValue("finished");
+		this.script = scriptExecutionGr.getValue("script");  
+	},
+
+	setFromModel: function(model){
+		for(var key in model){
+			this[key] = model[key];
+		}
+	},
+
+	insert: function(){
+		var scriptExecutionGr = new GlideRecord("sys_script_execution_history");
+		scriptExecutionGr.initialize();
+		scriptExecutionGr = this._assignGlideRecordValues(scriptExecutionGr);
+		this.sysId = scriptExecutionGr.insert();
+	},
+		
+	update: function(){
+		var scriptExecutionGr = new GlideRecord("sys_script_execution_history");
+		if(scriptExecutionGr.get(this.sysId)){
+			scriptExecutionGr = this._assignGlideRecordValues(scriptExecutionGr);
+			scriptExecutionGr.update();
+		}
+	},
+
+	deleteRecord: function(){
+		var scriptExecutionGr = new GlideRecord("sys_script_execution_history");
+		if(scriptExecutionGr.get(this.sysId)){
+			scriptExecutionGr.deleteRecord();
+		}
+	},
+
+	//Internal Functions
+	
+	_getReferenceField: function(columnName, scriptExecutionGr){
+		var returnObj = {};
+		if(columnName){
+			returnObj.id = scriptExecutionGr.getValue(columnName);
+			returnObj.displayValue = scriptExecutionGr.getDisplayValue(columnName);
+		}
+		return returnObj;
+	},
+
+	_assignGlideRecordValues: function(scriptExecutionGr){
+		scriptExecutionGr.result = this.result;
+		scriptExecutionGr.executed_by = this.executedBy.sysId;
+		scriptExecutionGr.started = this.started;
+		scriptExecutionGr.finished = this.finished;
+		scriptExecutionGr.script = this.script;
+        return scriptExecutionGr;
+	},
+
+    _getGlideRecordWithId: function(id){
+        var scriptExecutionGr = new GlideRecord("sys_script_execution_history");
+        if(scriptExecutionGr.get(id)){
+            return scriptExecutionGr;
+        }
+    },
+				
+    type: 'DevOperationScriptExecution'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-11-28 13:40:12</sys_created_on>
+        <sys_id>11f5a37b2f53111003377f572799b6d2</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>DevOperationScriptExecution</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>sys_script_include_11f5a37b2f53111003377f572799b6d2</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-11-28 13:45:30</sys_updated_on>
+    </sys_script_include>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</application>
+        <file_path/>
+        <instance_id>1a082fb5db0d7b849df22f17d4961995</instance_id>
+        <instance_name>dev83910</instance_name>
+        <name>sys_script_include_11f5a37b2f53111003377f572799b6d2</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_script_include"&gt;&lt;sys_script_include action="INSERT_OR_UPDATE"&gt;&lt;access&gt;package_private&lt;/access&gt;&lt;active&gt;true&lt;/active&gt;&lt;api_name&gt;global.DevOperationScriptExecution&lt;/api_name&gt;&lt;caller_access/&gt;&lt;client_callable&gt;false&lt;/client_callable&gt;&lt;description/&gt;&lt;name&gt;DevOperationScriptExecution&lt;/name&gt;&lt;script&gt;&lt;![CDATA[var DevOperationScriptExecution = Class.create();
+DevOperationScriptExecution.prototype = {
+    initialize: function(scriptExecutionGr) {
+		if(scriptExecutionGr){
+            if(typeof scriptExecutionGr === "string"){
+                scriptExecutionGr = this._getGlideRecordWithId(scriptExecutionGr);
+            }
+			if(scriptExecutionGr + "" === "[object GlideRecord]"){
+				this.setFromGr(scriptExecutionGr);
+			}else if(scriptExecutionGr + "" === "[object Object]"){
+				this.setFromModel(scriptExecutionGr);
+			}
+		}
+    },
+	
+	setFromGr: function(scriptExecutionGr){
+		this.sysId = scriptExecutionGr.getUniqueValue();
+		this.result = scriptExecutionGr.getValue("result");
+		this.executedBy = this._getReferenceField("executed_by", scriptExecutionGr);
+		this.started = scriptExecutionGr.getValue("started");
+		this.finished = scriptExecutionGr.getValue("finished");
+		this.script = scriptExecutionGr.getValue("script");  
+	},
+
+	setFromModel: function(model){
+		for(var key in model){
+			this[key] = model[key];
+		}
+	},
+
+	insert: function(){
+		var scriptExecutionGr = new GlideRecord("sys_script_execution_history");
+		scriptExecutionGr.initialize();
+		scriptExecutionGr = this._assignGlideRecordValues(scriptExecutionGr);
+		this.sysId = scriptExecutionGr.insert();
+	},
+		
+	update: function(){
+		var scriptExecutionGr = new GlideRecord("sys_script_execution_history");
+		if(scriptExecutionGr.get(this.sysId)){
+			scriptExecutionGr = this._assignGlideRecordValues(scriptExecutionGr);
+			scriptExecutionGr.update();
+		}
+	},
+
+	deleteRecord: function(){
+		var scriptExecutionGr = new GlideRecord("sys_script_execution_history");
+		if(scriptExecutionGr.get(this.sysId)){
+			scriptExecutionGr.deleteRecord();
+		}
+	},
+
+	//Internal Functions
+	
+	_getReferenceField: function(columnName, scriptExecutionGr){
+		var returnObj = {};
+		if(columnName){
+			returnObj.id = scriptExecutionGr.getValue(columnName);
+			returnObj.displayValue = scriptExecutionGr.getDisplayValue(columnName);
+		}
+		return returnObj;
+	},
+
+	_assignGlideRecordValues: function(scriptExecutionGr){
+		scriptExecutionGr.result = this.result;
+		scriptExecutionGr.executed_by = this.executedBy.sysId;
+		scriptExecutionGr.started = this.started;
+		scriptExecutionGr.finished = this.finished;
+		scriptExecutionGr.script = this.script;
+        return scriptExecutionGr;
+	},
+
+    _getGlideRecordWithId: function(id){
+        var scriptExecutionGr = new GlideRecord("sys_script_execution_history");
+        if(scriptExecutionGr.get(id)){
+            return scriptExecutionGr;
+        }
+    },
+				
+    type: 'DevOperationScriptExecution'
+};]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_include&lt;/sys_class_name&gt;&lt;sys_created_by&gt;erik.anderson&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-11-28 13:40:12&lt;/sys_created_on&gt;&lt;sys_id&gt;11f5a37b2f53111003377f572799b6d2&lt;/sys_id&gt;&lt;sys_mod_count&gt;3&lt;/sys_mod_count&gt;&lt;sys_name&gt;DevOperationScriptExecution&lt;/sys_name&gt;&lt;sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9"&gt;046ce6ca2f910110a8ce2b5df699b6f9&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Developer Operations"&gt;046ce6ca2f910110a8ce2b5df699b6f9&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_include_11f5a37b2f53111003377f572799b6d2&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;erik.anderson&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2022-11-28 13:45:30&lt;/sys_updated_on&gt;&lt;/sys_script_include&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-772503239</payload_hash>
+        <record_name>DevOperationScriptExecution</record_name>
+        <reverted_from/>
+        <source>55449ee4f98211108c8bd16244dfe7ab</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-11-28 13:45:30</sys_created_on>
+        <sys_id>8727a7bb2f53111003377f572799b66a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>184be7c57b70000001</sys_recorded_at>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-11-28 13:45:30</sys_updated_on>
+        <type>Script Include</type>
+        <update_guid>8f27a7bb2e53111071674826c8215069</update_guid>
+        <update_guid_history>8f27a7bb2e53111071674826c8215069:-772503239,1a17677b925311102ae19950277c6f47:-1169332391,a916237bd05311108f5921013aa5b94d:-1639013185,e1f5a37b705311108b6553d09ff5dfd4:983300745</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-11-29 17:27:20</sys_created_on>
+        <sys_db_object display_value="" name="sys_script_include">sys_script_include</sys_db_object>
+        <sys_id>311abf20cd4e4ba082788b877218c971</sys_id>
+        <sys_metadata>11f5a37b2f53111003377f572799b6d2</sys_metadata>
+        <sys_name>DevOperationScriptExecution</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_scope_delete display_value="">3b255f5eab984b4ca2d4e8de4c0cdc10</sys_scope_delete>
+        <sys_update_name>sys_script_include_11f5a37b2f53111003377f572799b6d2</sys_update_name>
+        <sys_update_version display_value="sys_script_include_11f5a37b2f53111003377f572799b6d2">8727a7bb2f53111003377f572799b66a</sys_update_version>
+    </sys_metadata_delete>
+</record_update>

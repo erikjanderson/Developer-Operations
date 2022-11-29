@@ -12,23 +12,21 @@ DevProcessor.prototype = {
     initialize: function() {},
 
 
-    process: function(operation, tableName, sysIds) {
+    process: function(operation, tableName, sysIds, filter) {
         operation = JSON.parse(operation);
         sysIds = JSON.parse(sysIds);
         var controller = new DevOperationController();
-        operation = controller.executeOperation(operation, tableName, sysIds);
+        operation = controller.executeOperation(operation, tableName, sysIds, filter);
         gs.info('developer_operations (background progress worker result): ' + JSON.stringify(operation.output.results));
         //Notify User of results
-		
 		var notify = new DevOperationNotification();
         for (var i = 0; i < operation.output.results.length; i++) {
 			var result = operation.output.results[i];
-            gs.info(JSON.stringify(result))
 			if(result.type === 'link'){
-                gs.info("doing something");
 				notify.postSimpleNotificationToUser(gs.getUserID(), result.result.gr, operation.name, 'Operation Completed Click To View Results', result.gr.displayValue);
-			}
-			
+			}else if(result.type === 'basic'){
+                notify.postSimpleNotificationToUser(gs.getUserID(), operation.output.scriptExecutionGr, operation.name, 'Operation Completed Click To View The Execution History');
+            }	
         }
     },
 
