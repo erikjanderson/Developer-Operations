@@ -11,23 +11,21 @@
         <sys_update_name>u_dev_tool_operation_19a873ea2f025d10a8ce2b5df699b603</sys_update_name>
         <u_active>false</u_active>
         <u_condition/>
-        <u_conditional>false</u_conditional>
-        <u_description/>
+        <u_conditional>true</u_conditional>
+        <u_description>This is mainly used for testing new features doesnt actually do anyting.</u_description>
         <u_name>[DEBUG] - Test Operation</u_name>
         <u_script><![CDATA[var currentRecord = current; //Current GlideRecord
 //Each operation input is available as a variable witin this script.
 //Ex: var userName = name
 
 //Enter Code Below
-
-var conversation = sn_connect.Conversation.create({
-    name: "Developer Tools " + name,
-    type: "connect"
-});
-
-conversation.sendMessage({body: "Mate what you doing", field: "system"});
-
-result = 'script_output';]]></u_script>
+result = '';
+currentRecord.query();
+while(currentRecord.next()){
+	result += '\n ' + currentRecord.getDisplayValue();
+}
+]]></u_script>
         <u_table>global</u_table>
+        <u_type>list</u_type>
     </u_dev_tool_operation>
 </record_update>

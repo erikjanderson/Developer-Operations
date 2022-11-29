@@ -12,9 +12,11 @@
 		<j:set var="jvar_sysid" value="${sysparm_sysid}"></j:set>
 		<j:set var="jvar_tablename" value="${sysparm_tablename}"></j:set>
 		<j:set var="jvar_view" value="${sysparm_view}"></j:set>
+		<j:set var="jvar_type" value="${sysparm_type}"></j:set>
+		<j:set var="jvar_filter" value="${sysparm_filter}"></j:set>
 		<!-- initialize iFrame and link to the target widget-->
 		<iframe allowtransparency="true"
-				src="developer_operations?id=dev_tools_operations${AMP}sysId=${jvar_sysid}${AMP}tableName=${jvar_tablename}${AMP}view=${jvar_view}"
+				src="developer_operations?id=dev_tools_operations${AMP}sysId=${jvar_sysid}${AMP}tableName=${jvar_tablename}${AMP}view=${jvar_view}${AMP}type=${jvar_type}${AMP}filter=${jvar_filter}"
 				scrolling="no"
 				width="860px"
 				height="650px"

@@ -9,18 +9,31 @@
         <name>DevOperationOutput</name>
         <script><![CDATA[var DevOperationOutput = Class.create();
 DevOperationOutput.prototype = {
-    initialize: function() {
+    initialize: function(scriptExecutionGr) {
         this.results = [];
         this.duration = {};
-    },
 
+        if(scriptExecutionGr){
+            if(typeof scriptExecutionGr === "string"){
+                scriptExecutionGr = this._getGlideRecordWithId(scriptExecutionGr);
+            }
+			if(scriptExecutionGr + "" === "[object GlideRecord]"){
+				this.setFromGr(scriptExecutionGr);
+			}else if(scriptExecutionGr + "" === "[object Object]"){
+				this.setFromModel(scriptExecutionGr);
+			}
+		}
+
+    },
 
     setStartTime: function(){
         this.duration.start = new GlideDateTime().getDisplayValueInternal();
+		this.started = new GlideDateTime();
     },
 
     setEndTime: function(){
         this.duration.end = new GlideDateTime().getDisplayValueInternal();
+		this.finished = new GlideDateTime();
     },
     setEndTimeAsync: function(){
         var gdt = new GlideDateTime();
@@ -39,6 +52,73 @@ DevOperationOutput.prototype = {
             }
         });
     },
+    
+
+    setFromGr: function(scriptExecutionGr){
+		this.sysId = scriptExecutionGr.getUniqueValue();
+        var result = scriptExecutionGr.getValue("results")
+        if(result){
+            this.result = JSON.parse(result);
+        }else{
+            this.result = '';
+        }
+		this.executedBy = this._getReferenceField("executed_by", scriptExecutionGr);
+        if(scriptExecutionGr.getValue("started")){
+            this.started = new GlideDateTime(scriptExecutionGr.getValue("started"));
+            this.duration.start = this.started.getDisplayValueInternal();
+        }else{
+            this.started = '';
+        }
+        if(scriptExecutionGr.getValue("finished")){
+            this.finished = new GlideDateTime(scriptExecutionGr.getValue("finished"));
+            this.duration.end = this.finished.getDisplayValueInternal();
+        }else{
+            this.finished = '';
+        }
+		this.script = scriptExecutionGr.getValue("script");
+	},
+
+    setFromModel: function(model){
+		for(var key in model){
+			this[key] = model[key];
+		}
+	},
+	
+    insertScriptExecution: function(){
+		var scriptExecutionGr = new GlideRecord("sys_script_execution_history");
+		scriptExecutionGr.initialize();
+		scriptExecutionGr = this._assignGlideRecordValues(scriptExecutionGr);
+		this.sysId = scriptExecutionGr.insert();
+        this.scriptExecutionGr = scriptExecutionGr;
+	},
+
+    updateScriptExecution: function(){
+        var scriptExecutionGr = new GlideRecord("sys_script_execution_history");
+		if(scriptExecutionGr.get(this.sysId)){
+			scriptExecutionGr = this._assignGlideRecordValues(scriptExecutionGr);
+			scriptExecutionGr.update();
+		}
+    },
+
+	//Internal Functions
+	
+    _getReferenceField: function(columnName, scriptExecutionGr){
+		var returnObj = {};
+		if(columnName){
+			returnObj.id = scriptExecutionGr.getValue(columnName);
+			returnObj.displayValue = scriptExecutionGr.getDisplayValue(columnName);
+		}
+		return returnObj;
+	},
+
+    _assignGlideRecordValues: function(scriptExecutionGr){
+		scriptExecutionGr.result = JSON.stringify(this.results);
+		scriptExecutionGr.executed_by = gs.getUserID();
+		scriptExecutionGr.started = this.started;
+		scriptExecutionGr.finished = this.finished;
+		scriptExecutionGr.script = this.script;
+        return scriptExecutionGr;
+	},
 
     type: 'DevOperationOutput'
 };]]></script>

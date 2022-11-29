@@ -59,5 +59,6 @@ function getColumns(){
     return columns;
 }]]></u_script>
         <u_table>sys_import_set_row</u_table>
+        <u_type>basic</u_type>
     </u_dev_tool_operation>
 </record_update>

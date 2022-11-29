@@ -504,5 +504,6 @@ function findValueInArray(index, stack, array){
     }
 }]]></u_script>
         <u_table>cmdb_inst_application_feed</u_table>
+        <u_type>basic</u_type>
     </u_dev_tool_operation>
 </record_update>

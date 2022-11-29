@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>global.DevOperationNotification</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>DevOperationNotification</name>
+        <script><![CDATA[var DevOperationNotification = Class.create();
+DevOperationNotification.prototype = {
+    initialize: function() {},
+
+    postSimpleNotificationToUser: function(userId, gr, title, description, priority) {
+        if (!userId || !title || !gr) {
+            return;
+        }
+		var template = new this.NotificationTemplate();
+        template.displayValue = title;
+        template.changes.short_description.displayValue = description;
+        template.changes.description.displayValue = description;
+        template.changes.priority.displayValue = priority;
+
+        var uiNotificationGr = new GlideRecord('ui_notification_inbox');
+        uiNotificationGr.initialize();
+        uiNotificationGr.route = this.agentWorkspaceRouteId;
+        uiNotificationGr.payload = JSON.stringify(template);
+        uiNotificationGr.recipient = userId;
+        uiNotificationGr.target_table = gr.getTableName();
+        uiNotificationGr.target = gr.getUniqueValue();
+        uiNotificationGr.triggered_by = gs.getUserID();
+
+        return uiNotificationGr.insert();
+    },
+	
+	agentWorkspaceRouteId: 'cb1af195872023002941b53046cb0b4e',
+	NotificationTemplate: function(){
+			this.displayValue= "",
+			this.changes = {
+				"short_description": {
+					"displayValue": "",
+					"fieldLabel": "Short description",
+					"previousValue": "",
+					"value": ""
+				},
+				"description": {
+					"displayValue": "",
+					"fieldLabel": "Description",
+					"previousValue": "",
+					"value": ""
+				},
+				"priority": {
+					"displayValue": "",
+					"fieldLabel": "Priority",
+					"previousValue": "",
+					"value": ""
+				},
+				"assigned_to": {
+					"displayValue": "",
+					"fieldLabel": "Assigned to",
+					"previousValue": null,
+					"value": null
+				}
+			},
+			this.tableLabel = "",
+			this.operation = ""
+	},
+
+
+
+    type: 'DevOperationNotification'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-11-17 16:19:11</sys_created_on>
+        <sys_id>1d9f17182f57111003377f572799b614</sys_id>
+        <sys_name>DevOperationNotification</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>sys_script_include_1d9f17182f57111003377f572799b614</sys_update_name>
+    </sys_script_include>
+</record_update>
