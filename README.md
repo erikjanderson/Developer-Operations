@@ -32,7 +32,7 @@ With this you can do the following:
 
 - Copy the script directly from form.
 
-- Generate and return a CVS file from your operation.
+- Generate and return a CSV file from your operation.
 
   
 
