@@ -112,13 +112,29 @@ DevOperationOutput.prototype = {
 	},
 
     _assignGlideRecordValues: function(scriptExecutionGr){
-		scriptExecutionGr.result = JSON.stringify(this.results);
+		scriptExecutionGr.result = this._getCleansedResults();
 		scriptExecutionGr.executed_by = gs.getUserID();
 		scriptExecutionGr.started = this.started;
 		scriptExecutionGr.finished = this.finished;
 		scriptExecutionGr.script = this.script;
         return scriptExecutionGr;
 	},
+
+    _getCleansedResults: function(){
+        if(!this.results || this.results.length < 1){
+            return;
+        }
+        var output = '';
+        for(var i = 0; i < this.results.length; i++){
+            var result = this.results[i];
+            if(i > 0){
+                output += '==================================================================\n\n';
+            }
+            output += result.gr.displayValue + ' (' + result.status + ')';
+            output += '\nResults:\n' + result.result;
+        }
+        return output;
+    },
 
     type: 'DevOperationOutput'
 };]]></script>
