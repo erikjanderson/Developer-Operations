@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="u_dev_tool_operation">
+    <u_dev_tool_operation action="INSERT_OR_UPDATE">
+        <sys_class_name>u_dev_tool_operation</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2023-04-25 12:48:40</sys_created_on>
+        <sys_id>2735a5ab47d26110acb08f22736d43d9</sys_id>
+        <sys_mod_count>11</sys_mod_count>
+        <sys_name>Build Embeded Help Article</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>u_dev_tool_operation_2735a5ab47d26110acb08f22736d43d9</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2023-04-25 13:25:22</sys_updated_on>
+        <u_active>true</u_active>
+        <u_condition/>
+        <u_conditional>false</u_conditional>
+        <u_description>Use the current information on the selected guided setup information recrod to scafold out a embeded help article.</u_description>
+        <u_name>Build Embeded Help Article</u_name>
+        <u_script><![CDATA[var currentRecord = current; //Current GlideRecord
+//Each operation input is available as a variable witin this script.
+//Ex: var userName = name
+
+//Enter Code Below
+
+var embededHelpGr = new GlideRecord('sys_embedded_help_content');
+embededHelpGr.name = currentRecord.getValue('title');
+embededHelpGr.qualifier = currentRecord.getValue('embedded_help_qualifier');
+embededHelpGr.version = 'all';
+embededHelpGr.modifier = 'setup';
+embededHelpGr.sys_scope = currentRecord.getValue('sys_scope');
+
+var url = currentRecord.getValue('end_point');
+url = url.match(/^(.+?)\./g).toString();
+url = url.substring(0, url.length - 1);
+if(url.startsWith('/')){
+	url = url.slice(1);
+}
+embededHelpGr.page = url;
+
+
+var content = '';
+var title = '<h1 class="title topictitle1">' + currentRecord.getValue('title') + '</h1>';
+content = title + currentRecord.getValue('article');
+gs.info('TEST3: ' + content);
+embededHelpGr.content = content;
+
+embededHelpGr.insert();
+
+result = embededHelpGr;]]></u_script>
+        <u_table>gsw_content_information</u_table>
+        <u_type>basic</u_type>
+    </u_dev_tool_operation>
+</record_update>
