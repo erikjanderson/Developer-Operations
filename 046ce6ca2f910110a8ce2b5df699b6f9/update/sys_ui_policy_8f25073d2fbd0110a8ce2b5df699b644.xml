@@ -30,12 +30,15 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>8f25073d2fbd0110a8ce2b5df699b644</sys_id>
+        <sys_mod_count>0</sys_mod_count>
         <sys_name>Show/Hide Max Length</sys_name>
         <sys_overrides/>
         <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
         <sys_policy/>
         <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
         <sys_update_name>sys_ui_policy_8f25073d2fbd0110a8ce2b5df699b644</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-11-11 19:38:33</sys_updated_on>
         <table>u_dev_tool_operation_input</table>
         <ui_type>0</ui_type>
         <view/>

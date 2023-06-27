@@ -22,11 +22,14 @@
         <sys_created_by>erik.anderson</sys_created_by>
         <sys_created_on>2022-02-04 16:30:30</sys_created_on>
         <sys_id>f8281b562fa6111003377f572799b6b8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
         <sys_name>Dev Tool Operation Input</sys_name>
         <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
         <sys_policy/>
         <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
         <sys_update_name>sys_db_object_f8281b562fa6111003377f572799b6b8</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-11-11 19:38:33</sys_updated_on>
         <update_access>false</update_access>
         <user_role display_value="admin" name="admin">2831a114c611228501d4ea6c309d626d</user_role>
         <ws_access>true</ws_access>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_portal">
     <sp_portal action="INSERT_OR_UPDATE">
         <css_variables/>
+        <dark_theme/>
         <default>false</default>
         <enable_ais>false</enable_ais>
         <enable_favorites>false</enable_favorites>
@@ -24,11 +25,14 @@
         <sys_created_by>erik.anderson</sys_created_by>
         <sys_created_on>2022-03-25 13:49:12</sys_created_on>
         <sys_id>59ad5a002faa4110a8ce2b5df699b6f9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
         <sys_name>Developer Operations</sys_name>
         <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
         <sys_policy/>
         <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
         <sys_update_name>sp_portal_59ad5a002faa4110a8ce2b5df699b6f9</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-11-11 19:38:33</sys_updated_on>
         <theme/>
         <title>Developer Operations</title>
         <ts_index_group/>

@@ -95,10 +95,13 @@ DevOperationInput.prototype = {
         <sys_created_by>erik.anderson</sys_created_by>
         <sys_created_on>2022-02-04 17:44:36</sys_created_on>
         <sys_id>2dbdbed82f650110a8ce2b5df699b60b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
         <sys_name>DevOperationInput</sys_name>
         <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
         <sys_policy/>
         <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
         <sys_update_name>sys_script_include_2dbdbed82f650110a8ce2b5df699b60b</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2022-11-11 19:38:33</sys_updated_on>
     </sys_script_include>
 </record_update>

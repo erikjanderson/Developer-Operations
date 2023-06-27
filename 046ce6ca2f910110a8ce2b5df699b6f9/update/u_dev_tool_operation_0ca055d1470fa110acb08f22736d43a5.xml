@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="u_dev_tool_operation">
+    <u_dev_tool_operation action="INSERT_OR_UPDATE">
+        <sys_class_name>u_dev_tool_operation</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2023-05-25 18:19:56</sys_created_on>
+        <sys_id>0ca055d1470fa110acb08f22736d43a5</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Clean up application files (pre-publish)</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>u_dev_tool_operation_0ca055d1470fa110acb08f22736d43a5</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2023-06-27 17:38:16</sys_updated_on>
+        <u_active>true</u_active>
+        <u_condition/>
+        <u_conditional>false</u_conditional>
+        <u_description>Clean up system generated records that are usually asociated to a user account. These records arent copaible in other SN instances and should be removed before migrating code.</u_description>
+        <u_name>Clean up application files (pre-publish)</u_name>
+        <u_script><![CDATA[var currentRecord = current; //Current GlideRecord
+
+var applicationId = currentRecord.getUniqueValue();
+var deleteMetadataDelete = delete_metadata_delete_files;
+
+//Remove User UI Lists
+var grSysUiList = new GlideRecord('sys_ui_list');
+grSysUiList.addEncodedQuery("sys_user!=NULL^sys_scope=" + applicationId);
+grSysUiList.deleteMultiple();
+
+//Remove User UI Views
+var grSysUiView = new GlideRecord('sys_ui_view');
+grSysUiView.addEncodedQuery("user!=NULL^sys_scope=" + applicationId);
+grSysUiView.deleteMultiple();
+
+//Remove User Service Portals
+var grSPP = new GlideRecord('sys_portal_page');
+grSPP.addEncodedQuery("user!=NULL^sys_scope=" + applicationId);
+grSPP.deleteMultiple();
+
+//Clear Users From Reports
+var grSysReport = new GlideRecord('sys_report');
+grSysReport.addEncodedQuery("sys_scope=" + applicationId);
+while (grSysReport.next()) {
+    grSysReport.user = '';
+    grSysReport.update();
+}
+
+//Remove user report groups
+var grSRUG = new GlideRecord('sys_report_users_groups');
+grSRUG.addEncodedQuery("user_id!=NULL^sys_scope=" + applicationId);
+grSRUG.deleteMultiple();
+
+
+//Set all metadata files to updated and created by admin
+var grMetadata = new GlideRecord('sys_metadata');
+grMetadata.addEncodedQuery("sys_scope=" + applicationId);
+grMetadata.autoSysFields(false);
+grMetadata.setWorkflow(false);
+grMetadata.sys_created_by = 'admin';
+grMetadata.sys_updated_by = 'admin';
+grMetadata.updateMultiple();
+
+//Delete deleted application files
+if(deleteMetadataDelete){
+	var grSMD = new GlideRecord('sys_metadata_delete');
+	grSMD.addEncodedQuery("sys_scope=" + applicationId);
+	grSMD.deleteMultiple();
+}
+
+
+
+result = 'script_output';]]></u_script>
+        <u_table>sys_app</u_table>
+        <u_type>basic</u_type>
+    </u_dev_tool_operation>
+</record_update>
