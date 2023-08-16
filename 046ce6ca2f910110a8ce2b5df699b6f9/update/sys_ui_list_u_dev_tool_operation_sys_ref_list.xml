@@ -26,7 +26,7 @@
             <relationship/>
             <sum>false</sum>
             <sys_class_name>sys_ui_list</sys_class_name>
-            <sys_created_by>erik.anderson</sys_created_by>
+            <sys_created_by>admin</sys_created_by>
             <sys_created_on>2022-02-04 17:23:47</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
@@ -37,7 +37,7 @@
             <sys_policy/>
             <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
             <sys_update_name>sys_ui_list_u_dev_tool_operation_sys_ref_list</sys_update_name>
-            <sys_updated_by>erik.anderson</sys_updated_by>
+            <sys_updated_by>admin</sys_updated_by>
             <sys_updated_on>2022-11-11 19:38:33</sys_updated_on>
             <sys_user/>
             <view display_value="Reference List" name="sys_ref_list">889fc260f90211108c8bd16244dfe72a</view>

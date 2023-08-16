@@ -5,7 +5,7 @@
         <field>u_choice_list</field>
         <mandatory>ignore</mandatory>
         <sys_class_name>sys_ui_policy_action</sys_class_name>
-        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-02-21 19:52:08</sys_created_on>
         <sys_id>d2ddf2752fbd0110a8ce2b5df699b67e</sys_id>
         <sys_mod_count>0</sys_mod_count>
@@ -14,7 +14,7 @@
         <sys_policy/>
         <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
         <sys_update_name>sys_ui_policy_action_d2ddf2752fbd0110a8ce2b5df699b67e</sys_update_name>
-        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2022-11-11 19:38:33</sys_updated_on>
         <table>u_dev_tool_operation_input</table>
         <ui_policy display_value="Show/Hide Choice List">4fad32752fbd0110a8ce2b5df699b6cf</ui_policy>

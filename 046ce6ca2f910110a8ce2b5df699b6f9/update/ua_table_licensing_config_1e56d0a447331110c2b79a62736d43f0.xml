@@ -10,7 +10,7 @@
         <op_update>true</op_update>
         <owner_condition/>
         <sys_class_name>ua_table_licensing_config</sys_class_name>
-        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-01-28 16:43:44</sys_created_on>
         <sys_id>1e56d0a447331110c2b79a62736d43f0</sys_id>
         <sys_mod_count>0</sys_mod_count>
@@ -19,7 +19,7 @@
         <sys_policy/>
         <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
         <sys_update_name>ua_table_licensing_config_1e56d0a447331110c2b79a62736d43f0</sys_update_name>
-        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2022-11-11 19:38:33</sys_updated_on>
     </ua_table_licensing_config>
 </record_update>

@@ -160,7 +160,7 @@
             <name>u_dev_tool_operation</name>
             <roles/>
             <sys_class_name>sys_ui_section</sys_class_name>
-            <sys_created_by>erik.anderson</sys_created_by>
+            <sys_created_by>admin</sys_created_by>
             <sys_created_on>2022-01-28 17:13:27</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
@@ -172,7 +172,7 @@
             <sys_policy/>
             <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
             <sys_update_name>sys_ui_section_b4737e4e2f910110a8ce2b5df699b639</sys_update_name>
-            <sys_updated_by>erik.anderson</sys_updated_by>
+            <sys_updated_by>admin</sys_updated_by>
             <sys_updated_on>2022-11-18 03:11:08</sys_updated_on>
             <sys_user/>
             <title>true</title>

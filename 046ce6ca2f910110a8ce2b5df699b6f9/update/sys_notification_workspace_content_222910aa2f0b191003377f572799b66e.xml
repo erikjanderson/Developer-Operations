@@ -6,7 +6,7 @@
         <notification display_value="Test Notification">bf051c662f0b191003377f572799b649</notification>
         <route display_value="Agent Workspace">cb1af195872023002941b53046cb0b4e</route>
         <sys_class_name>sys_notification_workspace_content</sys_class_name>
-        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-11-11 15:17:42</sys_created_on>
         <sys_id>222910aa2f0b191003377f572799b66e</sys_id>
         <sys_mod_count>0</sys_mod_count>
@@ -15,7 +15,7 @@
         <sys_policy/>
         <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
         <sys_update_name>sys_notification_workspace_content_222910aa2f0b191003377f572799b66e</sys_update_name>
-        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2022-11-11 19:38:33</sys_updated_on>
     </sys_notification_workspace_content>
 </record_update>
