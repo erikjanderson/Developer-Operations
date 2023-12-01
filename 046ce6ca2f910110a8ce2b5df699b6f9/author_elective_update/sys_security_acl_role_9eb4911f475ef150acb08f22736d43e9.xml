@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="DELETE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2023-11-09 13:08:13</sys_created_on>
+        <sys_id>9eb4911f475ef150acb08f22736d43e9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_156954_scratch_a_loose_related_table.snc_internal</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_security_acl display_value="">73f1a4e147253110acb08f22736d4320</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_9eb4911f475ef150acb08f22736d43e9</sys_update_name>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2023-11-09 13:08:13</sys_updated_on>
+        <sys_user_role display_value="snc_internal" name="snc_internal">7fcaa702933002009c8579b4f47ffbde</sys_user_role>
+        <transaction_id>c7a41ddb475ef150acb08f22736d43fa</transaction_id>
+    </sys_security_acl_role>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</application>
+        <file_path/>
+        <instance_id>8f3db847db8a9d508aea21c4059619e6</instance_id>
+        <instance_name>dev136818</instance_name>
+        <name>sys_security_acl_role_9eb4911f475ef150acb08f22736d43e9</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role"><sys_security_acl_role action="INSERT_OR_UPDATE"><sys_class_name>sys_security_acl_role</sys_class_name><sys_created_by>erik.anderson</sys_created_by><sys_created_on>2023-11-09 13:08:13</sys_created_on><sys_id>9eb4911f475ef150acb08f22736d43e9</sys_id><sys_mod_count>0</sys_mod_count><sys_name>x_156954_scratch_a_loose_related_table.snc_internal</sys_name><sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package><sys_policy/><sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope><sys_security_acl display_value="">73f1a4e147253110acb08f22736d4320</sys_security_acl><sys_update_name>sys_security_acl_role_9eb4911f475ef150acb08f22736d43e9</sys_update_name><sys_updated_by>erik.anderson</sys_updated_by><sys_updated_on>2023-11-09 13:08:13</sys_updated_on><sys_user_role display_value="snc_internal" name="snc_internal">7fcaa702933002009c8579b4f47ffbde</sys_user_role><transaction_id>c7a41ddb475ef150acb08f22736d43fa</transaction_id></sys_security_acl_role></record_update>]]></payload>
+        <payload_hash>2068492075</payload_hash>
+        <record_name>x_156954_scratch_a_loose_related_table.snc_internal</record_name>
+        <reverted_from/>
+        <source>eb2a6a2247023110acb08f22736d43d3</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by/>
+        <sys_created_on>2023-10-26 01:10:27</sys_created_on>
+        <sys_id>5cc4d51f475ef150acb08f22736d434d</sys_id>
+        <sys_mod_count/>
+        <sys_recorded_at>18b69885fb80000000</sys_recorded_at>
+        <sys_updated_by/>
+        <sys_updated_on/>
+        <type>Access Roles</type>
+        <update_guid>1cc4d51f555ef1509da8bb2343e4554d</update_guid>
+        <update_guid_history>1cc4d51f555ef1509da8bb2343e4554d:2068492075</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="x_156954_scratch_a_loose_related_table.snc_internal">5cc4d51f475ef150acb08f22736d434f</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2023-11-09 13:08:21</sys_created_on>
+        <sys_db_object display_value="" name="sys_security_acl_role">sys_security_acl_role</sys_db_object>
+        <sys_id>2a040789085447ec8d3e815404b78ac9</sys_id>
+        <sys_metadata>9eb4911f475ef150acb08f22736d43e9</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_156954_scratch_a_loose_related_table.snc_internal</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_scope_delete display_value="">3b255f5eab984b4ca2d4e8de4c0cdc10</sys_scope_delete>
+        <sys_update_name>sys_security_acl_role_9eb4911f475ef150acb08f22736d43e9</sys_update_name>
+        <sys_update_version display_value="sys_security_acl_role_9eb4911f475ef150acb08f22736d43e9">5cc4d51f475ef150acb08f22736d434d</sys_update_version>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2023-11-09 13:08:21</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
