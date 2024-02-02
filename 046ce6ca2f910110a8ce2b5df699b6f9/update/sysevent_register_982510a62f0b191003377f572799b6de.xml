@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sysevent_register">
     <sysevent_register action="INSERT_OR_UPDATE">
         <caller_access/>
+        <derived_priority/>
         <description/>
         <event_name>example.event</event_name>
         <fired_by>Script</fired_by>
+        <priority/>
         <queue/>
         <suffix/>
         <sys_class_name>sysevent_register</sys_class_name>

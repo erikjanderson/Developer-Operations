@@ -5,9 +5,11 @@
         <advanced>false</advanced>
         <condition/>
         <description>Default access control on u_dev_tool_operation</description>
+        <local_or_existing/>
         <name>u_dev_tool_operation</name>
         <operation display_value="delete">delete</operation>
         <script/>
+        <security_attribute/>
         <sys_class_name>sys_security_acl</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-01-28 16:43:43</sys_created_on>

@@ -214,6 +214,7 @@ DevOperationScriptExecution.prototype = {
         <sys_db_object display_value="" name="sys_script_include">sys_script_include</sys_db_object>
         <sys_id>311abf20cd4e4ba082788b877218c971</sys_id>
         <sys_metadata>11f5a37b2f53111003377f572799b6d2</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
         <sys_name>DevOperationScriptExecution</sys_name>
         <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
         <sys_parent/>
@@ -222,5 +223,7 @@ DevOperationScriptExecution.prototype = {
         <sys_scope_delete display_value="">3b255f5eab984b4ca2d4e8de4c0cdc10</sys_scope_delete>
         <sys_update_name>sys_script_include_11f5a37b2f53111003377f572799b6d2</sys_update_name>
         <sys_update_version display_value="sys_script_include_11f5a37b2f53111003377f572799b6d2">8727a7bb2f53111003377f572799b66a</sys_update_version>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2024-01-15 19:41:35</sys_updated_on>
     </sys_metadata_delete>
 </record_update>

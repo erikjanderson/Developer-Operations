@@ -4,6 +4,7 @@
         <dark_theme/>
         <default>false</default>
         <enable_ais>false</enable_ais>
+        <enable_certificate_based_authentication>false</enable_certificate_based_authentication>
         <enable_favorites>false</enable_favorites>
         <hide_portal_name>false</hide_portal_name>
         <homepage/>
@@ -14,6 +15,7 @@
         <logo/>
         <notfound_page/>
         <quick_start_config/>
+        <rtl_enabled>false</rtl_enabled>
         <sc_catalog/>
         <sc_catalog_page/>
         <sc_category_page/>

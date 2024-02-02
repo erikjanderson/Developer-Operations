@@ -49,6 +49,7 @@
         <sys_db_object display_value="" name="m2m_announcement_portal">m2m_announcement_portal</sys_db_object>
         <sys_id>678697d3f60f42a28bd4e4a3c5446c64</sys_id>
         <sys_metadata>908a1b542fe50110a8ce2b5df699b6f7</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
         <sys_name>Alert : Appsec Daily Data Management.Instance Security Center</sys_name>
         <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
         <sys_parent/>
@@ -57,5 +58,7 @@
         <sys_scope_delete display_value="">3b255f5eab984b4ca2d4e8de4c0cdc10</sys_scope_delete>
         <sys_update_name>m2m_announcement_portal_908a1b542fe50110a8ce2b5df699b6f7</sys_update_name>
         <sys_update_version display_value="m2m_announcement_portal_908a1b542fe50110a8ce2b5df699b6f7">32aad3942fe50110a8ce2b5df699b6cd</sys_update_version>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2024-01-15 19:41:34</sys_updated_on>
     </sys_metadata_delete>
 </record_update>

@@ -67,6 +67,7 @@
         <sys_db_object display_value="Announcement" name="announcement">announcement</sys_db_object>
         <sys_id>176fffc28bf741879fadc2b55602ac31</sys_id>
         <sys_metadata>188a1b542fe50110a8ce2b5df699b6f7</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
         <sys_name>Alert : Appsec Daily Data Management</sys_name>
         <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
         <sys_parent/>
@@ -75,5 +76,7 @@
         <sys_scope_delete display_value="">3b255f5eab984b4ca2d4e8de4c0cdc10</sys_scope_delete>
         <sys_update_name>announcement_188a1b542fe50110a8ce2b5df699b6f7</sys_update_name>
         <sys_update_version display_value="announcement_188a1b542fe50110a8ce2b5df699b6f7">b9aad3942fe50110a8ce2b5df699b6b6</sys_update_version>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2024-01-15 19:41:34</sys_updated_on>
     </sys_metadata_delete>
 </record_update>

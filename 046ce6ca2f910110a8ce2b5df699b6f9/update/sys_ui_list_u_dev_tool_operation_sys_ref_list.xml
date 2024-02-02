@@ -3,7 +3,7 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>u_name</element>
-            <list_id display_value="u_dev_tool_operation" element="NULL" name="u_dev_tool_operation" parent="NULL" relationship="NULL" sys_domain="global" view="889fc260f90211108c8bd16244dfe72a">b4f87ed42f650110a8ce2b5df699b6fa</list_id>
+            <list_id display_value="u_dev_tool_operation" element="NULL" name="u_dev_tool_operation" parent="NULL" relationship="NULL" sys_domain="global" view="25cac060d9313110cedf7dffddb48f4f">b4f87ed42f650110a8ce2b5df699b6fa</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>0</position>
@@ -40,7 +40,7 @@
             <sys_updated_by>admin</sys_updated_by>
             <sys_updated_on>2022-11-11 19:38:33</sys_updated_on>
             <sys_user/>
-            <view display_value="Reference List" name="sys_ref_list">889fc260f90211108c8bd16244dfe72a</view>
+            <view display_value="Reference List" name="sys_ref_list">25cac060d9313110cedf7dffddb48f4f</view>
             <view_name/>
         </sys_ui_list>
     </sys_ui_list>

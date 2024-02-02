@@ -80,6 +80,7 @@ result = compString;]]&gt;&lt;/u_script&gt;&lt;u_table&gt;cmdb_ci_computer&lt;/u
         <sys_db_object display_value="" name="u_dev_tool_operation">u_dev_tool_operation</sys_db_object>
         <sys_id>115501c6865943c3a37548af687e50e1</sys_id>
         <sys_metadata>f10deeab2fa50110a8ce2b5df699b66b</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
         <sys_name>CMDB MAC Computer Script</sys_name>
         <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
         <sys_parent/>
@@ -88,5 +89,7 @@ result = compString;]]&gt;&lt;/u_script&gt;&lt;u_table&gt;cmdb_ci_computer&lt;/u
         <sys_scope_delete display_value="">3b255f5eab984b4ca2d4e8de4c0cdc10</sys_scope_delete>
         <sys_update_name>u_dev_tool_operation_f10deeab2fa50110a8ce2b5df699b66b</sys_update_name>
         <sys_update_version display_value="u_dev_tool_operation_f10deeab2fa50110a8ce2b5df699b66b">3c0f2e6f2fa50110a8ce2b5df699b67b</sys_update_version>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2024-01-15 19:41:36</sys_updated_on>
     </sys_metadata_delete>
 </record_update>

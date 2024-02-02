@@ -30,19 +30,19 @@
         <source>eb2a6a2247023110acb08f22736d43d3</source>
         <source_table>sys_upgrade_history</source_table>
         <state>previous</state>
-        <sys_created_by/>
+        <sys_created_by>erik.anderson</sys_created_by>
         <sys_created_on>2023-10-26 01:10:27</sys_created_on>
         <sys_id>5cc4d51f475ef150acb08f22736d434d</sys_id>
-        <sys_mod_count/>
+        <sys_mod_count>0</sys_mod_count>
         <sys_recorded_at>18b69885fb80000000</sys_recorded_at>
-        <sys_updated_by/>
-        <sys_updated_on/>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2024-01-15 19:41:35</sys_updated_on>
         <type>Access Roles</type>
         <update_guid>1cc4d51f555ef1509da8bb2343e4554d</update_guid>
         <update_guid_history>1cc4d51f555ef1509da8bb2343e4554d:2068492075</update_guid_history>
     </sys_update_version>
     <sys_metadata_delete action="INSERT_OR_UPDATE">
-        <sys_audit_delete display_value="x_156954_scratch_a_loose_related_table.snc_internal">5cc4d51f475ef150acb08f22736d434f</sys_audit_delete>
+        <sys_audit_delete display_value="">5cc4d51f475ef150acb08f22736d434f</sys_audit_delete>
         <sys_class_name>sys_metadata_delete</sys_class_name>
         <sys_created_by>erik.anderson</sys_created_by>
         <sys_created_on>2023-11-09 13:08:21</sys_created_on>

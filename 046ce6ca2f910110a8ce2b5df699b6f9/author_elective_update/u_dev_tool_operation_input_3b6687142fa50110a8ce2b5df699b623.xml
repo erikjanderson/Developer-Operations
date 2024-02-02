@@ -57,6 +57,7 @@
         <sys_db_object display_value="" name="u_dev_tool_operation_input">u_dev_tool_operation_input</sys_db_object>
         <sys_id>38d189e63c00439c9be6df658d1a4b99</sys_id>
         <sys_metadata>3b6687142fa50110a8ce2b5df699b623</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
         <sys_name>Reference</sys_name>
         <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
         <sys_parent/>
@@ -65,5 +66,7 @@
         <sys_scope_delete display_value="">3b255f5eab984b4ca2d4e8de4c0cdc10</sys_scope_delete>
         <sys_update_name>u_dev_tool_operation_input_3b6687142fa50110a8ce2b5df699b623</sys_update_name>
         <sys_update_version display_value="u_dev_tool_operation_input_3b6687142fa50110a8ce2b5df699b623">e329dc2d2f2d0110a8ce2b5df699b6fe</sys_update_version>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2024-01-15 19:41:36</sys_updated_on>
     </sys_metadata_delete>
 </record_update>

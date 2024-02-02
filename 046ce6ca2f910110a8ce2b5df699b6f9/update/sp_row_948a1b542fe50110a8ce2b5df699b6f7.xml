@@ -2,6 +2,7 @@
     <sp_row action="INSERT_OR_UPDATE">
         <class_name/>
         <order>1</order>
+        <semantic_tag/>
         <sp_column/>
         <sp_container display_value="Developer Tools - Container 1">988a1b542fe50110a8ce2b5df699b6f7</sp_container>
         <sys_class_name>sp_row</sys_class_name>

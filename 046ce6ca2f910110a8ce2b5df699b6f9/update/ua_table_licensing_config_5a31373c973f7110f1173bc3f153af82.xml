@@ -4,21 +4,21 @@
         <license_condition/>
         <license_model>none</license_model>
         <license_roles/>
-        <name>u_dev_tool_operation</name>
+        <name>u_dev_tool_operation_input</name>
         <op_delete>true</op_delete>
         <op_insert>true</op_insert>
         <op_update>true</op_update>
         <owner_condition/>
         <sys_class_name>ua_table_licensing_config</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2022-01-28 16:43:44</sys_created_on>
-        <sys_id>1e56d0a447331110c2b79a62736d43f0</sys_id>
+        <sys_created_on>2022-02-04 16:30:32</sys_created_on>
+        <sys_id>5a31373c973f7110f1173bc3f153af82</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name>u_dev_tool_operation</sys_name>
+        <sys_name>u_dev_tool_operation_input</sys_name>
         <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
         <sys_policy/>
         <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
-        <sys_update_name>ua_table_licensing_config_1e56d0a447331110c2b79a62736d43f0</sys_update_name>
+        <sys_update_name>ua_table_licensing_config_5a31373c973f7110f1173bc3f153af82</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2022-11-11 19:38:33</sys_updated_on>
     </ua_table_licensing_config>

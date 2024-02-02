@@ -8,6 +8,7 @@
         <container_class_name/>
         <name>Developer Tools - Container 1</name>
         <order>1</order>
+        <semantic_tag/>
         <sp_page display_value="dev_tools_operations">588a1b542fe50110a8ce2b5df699b6f7</sp_page>
         <subheader>false</subheader>
         <sys_class_name>sp_container</sys_class_name>
