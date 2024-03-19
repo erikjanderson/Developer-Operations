@@ -3,6 +3,8 @@
         <cleared>false</cleared>
         <disabled>ignore</disabled>
         <field>u_condition</field>
+        <field_message/>
+        <field_message_type/>
         <mandatory>ignore</mandatory>
         <sys_class_name>sys_ui_policy_action</sys_class_name>
         <sys_created_by>admin</sys_created_by>
@@ -18,6 +20,8 @@
         <sys_updated_on>2022-11-11 19:38:33</sys_updated_on>
         <table>u_dev_tool_operation</table>
         <ui_policy display_value="Show/Hide Condition if Conditional True/False">23f376c22fd10110a8ce2b5df699b6d8</ui_policy>
+        <value/>
+        <value_action/>
         <visible>true</visible>
     </sys_ui_policy_action>
 </record_update>

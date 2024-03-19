@@ -4,6 +4,8 @@
         <active>true</active>
         <content display_value="Workspace Content Test">222910aa2f0b191003377f572799b66e</content>
         <disable_skip>false</disable_skip>
+        <event_parm1>false</event_parm1>
+        <event_parm2>false</event_parm2>
         <name>Do SOmething</name>
         <notification display_value="Test Notification">bf051c662f0b191003377f572799b649</notification>
         <sys_class_name>sys_notification_actionable_content</sys_class_name>

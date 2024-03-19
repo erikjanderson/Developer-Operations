@@ -3,6 +3,8 @@
         <cleared>false</cleared>
         <disabled>ignore</disabled>
         <field>u_reference_display_field</field>
+        <field_message/>
+        <field_message_type/>
         <mandatory>true</mandatory>
         <sys_class_name>sys_ui_policy_action</sys_class_name>
         <sys_created_by>admin</sys_created_by>
@@ -18,6 +20,8 @@
         <sys_updated_on>2022-11-11 19:38:33</sys_updated_on>
         <table>u_dev_tool_operation_input</table>
         <ui_policy display_value="Show/Hide Reference fields if input type is Reference">076cb6d82f650110a8ce2b5df699b603</ui_policy>
+        <value/>
+        <value_action/>
         <visible>true</visible>
     </sys_ui_policy_action>
 </record_update>

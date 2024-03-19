@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="pa_dashboards_permissions">
+    <pa_dashboards_permissions action="DELETE">
+        <dashboard display_value="Open Problem Age Monitor">928678c2d7300200b96d45a3ce610343</dashboard>
+        <delete>true</delete>
+        <group/>
+        <identity>pa_power_user</identity>
+        <read>true</read>
+        <role display_value="pa_power_user" name="pa_power_user">05dc30b3bf101100b96dac808c07392b</role>
+        <sys_class_name>pa_dashboards_permissions</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-11-11 16:17:33</sys_created_on>
+        <sys_id>a0f660e62f4b191003377f572799b6d1</sys_id>
+        <sys_name>pa_power_user</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>pa_dashboards_permissions_a0f660e62f4b191003377f572799b6d1</sys_update_name>
+        <type>1</type>
+        <user/>
+        <write>true</write>
+    </pa_dashboards_permissions>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</application>
+        <file_path/>
+        <instance_id>60ddbd8edbd5a190c1a4c5970596190c</instance_id>
+        <instance_name>dev157835</instance_name>
+        <name>pa_dashboards_permissions_a0f660e62f4b191003377f572799b6d1</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="pa_dashboards_permissions">
+    <pa_dashboards_permissions action="INSERT_OR_UPDATE">
+        <dashboard display_value="Open Problem Age Monitor">928678c2d7300200b96d45a3ce610343</dashboard>
+        <delete>true</delete>
+        <group/>
+        <identity>pa_power_user</identity>
+        <read>true</read>
+        <role display_value="pa_power_user" name="pa_power_user">05dc30b3bf101100b96dac808c07392b</role>
+        <sys_class_name>pa_dashboards_permissions</sys_class_name>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2022-11-11 16:17:33</sys_created_on>
+        <sys_id>a0f660e62f4b191003377f572799b6d1</sys_id>
+        <sys_name>pa_power_user</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_update_name>pa_dashboards_permissions_a0f660e62f4b191003377f572799b6d1</sys_update_name>
+        <type>1</type>
+        <user/>
+        <write>true</write>
+    </pa_dashboards_permissions>
+</record_update>]]></payload>
+        <payload_hash>-83885510</payload_hash>
+        <record_name>pa_power_user</record_name>
+        <reverted_from/>
+        <source>d2b0c2a247d00210d299a9f8536d43c7</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>erik.anderson</sys_created_by>
+        <sys_created_on>2024-02-14 18:30:42</sys_created_on>
+        <sys_id>80c086a247d00210d299a9f8536d4354</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>18da8e2a62c0000001</sys_recorded_at>
+        <sys_updated_by>erik.anderson</sys_updated_by>
+        <sys_updated_on>2024-02-14 18:30:42</sys_updated_on>
+        <type>Dashboard Permissions</type>
+        <update_guid>40c086a2a7d00210bc62ec7f93587b54</update_guid>
+        <update_guid_history>40c086a2a7d00210bc62ec7f93587b54:-83885510</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="pa_power_user">49ac6f1d47494210d299a9f8536d43f4</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-03-19 11:56:46</sys_created_on>
+        <sys_db_object display_value="" name="pa_dashboards_permissions">pa_dashboards_permissions</sys_db_object>
+        <sys_id>04d4d49ca72e4fcc801a7c700e96e6c1</sys_id>
+        <sys_metadata>a0f660e62f4b191003377f572799b6d1</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>pa_power_user</sys_name>
+        <sys_package display_value="Developer Operations" source="046ce6ca2f910110a8ce2b5df699b6f9">046ce6ca2f910110a8ce2b5df699b6f9</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Developer Operations">046ce6ca2f910110a8ce2b5df699b6f9</sys_scope>
+        <sys_scope_delete display_value="">3b255f5eab984b4ca2d4e8de4c0cdc10</sys_scope_delete>
+        <sys_update_name>pa_dashboards_permissions_a0f660e62f4b191003377f572799b6d1</sys_update_name>
+        <sys_update_version display_value="pa_dashboards_permissions_a0f660e62f4b191003377f572799b6d1">80c086a247d00210d299a9f8536d4354</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-03-19 11:56:46</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
